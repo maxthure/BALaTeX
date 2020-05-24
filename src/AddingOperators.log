@@ -1,0 +1,1636 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.23)  23 MAY 2020 15:36
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**AddingOperators.tex
+
+(/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperato
+rs.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks24
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
+\symwasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen112
+\lightrulewidth=\dimen113
+\cmidrulewidth=\dimen114
+\belowrulesep=\dimen115
+\belowbottomsep=\dimen116
+\aboverulesep=\dimen117
+\abovetopsep=\dimen118
+\cmidrulesep=\dimen119
+\cmidrulekern=\dimen120
+\defaultaddspace=\dimen121
+\@cmidla=\count99
+\@cmidlb=\count100
+\@aboverulesep=\dimen122
+\@belowrulesep=\dimen123
+\@thisruleclass=\count101
+\@lastruleclass=\count102
+\@thisrulewidth=\dimen124
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count103
+\float@exts=\toks25
+\float@box=\box28
+\@float@everytoks=\toks26
+\@floatcapt=\box29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+\c@theorem=\count104
+
+(/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperato
+rs.aux)
+\openout1 = `AddingOperators.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 29.
+ (/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+euf on input line 39.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:46: Missing $ inserted.
+<inserted text> 
+                $
+l.46                 \phi
+                                             & \(\mathfrak{I}, i \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:46: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.46                 \phi                    &
+                                               \(\mathfrak{I}, i \models \ma...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:46: Missing $ inserted.
+<inserted text> 
+                $
+l.46                 \phi                    &
+                                               \(\mathfrak{I}, i \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:46: Missing } inserted.
+<inserted text> 
+                }
+l.46                 \phi                    &
+                                               \(\mathfrak{I}, i \models \ma...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:47: Missing $ inserted.
+<inserted text> 
+                $
+l.47                 \Box
+                          \phi_{1}           & \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:47: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.47                 \Box \phi_{1}           &
+                                               \(\mathfrak{I}, k \models \ma...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:47: Missing $ inserted.
+<inserted text> 
+                $
+l.47                 \Box \phi_{1}           &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:47: Missing } inserted.
+<inserted text> 
+                }
+l.47                 \Box \phi_{1}           &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:48: Missing $ inserted.
+<inserted text> 
+                $
+l.48                 \Box
+                         ^{-} \phi_{1}       & \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:48: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.48                 \Box^{-} \phi_{1}       &
+                                               \(\mathfrak{I}, k \models \ma...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:48: Missing $ inserted.
+<inserted text> 
+                $
+l.48                 \Box^{-} \phi_{1}       &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:48: Missing } inserted.
+<inserted text> 
+                }
+l.48                 \Box^{-} \phi_{1}       &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:49: Missing $ inserted.
+<inserted text> 
+                $
+l.49                 \Diamond
+                              \phi_{1}       & \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:49: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.49                 \Diamond \phi_{1}       &
+                                               \(\mathfrak{I}, k \models \ma...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:49: Missing $ inserted.
+<inserted text> 
+                $
+l.49                 \Diamond \phi_{1}       &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:49: Missing } inserted.
+<inserted text> 
+                }
+l.49                 \Diamond \phi_{1}       &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:50: Missing $ inserted.
+<inserted text> 
+                $
+l.50                 \Diamond
+                             ^{-} \phi_{1}   & \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:50: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.50                 \Diamond^{-} \phi_{1}   &
+                                               \(\mathfrak{I}, k \models \ma...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:50: Missing $ inserted.
+<inserted text> 
+                $
+l.50                 \Diamond^{-} \phi_{1}   &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:50: Missing } inserted.
+<inserted text> 
+                }
+l.50                 \Diamond^{-} \phi_{1}   &
+                                               \(\mathfrak{I}, k \models \ma...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in alignment at lines 44--51
+[][]
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+ [2] [3] [4]
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:215: Missing $ inserted.
+<inserted text> 
+                $
+l.215             \alpha
+                                                                  & \(\maths...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:215: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.215 ...                                        &
+                                                   \(\mathsf{eval}^{n}(\alph...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:215: Missing $ inserted.
+<inserted text> 
+                $
+l.215 ...                                        &
+                                                   \(\mathsf{eval}^{n}(\alph...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:215: Missing } inserted.
+<inserted text> 
+                }
+l.215 ...                                        &
+                                                   \(\mathsf{eval}^{n}(\alph...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:219: Missing $ inserted.
+<inserted text> 
+                $
+l.219 ..._{1}}_{n}\)                   & \emptyset
+                                                                            ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:219: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \endtemplate 
+l.219 ...                           \\ \bottomrule
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:219: Missing $ inserted.
+<inserted text> 
+                $
+l.219 ...                           \\ \bottomrule
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:219: Missing } inserted.
+<inserted text> 
+                }
+l.219 ...                           \\ \bottomrule
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in alignment at lines 213--220
+[][]
+ []
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:230: Missing $ inserted.
+<inserted text> 
+                $
+l.230             \psi
+                                          & \(\Phi_{0}(\psi)\)              ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:230: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.230             \psi                    &
+                                            \(\Phi_{0}(\psi)\)              ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:230: Missing $ inserted.
+<inserted text> 
+                $
+l.230             \psi                    &
+                                            \(\Phi_{0}(\psi)\)              ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:230: Missing } inserted.
+<inserted text> 
+                }
+l.230             \psi                    &
+                                            \(\Phi_{0}(\psi)\)              ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:231: Missing $ inserted.
+<inserted text> 
+                $
+l.231             \Box
+                       \psi_{1}           & \(\Phi_{0}(\psi_{1}) \cap x^{\Bo...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:231: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.231             \Box \psi_{1}           &
+                                            \(\Phi_{0}(\psi_{1}) \cap x^{\Bo...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:231: Missing $ inserted.
+<inserted text> 
+                $
+l.231             \Box \psi_{1}           &
+                                            \(\Phi_{0}(\psi_{1}) \cap x^{\Bo...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:231: Missing } inserted.
+<inserted text> 
+                }
+l.231             \Box \psi_{1}           &
+                                            \(\Phi_{0}(\psi_{1}) \cap x^{\Bo...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:232: Missing $ inserted.
+<inserted text> 
+                $
+l.232             \Box
+                      ^{-} \psi_{1}       & \(\Phi_{0}(\psi_{1})\)          ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:232: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.232             \Box^{-} \psi_{1}       &
+                                            \(\Phi_{0}(\psi_{1})\)          ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:232: Missing $ inserted.
+<inserted text> 
+                $
+l.232             \Box^{-} \psi_{1}       &
+                                            \(\Phi_{0}(\psi_{1})\)          ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:232: Missing } inserted.
+<inserted text> 
+                }
+l.232             \Box^{-} \psi_{1}       &
+                                            \(\Phi_{0}(\psi_{1})\)          ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:233: Missing $ inserted.
+<inserted text> 
+                $
+l.233             \Diamond
+                           \psi_{1}       & \(\Phi_{0}(\psi_{1}) \cup x^{\Di...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:233: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.233             \Diamond \psi_{1}       &
+                                            \(\Phi_{0}(\psi_{1}) \cup x^{\Di...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:233: Missing $ inserted.
+<inserted text> 
+                $
+l.233             \Diamond \psi_{1}       &
+                                            \(\Phi_{0}(\psi_{1}) \cup x^{\Di...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:233: Missing } inserted.
+<inserted text> 
+                }
+l.233             \Diamond \psi_{1}       &
+                                            \(\Phi_{0}(\psi_{1}) \cup x^{\Di...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:234: Missing $ inserted.
+<inserted text> 
+                $
+l.234             \Diamond
+                          ^{-} \psi_{1}   & \(\Phi_{0}(\psi_{1})\)          ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:234: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.234             \Diamond^{-} \psi_{1}   &
+                                            \(\Phi_{0}(\psi_{1})\)          ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:234: Missing $ inserted.
+<inserted text> 
+                $
+l.234             \Diamond^{-} \psi_{1}   &
+                                            \(\Phi_{0}(\psi_{1})\)          ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:234: Missing } inserted.
+<inserted text> 
+                }
+l.234             \Diamond^{-} \psi_{1}   &
+                                            \(\Phi_{0}(\psi_{1})\)          ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in alignment at lines 228--235
+[][]
+ []
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:245: Missing $ inserted.
+<inserted text> 
+                $
+l.245             \psi
+                                          & \(\Phi^{0}_{i}(\psi)\)          ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:245: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.245             \psi                    &
+                                            \(\Phi^{0}_{i}(\psi)\)          ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:245: Missing $ inserted.
+<inserted text> 
+                $
+l.245             \psi                    &
+                                            \(\Phi^{0}_{i}(\psi)\)          ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:245: Missing } inserted.
+<inserted text> 
+                }
+l.245             \psi                    &
+                                            \(\Phi^{0}_{i}(\psi)\)          ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:246: Missing $ inserted.
+<inserted text> 
+                $
+l.246             \Box
+                       \psi_{1}           & \(\Phi^{0}_{i}(\psi_{1}) \cap x^...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:246: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.246             \Box \psi_{1}           &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cap x^...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:246: Missing $ inserted.
+<inserted text> 
+                $
+l.246             \Box \psi_{1}           &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cap x^...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:246: Missing } inserted.
+<inserted text> 
+                }
+l.246             \Box \psi_{1}           &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cap x^...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:247: Missing $ inserted.
+<inserted text> 
+                $
+l.247             \Box
+                      ^{-} \psi_{1}       & \(\Phi^{0}_{i}(\psi_{1}) \cap \P...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:247: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.247             \Box^{-} \psi_{1}       &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cap \P...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:247: Missing $ inserted.
+<inserted text> 
+                $
+l.247             \Box^{-} \psi_{1}       &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cap \P...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:247: Missing } inserted.
+<inserted text> 
+                }
+l.247             \Box^{-} \psi_{1}       &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cap \P...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:248: Missing $ inserted.
+<inserted text> 
+                $
+l.248             \Diamond
+                           \psi_{1}       & \(\Phi^{0}_{i}(\psi_{1}) \cup x^...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:248: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.248             \Diamond \psi_{1}       &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cup x^...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:248: Missing $ inserted.
+<inserted text> 
+                $
+l.248             \Diamond \psi_{1}       &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cup x^...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:248: Missing } inserted.
+<inserted text> 
+                }
+l.248             \Diamond \psi_{1}       &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cup x^...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:249: Missing $ inserted.
+<inserted text> 
+                $
+l.249             \Diamond
+                          ^{-} \psi_{1}   & \(\Phi^{0}_{i}(\psi_{1}) \cup \P...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:249: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \endtemplate 
+l.249             \Diamond^{-} \psi_{1}   &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cup \P...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:249: Missing $ inserted.
+<inserted text> 
+                $
+l.249             \Diamond^{-} \psi_{1}   &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cup \P...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:249: Missing } inserted.
+<inserted text> 
+                }
+l.249             \Diamond^{-} \psi_{1}   &
+                                            \(\Phi^{0}_{i}(\psi_{1}) \cup \P...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in alignment at lines 243--250
+[][]
+ []
+
+[5]
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:268: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268         \[\(
+                  \mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{eval}^{n}(\Phi...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:268: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 ...= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1}))\)
+                                                  .\]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.282             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: Missing } inserted.
+<inserted text> 
+                }
+l.282             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: Missing { inserted.
+<inserted text> 
+                {
+l.282             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: Missing $ inserted.
+<inserted text> 
+                $
+l.282             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.282             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: Missing } inserted.
+<inserted text> 
+                }
+l.282             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: Missing { inserted.
+<inserted text> 
+                {
+l.282             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:282: Missing $ inserted.
+<inserted text> 
+                $
+l.282             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.295             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: Missing } inserted.
+<inserted text> 
+                }
+l.295             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: Missing { inserted.
+<inserted text> 
+                {
+l.295             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: Missing $ inserted.
+<inserted text> 
+                $
+l.295             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.295             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: Missing } inserted.
+<inserted text> 
+                }
+l.295             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: Missing { inserted.
+<inserted text> 
+                {
+l.295             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:295: Missing $ inserted.
+<inserted text> 
+                $
+l.295             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.314             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: Missing } inserted.
+<inserted text> 
+                }
+l.314             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: Missing { inserted.
+<inserted text> 
+                {
+l.314             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: Missing $ inserted.
+<inserted text> 
+                $
+l.314             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.314             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: Missing } inserted.
+<inserted text> 
+                }
+l.314             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: Missing { inserted.
+<inserted text> 
+                {
+l.314             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:314: Missing $ inserted.
+<inserted text> 
+                $
+l.314             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[6]
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.324             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: Missing } inserted.
+<inserted text> 
+                }
+l.324             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: Missing { inserted.
+<inserted text> 
+                {
+l.324             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: Missing $ inserted.
+<inserted text> 
+                $
+l.324             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.324             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: Missing } inserted.
+<inserted text> 
+                }
+l.324             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: Missing { inserted.
+<inserted text> 
+                {
+l.324             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:324: Missing $ inserted.
+<inserted text> 
+                $
+l.324             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.337             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: Missing } inserted.
+<inserted text> 
+                }
+l.337             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: Missing { inserted.
+<inserted text> 
+                {
+l.337             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: Missing $ inserted.
+<inserted text> 
+                $
+l.337             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.337             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: Missing } inserted.
+<inserted text> 
+                }
+l.337             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: Missing { inserted.
+<inserted text> 
+                {
+l.337             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:337: Missing $ inserted.
+<inserted text> 
+                $
+l.337             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.350             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: Missing } inserted.
+<inserted text> 
+                }
+l.350             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: Missing { inserted.
+<inserted text> 
+                {
+l.350             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: Missing $ inserted.
+<inserted text> 
+                $
+l.350             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.350             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: Missing } inserted.
+<inserted text> 
+                }
+l.350             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: Missing { inserted.
+<inserted text> 
+                {
+l.350             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:350: Missing $ inserted.
+<inserted text> 
+                $
+l.350             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.371             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: Missing } inserted.
+<inserted text> 
+                }
+l.371             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: Missing { inserted.
+<inserted text> 
+                {
+l.371             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: Missing $ inserted.
+<inserted text> 
+                $
+l.371             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.371             \end{split}
+                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: Missing } inserted.
+<inserted text> 
+                }
+l.371             \end{split}
+                             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: Missing { inserted.
+<inserted text> 
+                {
+l.371             \end{split}
+                             
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperator
+s.tex:371: Missing $ inserted.
+<inserted text> 
+                $
+l.371             \end{split}
+                             
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (50.62093pt too wide) in paragraph at lines 372--375
+\OT1/cmr/m/n/10.95 Since $^^H[]$ is cor-rect for $\OML/cmm/m/it/10.95 i$\OT1/cm
+r/m/n/10.95 , this is the same set as $[][](^^H[](\OML/cmm/m/it/10.95  []\OT1/c
+mr/m/n/10.95 )) = [][]([](\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 ))$. 
+ []
+
+[7]
+Overfull \hbox (7.83948pt too wide) in paragraph at lines 388--394
+[]\OT1/cmr/m/n/10.95 By the in-duc-tion hy-poth-e-sis $^^H[](\OML/cmm/m/it/10.9
+5  []\OT1/cmr/m/n/10.95 )$ con-tains only vari-ables from $[][] =
+ []
+
+
+(/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperato
+rs.bbl) [8]
+(/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX/src/AddingOperato
+rs.aux) ) 
+Here is how much of TeX's memory you used:
+ 1381 strings out of 494923
+ 16970 string characters out of 6180742
+ 73926 words of memory out of 5000000
+ 4702 multiletter control sequences out of 15000+600000
+ 13858 words of font info for 53 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 27i,23n,24p,267b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/wasy2-ps/wasy10.pfb>
+Output written on "/home/thure/Dokumente/Uni/6. Semester/Bachelorarbeit/BALaTeX
+/src/AddingOperators.pdf" (8 pages, 207293 bytes).
+PDF statistics:
+ 111 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

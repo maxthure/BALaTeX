@@ -1,7 +1,2 @@
 *.iml
-*.aux
-*.bbl
-*.blg
-*.log
-*.pdf
-*.synctex.gz
+/src/*.aux

@@ -1,2 +1,9 @@
+.idea
 *.iml
 /src/*.aux
+/src/*.bbl
+/src/*.blg
+/src/*.log
+/src/*.pdf
+/src/*.synctex.gz
+/src/*.toc

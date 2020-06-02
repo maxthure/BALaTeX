@@ -2,17 +2,39 @@
 %! Date = 09.05.20
 
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 
-% Packages
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage[noend]{algorithmic}
+\usepackage{algorithm,caption}
+
+% Styles
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+% Info
+\title{Bachelorarbeit}
+\author{Thure Nebendahl}
 
 % Document
 \begin{document}
+    \maketitle
+    \tableofcontents
 
-
+    %\input{Data.tex}
+    %\input{Queries.tex}
+    \input{Operators.tex}
 
     \bibliography{main}
-    \bibliographystyle{plain}
+    \bibliographystyle{unsrt}
 
 \end{document}

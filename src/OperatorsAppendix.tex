@@ -1,0 +1,286 @@
+\begin{proof}
+    \begin{enumerate}
+        \item $\Box \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1}) \label{proof1.1.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq n \label{proof1.1.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{proof1.1.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq n) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box\phi_{1})) \label{proof1.1.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box \phi_{1}) \label{proof1.1.5}
+        \end{align}
+        \eqref{proof1.1.3} is equivalent to \eqref{proof1.1.2} because
+        \begin{itemize}
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at all future time points $k$, $i+1 \leq k \leq n$, in order to be satisfied.
+            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "implies"-statement; and
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq n$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $n \leq k \leq n$,
+            and $i < n$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Box^{-} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-} \phi_{1}) \label{proof1.2.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i \label{proof1.2.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{proof1.2.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i-1) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}\phi_{1})) \label{proof1.2.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1}) \label{proof1.2.5}
+        \end{align}
+        \eqref{proof1.2.3} is equivalent to \eqref{proof1.2.2} because
+        \begin{itemize}
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at all past time points $k$, $0 \leq k \leq i-1$, in order to be satisfied.
+            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "implies"-statement; and
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no past time points $k$, $0 \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $0 \leq k \leq 0$,
+            and $i > 0$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Diamond \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond \phi_{1}) \label{proof1.3.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq n \label{proof1.3.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{proof1.3.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq n) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond \phi_{1})) \label{proof1.3.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond \phi_{1}) \label{proof1.3.5}
+        \end{align}
+        \eqref{proof1.3.3} is equivalent to \eqref{proof1.3.2} because
+        \begin{itemize}
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any future time point $k$, $i+1 \leq k \leq n$, in order to be satisfied.
+            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "and"-statement; and
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq n$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $n \leq k \leq n$,
+            and $i > 0$ is not true, thus the "and"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Diamond^{-} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-} \phi_{1}) \label{proof1.4.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i \label{proof1.4.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{proof1.4.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i-1) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-} \phi_{1})) \label{proof1.4.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}) \label{proof1.4.5}
+        \end{align}
+        \eqref{proof1.4.3} is equivalent to \eqref{proof1.4.2} because
+        \begin{itemize}
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any past time point $k$, $0 \leq k \leq i-1$, in order to be satisfied.
+            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "and"-statement; and
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no past time points $k$, $0 \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $0 \leq k \leq 0$,
+            and $i > 0$ is not true, thus the "and"-statement has no effect on satisfaction.
+        \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+
+\begin{proof}
+    To prove the above proposition, ALL equivalences are demonstrated here.
+    The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
+    The proof works mainly on the basis of semantics.
+    \begin{enumerate}
+        \item $\Circle_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\Circle_{0} \phi_{1}) \\
+            \Leftrightarrow &i+0 \leq n\text{ and }\mathfrak{I},i+0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\CIRCLE_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\CIRCLE_{0} \phi_{1}) \\
+            \Leftrightarrow &i+0 \leq n\text{ implies }\mathfrak{I},i+0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Circle^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\Circle^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &i-0 \geq 0\text{ and }\mathfrak{I},i-0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\CIRCLE^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\CIRCLE^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &i-0 \geq 0\text{ implies }\mathfrak{I},i-0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Box_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+0,n) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Box^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}(i-0,0) \leq k \leq i \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Diamond_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+0,n) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Diamond^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-0,0) \leq k \leq i \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\phi_{1} \mathsf{U}_{0} \phi_{2} \equiv \phi_{2}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{0} \phi_{2}) \\
+            \Leftrightarrow &\text{there is } k, i \leq k \leq \mathsf{min}(i+0,n)\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
+        \end{align}
+
+        \item $\phi_{1} \mathsf{S}_{0} \phi_{2} \equiv \phi_{2}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{0} \phi_{2}) \\
+            \Leftrightarrow &\text{there is } k, \mathsf{max}(i-0,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
+        \end{align}
+    \end{enumerate}
+\end{proof}
+
+\begin{proof}
+    To prove the above proposition, ALL equivalences are demonstrated here.
+    The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
+    The proof works mainly on the basis of semantics.
+    \begin{enumerate}
+        \item $\Box_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1}) \label{eq:proofProp3.3.3.1.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+p,n) \label{eq:proofProp3.3.3.1.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{eq:proofProp3.3.2.1.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.1.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.1.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.1.3} is equivalent to \eqref{eq:proofProp3.3.3.1.2} because
+        \begin{itemize}
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
+            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "implies"-statement; and
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
+            and $i < n$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Box^{-}_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{p} \phi_{1}) \label{eq:proofProp3.3.3.2.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}(i-p,0) \leq k \leq i \label{eq:proofProp3.3.3.2.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{eq:proofProp3.3.3.2.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.2.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.2.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.2.3} is equivalent to \eqref{eq:proofProp3.3.3.2.2} because
+        \begin{itemize}
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
+            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "implies"-statement; and
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$,
+            and $i > 0$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Diamond_{p} \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{p} \phi_{1}) \label{eq:proofProp3.3.3.3.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+p,n) \label{eq:proofProp3.3.3.3.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{eq:proofProp3.3.3.3.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.3.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.3.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.3.3} is equivalent to \eqref{eq:proofProp3.3.3.3.2} because
+        \begin{itemize}
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any of the future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
+            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "and"-statement; and
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
+            and $i < n$ is not true, thus the "and"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Diamond^{-}_{p} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{p} \phi_{1}) \label{eq:proofProp3.3.3.4.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-p,0) \leq k \leq i \label{eq:proofProp3.3.3.4.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{eq:proofProp3.3.3.4.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-}_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.4.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-}_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.4.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.4.3} is equivalent to \eqref{eq:proofProp3.3.3.4.2} because
+        \begin{itemize}
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any of the past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
+            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "and"-statement; and
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$,
+            and $i > 0$ is not true, thus the "and"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\phi_{1} \mathsf{U}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p} \phi_{2}) \label{eq:proofProp3.3.3.5.1} \\
+            \Leftrightarrow &\text{there is } k, i \leq k \leq \mathsf{min}(i+p,n)\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{eq:proofProp3.3.3.5.2} \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i < n\text{ and } \label{eq:proofProp3.3.3.5.3} \\
+            &\text{there is } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)\text{, with }  \nonumber \\
+            &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i+1 \leq j < k)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i < n\text{ and } \label{eq:proofProp3.3.3.5.4} \\
+            &\mathfrak{I}, i+1 \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p-1} \phi_{2}))) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))) \label{eq:proofProp3.3.3.5.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.5.3} is equivalent to \eqref{eq:proofProp3.3.3.5.2} because
+        \begin{itemize}
+            \item in case $i < n$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a future time point $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$,
+            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $i+1 \leq j < k$, in order for the query to be satisfied.
+            \item in case $i = n$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $n \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
+            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, n \leq j < k$, and $i < n$ is not true, thus the "or"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\phi_{1} \mathsf{S}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p} \phi_{2}) \label{eq:proofProp3.3.3.6.1} \\
+            \Leftrightarrow &\text{there is } k, \mathsf{max}(i-p,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{eq:proofProp3.3.3.6.2} \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{eq:proofProp3.3.3.6.3} \\
+            &\text{there is } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1\text{, with }  \nonumber \\
+            &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i-1)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{eq:proofProp3.3.3.6.4} \\
+            &\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \label{eq:proofProp3.3.3.6.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.6.3} is equivalent to \eqref{eq:proofProp3.3.3.6.2} because
+        \begin{itemize}
+            \item in case $i > 0$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a past time point $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$,
+            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $k < j \leq i-1$, in order for the query to be satisfied.
+            \item in case $i = 0$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
+            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
+            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq 0$, and $i > 0$ is not true, thus the "or"-statement has no effect on satisfaction.
+        \end{itemize}
+    \end{enumerate}
+\end{proof}

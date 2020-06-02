@@ -1,259 +1,203 @@
-%! Author = thure
-%! Date = 09.05.20
+Third, the algorithm is extended by numerical predicates.
+For $\Circle \phi$, $\CIRCLE \phi$, $\Circle^{-} \phi$ and $\CIRCLE^{-} \phi$ the numerical predicates simplify composition, e.g. $\Circle_{3} \phi = \Circle (\Circle (\Circle \phi))$.
+For $\Box \phi$, $\Box^{-} \phi$, $\Diamond \phi$, $\Diamond^{-} \phi$, $\phi_{1} \mathsf{U} \phi_{2}$, and $\phi_{1} \mathsf{S} \phi_{2}$ numerical predicates restrict the number of time points,
+e.g. $\Box_{5} \phi$ (for 5 time points) or $\Diamond_{5} \phi$ (some time in 5 time points).
 
-% Preamble
-\documentclass[11pt]{article}
+The semantics of TQs from Definition \ref{def:semanticsTQ} are extended as follows:
 
-% Packages
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{wasysym}
-\usepackage{booktabs}
-\usepackage{float}
-\usepackage{amsfonts}
+\begin{definition}[semantics of temporal queries with numerical predicates]
+    \label{def:semanticsTQwNP}
+    Let $\phi$ be a TQ, $\mathfrak{I} = (I_{i})_{0 \leq i \leq n}$ a sequence of interpretations over a common domain,
+    $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ a variable assignment, $i$ be an integer with $0 \leq i \leq n$, and $p$ be an integer with $p \geq 0$.
+    The $satisfaction\ relation\ \mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
+    \begin{table}[H]
+        \centering
+        \begin{tabular*}{\textwidth}{@{}ll@{}}
+            \toprule
+            \phi                            & $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff                                                 \\ \midrule
+            \Circle_{p} \phi_{1}            & $i+p \leq n$ and $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                              \\
+            \CIRCLE_{p} \phi_{1}            & $i+p \leq n$ implies $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                          \\
+            \Circle^{-}_{p} \phi_{1}        & $i-p \geq 0$ and $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                              \\
+            \CIRCLE^{-}_{p} \phi_{1}        & $i-p \geq 0$ implies $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                          \\
+            \Box_{p} \phi_{1}               & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                  \\
+            \Box^{-}_{p} \phi_{1}           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                  \\
+            \Diamond_{p} \phi_{1}           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                 \\
+            \Diamond^{-}_{p} \phi_{1}       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                 \\
+            \phi_{1} \mathsf{U}_{p} \phi_{2}& there is $k$, $i \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
+            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, i \leq j < k$          \\
+            \phi_{1} \mathsf{S}_{p} \phi_{2}& there is $k$, $\mathsf{max}(i-p,0) \leq k \leq i$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
+            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq i$          \\ \bottomrule
+        \end{tabular*}
+        \caption{semantics of TQs with numerical predicates}
+        \label{tab:tqsemanticswnp}
+    \end{table}
+\end{definition}
 
-% Styles
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
+\begin{proposition}
+    \label{prop:3.3.2}
+    For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$, $0 \leq i \leq n$ and $p = 0$,
+    $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$, respectively.
+\end{proposition}
 
-% Info
-\title{Numerical Predicates. ACHTUNG NICHT FERTIG!}
-\author{Thure Nebendahl}
+\begin{proof}
+    To prove the above proposition, some equivalences are demonstrated here.
+    The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
+    The proof works mainly on the basis of semantics.
+    \begin{enumerate}
+        \item $\Circle_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\Circle_{0} \phi_{1}) \\
+            \Leftrightarrow &i+0 \leq n\text{ and }\mathfrak{I},i+0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
 
-% Document
-\begin{document}
-    \maketitle
+        \item $\Box_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+0,n) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
 
-    Third, the algorithm is extended by numerical predicates.
-    For $\Circle \phi$, $\CIRCLE \phi$, $\Circle^{-} \phi$ and $\CIRCLE^{-} \phi$ the numerical predicates simplify composition, e.g. $\Circle_{3} \phi = \Circle (\Circle (\Circle \phi))$.
-    For $\Box \phi$, $\Box^{-} \phi$, $\Diamond \phi$, $\Diamond^{-} \phi$, $\phi_{1} \mathsf{U} \phi_{2}$, and $\phi_{1} \mathsf{S} \phi_{2}$ numerical predicates restrict the number of time points,
-    e.g. $\Box_{5} \phi$ (for 5 time points) or $\Diamond_{5} \phi$ (some time in 5 time points).
+        \item $\Diamond^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-0,0) \leq k \leq i \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
 
-    The semantics of TQs from DEFINITION XY are extended as follows:
+        \item $\phi_{1} \mathsf{U}_{0} \phi_{2} \equiv \phi_{2}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{0} \phi_{2}) \\
+            \Leftrightarrow &\text{there is } k, i \leq k \leq \mathsf{min}(i+0,n)\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
+        \end{align}
+    \end{enumerate}
+\end{proof}
 
-    \begin{definition}[semantics of temporal queries with numerical predicates]
-        Let $\phi$ be a TQ, $\mathfrak{I} = (I_{i})_{0 \leq i \leq n}$ a sequence of interpretations over a common domain,
-        $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ a variable assignment, $i$ be an integer with $0 \leq i \leq n$, and $p$ be an integer with $p \geq 0$.
-        The $satisfaction\ relation\ \mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
-        \begin{table}[H]
-            \centering
-            \begin{tabular*}{\textwidth}{@{}ll@{}}
-                \toprule
-                \phi                            & $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff                                                 \\ \midrule
-                \Circle_{p} \phi_{1}            & $i+p \leq n$ and $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                              \\
-                \CIRCLE_{p} \phi_{1}            & $i+p \leq n$ implies $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                          \\
-                \Circle^{-}_{p} \phi_{1}        & $i-p \geq 0$ and $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                              \\
-                \CIRCLE^{-}_{p} \phi_{1}        & $i-p \geq 0$ implies $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                          \\
-                \Box_{p} \phi_{1}               & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                  \\
-                \Box^{-}_{p} \phi_{1}           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                  \\
-                \Diamond_{p} \phi_{1}           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                 \\
-                \Diamond^{-}_{p} \phi_{1}       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                 \\
-                \phi_{1} \mathsf{U}_{p} \phi_{2}& there is $k$, $i \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
-                                                & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, i \leq j < k$          \\
-                \phi_{1} \mathsf{S}_{p} \phi_{2}& there is $k$, $\mathsf{max}(i-p,0) \leq k \leq i$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
-                                                & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq i$          \\ \bottomrule
-            \end{tabular*}
-            \caption{semantics of TQs with numerical predicates}
-            \label{tab:tqsemanticswnp}
-        \end{table}
-    \end{definition}
+There are again equivalences similar to PROPOSITION XY.
+\begin{itemize}
+    \item $\Box_{p} \phi_{1} $ is equivalent to $ \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
+    \item $\Box^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
+    \item $\Diamond_{p} \phi_{1} $ is equivalent to $ \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
+    \item $\Diamond^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
+    \item $\phi_{1} \mathsf{U}_{p} \phi_{2}$ is equivalent to $\phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
+    \item $\phi_{1} \mathsf{S}_{p} \phi_{2}$ is equivalent to $\phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))$
+\end{itemize}
+Thus, at the last time point
+\begin{itemize}
+    \item $\Box_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\CIRCLE \Box_{p-1} \phi_{1}$ is tautological
+    \item $\Diamond_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\Circle \Diamond_{p} \phi_{1}$ does not have any answers
+    \item $\phi_{1} \mathsf{U}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2})$ does not have any answers
+\end{itemize}
+and at the first time point
+\begin{itemize}
+    \item $\Box^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\CIRCLE^{-} \Box^{-}_{p} \phi_{1}$ is tautological
+    \item $\Diamond^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\Circle^{-} \Diamond^{-}_{p} \phi_{1}$ does not have any answers
+    \item $\phi_{1} \mathsf{S}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2})$ does not have any answers
+\end{itemize}
 
+\begin{proposition}
+    \label{prop:3.3.3}
+    For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$, $0 \leq i \leq n$ and $p > 0$,
+    \begin{enumerate}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ and
+            \item $i < n$ implies $\mathfrak{I}, i+1 \models \mathfrak{a}(\Box_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ and
+            \item $i > 0$ implies $\mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or
+            \item $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or
+            \item $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-}_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p} \phi_{2})$ iff
+        \begin{itemize}
+            \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ or
+            \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ and $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p-1} \phi_{2})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p} \phi_{2})$ iff
+        \begin{itemize}
+            \item $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ or
+            \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ and $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2})$
+        \end{itemize}
+    \end{enumerate}
+\end{proposition}
 
-    There are again equivalences similar to PROPOSITION XY.
-    \begin{itemize}
-        \item $\Box_{p} \phi_{1} $ is equivalent to $ \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
-        \item $\Box^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
-        \item $\Diamond_{p} \phi_{1} $ is equivalent to $ \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
-        \item $\Diamond^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
-        \item $\phi_{1} \mathsf{U}_{p} \phi_{2}$ is equivalent to $\phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
-        \item $\phi_{1} \mathsf{S}_{p} \phi_{2}$ is equivalent to $\phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))$
-    \end{itemize}
-    Thus, at the last time point
-    \begin{itemize}
-        \item $\Box_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\CIRCLE \Box_{p-1} \phi_{1}$ is tautological
-        \item $\Diamond_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\Circle \Diamond_{p} \phi_{1}$ does not have any answers
-        \item $\phi_{1} \mathsf{U}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2})$ does not have any answers
-    \end{itemize}
-    and at the first time point
-    \begin{itemize}
-        \item $\Box^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\CIRCLE^{-} \Box^{-}_{p} \phi_{1}$ is tautological
-        \item $\Diamond^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\Circle^{-} \Diamond^{-}_{p} \phi_{1}$ does not have any answers
-        \item $\phi_{1} \mathsf{S}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2})$ does not have any answers
-    \end{itemize}
+\begin{proof}
+    To prove the above proposition, some equivalences are demonstrated here.
+    The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
+    The proof works mainly on the basis of semantics.
+    \begin{enumerate}
+        \item $\Box_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1}) \label{eq:proofProp3.3.3.1.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+p,n) \label{eq:proofProp3.3.3.1.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{eq:proofProp3.3.2.1.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.1.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.1.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.1.3} is equivalent to \eqref{eq:proofProp3.3.3.1.2} because
+        \begin{itemize}
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
+            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "implies"-statement; and
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
+            and $i < n$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
 
-    \begin{proposition}
-        \label{prop1}
-        For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$, $0 \leq i \leq n$ and $p \geq 0$
-        \begin{enumerate}
-            \item $\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1})$ iff
-            \begin{itemize}
-                \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ and
-                \item $i < n$ implies $\mathfrak{I}, i+1 \models \mathfrak{a}(\Box_{p-1} \phi_{1})$
-            \end{itemize}
-            \item $\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{p} \phi_{1})$ iff
-            \begin{itemize}
-                \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ and
-                \item $i > 0$ implies $\mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}_{p-1} \phi_{1})$
-            \end{itemize}
-            \item $\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{p} \phi_{1})$ iff
-            \begin{itemize}
-                \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or
-                \item $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond_{p-1} \phi_{1})$
-            \end{itemize}
-            \item $\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{p} \phi_{1})$ iff
-            \begin{itemize}
-                \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or
-                \item $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-}_{p-1} \phi_{1})$
-            \end{itemize}
-            \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p} \phi_{2})$ iff
-            \begin{itemize}
-                \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ or
-                \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ and $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p-1} \phi_{2})$
-            \end{itemize}
-            \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p} \phi_{2})$ iff
-            \begin{itemize}
-                \item $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ or
-                \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ and $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2})$
-            \end{itemize}
-        \end{enumerate}
-        For all cases if $p = 0$ then $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$, respectively. BEWEISEN
-    \end{proposition}
+        \item $\Diamond^{-}_{p} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{p} \phi_{1}) \label{eq:proofProp3.3.3.4.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-p,0) \leq k \leq i \label{eq:proofProp3.3.3.4.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{eq:proofProp3.3.3.4.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-}_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.4.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-}_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.4.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.4.3} is equivalent to \eqref{eq:proofProp3.3.3.4.2} because
+        \begin{itemize}
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any of the past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
+            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "and"-statement; and
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$,
+            and $i > 0$ is not true, thus the "and"-statement has no effect on satisfaction.
+        \end{itemize}
 
-    \begin{proof}
+        \item $\phi_{1} \mathsf{U}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p} \phi_{2}) \label{eq:proofProp3.3.3.5.1} \\
+            \Leftrightarrow &\text{there is } k, i \leq k \leq \mathsf{min}(i+p,n)\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{eq:proofProp3.3.3.5.2} \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i < n\text{ and } \label{eq:proofProp3.3.3.5.3} \\
+            &\text{there is } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)\text{, with }  \nonumber \\
+            &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i+1 \leq j < k)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i < n\text{ and } \label{eq:proofProp3.3.3.5.4} \\
+            &\mathfrak{I}, i+1 \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p-1} \phi_{2}))) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))) \label{eq:proofProp3.3.3.5.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.5.3} is equivalent to \eqref{eq:proofProp3.3.3.5.2} because
+        \begin{itemize}
+            \item in case $i < n$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a future time point $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$,
+            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $i+1 \leq j < k$, in order for the query to be satisfied.
+            \item in case $i = n$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $n \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
+            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, n \leq j < k$, and $i < n$ is not true, thus the "or"-statement has no effect on satisfaction.
+        \end{itemize}
+    \end{enumerate}
+\end{proof}
 
-        To prove the above proposition, ALL equivalences are demonstrated here.
-        The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
-        The proof works mainly on the basis of semantics.
-        \begin{enumerate}
-            \item $\Box_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
-            \begin{align}
-                &\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1}) \label{proof1.1.1} \\
-                \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+p,n) \label{proof1.1.2} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{proof1.1.3} \\
-                &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box_{p-1} \phi_{1})) \label{proof1.1.4} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}) \label{proof1.1.5}
-            \end{align}
-            \eqref{proof1.1.3} is equivalent to \eqref{proof1.1.2} because
-            \begin{itemize}
-                \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
-                Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "implies"-statement; and
-                \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-                There are no future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
-                Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $i \leq k \leq \mathsf{min}(i+p,n)$,
-                and $i < n$ is not true, thus the "implies"-statement has no effect on satisfaction.
-            \end{itemize}
-
-            \item $\Box^{-}_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
-            \begin{align}
-                &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{p} \phi_{1}) \label{proof1.2.1} \\
-                \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}(i-p,0) \leq k \leq i \label{proof1.2.2} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{proof1.2.3} \\
-                &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}_{p-1} \phi_{1})) \label{proof1.2.4} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p-1} \phi_{1}) \label{proof1.2.5}
-            \end{align}
-            \eqref{proof1.2.3} is equivalent to \eqref{proof1.2.2} because
-            \begin{itemize}
-                \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
-                Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "implies"-statement; and
-                \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-                There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$.
-                Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq i$,
-                and $i > 0$ is not true, thus the "implies"-statement has no effect on satisfaction.
-            \end{itemize}
-
-            \item $\Diamond_{p} \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
-            \begin{align}
-                &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{p} \phi_{1}) \label{proof1.3.1} \\
-                \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+p,n) \label{proof1.3.2} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{proof1.3.3} \\
-                &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond_{p-1} \phi_{1})) \label{proof1.3.4} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond_{p-1} \phi_{1}) \label{proof1.3.5}
-            \end{align}
-            \eqref{proof1.3.3} is equivalent to \eqref{proof1.3.2} because
-            \begin{itemize}
-                \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any of the future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
-                Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "and"-statement; and
-                \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-                There are no future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
-                Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $i \leq k \leq \mathsf{min}(i+p,n)$,
-                and $i < n$ is not true, thus the "and"-statement has no effect on satisfaction.
-            \end{itemize}
-
-            \item $\Diamond^{-}_{p} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
-            \begin{align}
-                &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{p} \phi_{1}) \label{proof1.4.1} \\
-                \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-p,0) \leq k \leq i \label{proof1.4.2} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{proof1.4.3} \\
-                &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-}_{p-1} \phi_{1})) \label{proof1.4.4} \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-}_{p-1} \phi_{1}) \label{proof1.4.5}
-            \end{align}
-            \eqref{proof1.4.3} is equivalent to \eqref{proof1.4.2} because
-            \begin{itemize}
-                \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any of the past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
-                Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "and"-statement; and
-                \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-                There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$.
-                Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq i$,
-                and $i > 0$ is not true, thus the "and"-statement has no effect on satisfaction.
-            \end{itemize}
-
-            \item $\phi_{1} \mathsf{U}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
-            \begin{align}
-                &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p} \phi_{2}) \label{proof1.5.1} \\
-                \Leftrightarrow &\text{there is } k, i \leq k \leq \mathsf{min}(i+p,n)\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{proof1.5.2} \\
-                &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i < n\text{ and } \label{proof1.5.3} \\
-                &\text{there is } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)\text{, with }  \nonumber \\
-                &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i+1 \leq j < k)) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i < n\text{ and } \label{proof1.5.4} \\
-                &\mathfrak{I}, i+1 \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p-1} \phi_{2}))) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))) \label{proof1.5.5}
-            \end{align}
-            \eqref{proof1.5.3} is equivalent to \eqref{proof1.5.2} because
-            \begin{itemize}
-                \item in case $i < n$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a future time point $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$,
-                where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $i+1 \leq j < k$, in order for the query to be satisfied.
-                \item in case $i = n$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
-                There are no future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
-                Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $n \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
-                and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, n \leq j < k$, and $i < n$ is not true, thus the "or"-statement has no effect on satisfaction.
-            \end{itemize}
-            
-            \item $\phi_{1} \mathsf{S}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))$
-            \begin{align}
-                &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p} \phi_{2}) \label{proof1.6.1} \\
-                \Leftrightarrow &\text{there is } k, \mathsf{max}(i-p,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{proof1.6.2} \\
-                &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{proof1.6.3} \\
-                &\text{there is } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1\text{, with }  \nonumber \\
-                &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i-1)) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{proof1.6.4} \\
-                &\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \nonumber \\
-                \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \label{proof1.6.5}
-            \end{align}
-            \eqref{proof1.6.3} is equivalent to \eqref{proof1.6.2} because
-            \begin{itemize}
-                \item in case $i > 0$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a past time point $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$,
-                where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $k < j \leq i-1$, in order for the query to be satisfied.
-                \item in case $i = 0$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
-                There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$.
-                Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
-                and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq 0$, and $i > 0$ is not true, thus the "or"-statement has no effect on satisfaction.
-            \end{itemize}
-
-        \end{enumerate}
-    \end{proof}
-
-
-    \bibliography{main}
-    \bibliographystyle{plain}
-
-\end{document}

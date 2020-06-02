@@ -122,7 +122,7 @@
     Thus, a resulting query in the language from \cite{borgwardt2015temporalizing} is
     \begin{align}
         &\text{"$\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $<$ 10000) } \nonumber \\
-        &\text{$\wedge$ "SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10000".} \nonumber
+        &\text{$\wedge$ SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10000".} \nonumber
     \end{align}
     Query \eqref{query2} can be rewritten as follows:
     \begin{itemize}
@@ -132,7 +132,7 @@
     Thus, a resulting query might be
     \begin{align}
         &\text{"$\Circle^{-}$(SELECT $marke$, (AVG($price$) AS $price1$) FROM $autos$)}  \nonumber \\
-        &\text{$\wedge$ "SELECT $marke$, (AVG($price$) AS $price2$) FROM $autos$ WHERE $price1 < price2$".}  \nonumber
+        &\text{$\wedge$ SELECT $marke$, (AVG($price$) AS $price2$) FROM $autos$ WHERE $price1 < price2$".}  \nonumber
     \end{align}
     Notice that this kind of restriction is not considered in \cite{borgwardt2015temporalizing} and therefore is also not considered in the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing}.
 

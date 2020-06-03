@@ -24,9 +24,9 @@ The semantics of TQs from Definition \ref{def:semanticsTQ} are extended as follo
             \Diamond_{p} \phi_{1}           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                 \\
             \Diamond^{-}_{p} \phi_{1}       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                 \\
             \phi_{1} \mathsf{U}_{p} \phi_{2}& there is $k$, $i \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
-            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, i \leq j < k$          \\
+                                            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, i \leq j < k$          \\
             \phi_{1} \mathsf{S}_{p} \phi_{2}& there is $k$, $\mathsf{max}(i-p,0) \leq k \leq i$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
-            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq i$          \\ \bottomrule
+                                            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq i$          \\ \bottomrule
         \end{tabular*}
         \caption{semantics of TQs with numerical predicates}
         \label{tab:tqsemanticswnp}
@@ -40,7 +40,7 @@ The semantics of TQs from Definition \ref{def:semanticsTQ} are extended as follo
 \end{proposition}
 
 \begin{proof}
-    To prove the above proposition, some equivalences are demonstrated here.
+    To prove the above proposition, ALL equivalences are demonstrated here.
     The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
     The proof works mainly on the basis of semantics.
     \begin{enumerate}
@@ -51,10 +51,45 @@ The semantics of TQs from Definition \ref{def:semanticsTQ} are extended as follo
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
         \end{align}
 
+        \item $\CIRCLE_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\CIRCLE_{0} \phi_{1}) \\
+            \Leftrightarrow &i+0 \leq n\text{ implies }\mathfrak{I},i+0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Circle^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\Circle^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &i-0 \geq 0\text{ and }\mathfrak{I},i-0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\CIRCLE^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I},i \models \mathfrak{a}(\CIRCLE^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &i-0 \geq 0\text{ implies }\mathfrak{I},i-0 \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
         \item $\Box_{0} \phi_{1} \equiv \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Box_{0} \phi_{1}) \\
             \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+0,n) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Box^{-}_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}(i-0,0) \leq k \leq i \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
+        \end{align}
+
+        \item $\Diamond_{0} \phi_{1} \equiv \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{0} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+0,n) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
         \end{align}
 
@@ -72,11 +107,23 @@ The semantics of TQs from Definition \ref{def:semanticsTQ} are extended as follo
             &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
         \end{align}
+
+        \item $\phi_{1} \mathsf{S}_{0} \phi_{2} \equiv \phi_{2}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{0} \phi_{2}) \\
+            \Leftrightarrow &\text{there is } k, \mathsf{max}(i-0,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
+        \end{align}
     \end{enumerate}
 \end{proof}
 
 There are again equivalences similar to PROPOSITION XY.
 \begin{itemize}
+    \item $\Circle_{p} \phi_{1}$ is equivalent to $\Circle \Circle_{p-1} \phi_{1}$
+    \item $\CIRCLE_{p} \phi_{1}$ is equivalent to $\CIRCLE \CIRCLE_{p-1} \phi_{1}$
+    \item $\Circle^{-}_{p} \phi_{1}$ is equivalent to $\Circle^{-} \Circle^{-}_{p-1} \phi_{1}$
+    \item $\CIRCLE^{-}_{p} \phi_{1}$ is equivalent to $\CIRCLE^{-} \CIRCLE^{-}_{p-1} \phi_{1}$
     \item $\Box_{p} \phi_{1} $ is equivalent to $ \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
     \item $\Box^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
     \item $\Diamond_{p} \phi_{1} $ is equivalent to $ \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
@@ -86,12 +133,16 @@ There are again equivalences similar to PROPOSITION XY.
 \end{itemize}
 Thus, at the last time point
 \begin{itemize}
+    \item $\Circle_{p} \phi_{1}$ does not have any answers because $\Circle \Circle_{p-1} \phi_{1}$ does not have any answers
+    \item $\CIRCLE_{p} \phi_{1}$ is tautological because $\CIRCLE \CIRCLE_{p-1} \phi_{1}$ is tautological
     \item $\Box_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\CIRCLE \Box_{p-1} \phi_{1}$ is tautological
     \item $\Diamond_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\Circle \Diamond_{p} \phi_{1}$ does not have any answers
     \item $\phi_{1} \mathsf{U}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2})$ does not have any answers
 \end{itemize}
 and at the first time point
 \begin{itemize}
+    \item $\Circle^{-}_{p} \phi_{1}$ does not have any answers because $\Circle^{-} \Circle^{-}_{p-1} \phi_{1}$ does not have any answers
+    \item $\CIRCLE^{-}_{p} \phi_{1}$ is tautological because $\CIRCLE^{-} \CIRCLE^{-}_{p-1} \phi_{1}$ is tautological
     \item $\Box^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\CIRCLE^{-} \Box^{-}_{p} \phi_{1}$ is tautological
     \item $\Diamond^{-}_{p} \phi_{1} $ is equivalent to $ \phi_{1}$ because $\Circle^{-} \Diamond^{-}_{p} \phi_{1}$ does not have any answers
     \item $\phi_{1} \mathsf{S}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2})$ does not have any answers
@@ -101,6 +152,22 @@ and at the first time point
     \label{prop:3.3.3}
     For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$, $0 \leq i \leq n$ and $p > 0$,
     \begin{enumerate}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\Circle_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\Circle_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $i < n$ implies $\mathfrak{I}, i+1 \models \mathfrak{a}(\CIRCLE_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\Circle^{-}_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\Circle^{-}_{p-1} \phi_{1})$
+        \end{itemize}
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE^{-}_{p} \phi_{1})$ iff
+        \begin{itemize}
+            \item $i > 0$ implies $\mathfrak{I}, i-1 \models \mathfrak{a}(\CIRCLE^{-}_{p-1} \phi_{1})$
+        \end{itemize}
         \item $\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1})$ iff
         \begin{itemize}
             \item $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ and
@@ -135,10 +202,42 @@ and at the first time point
 \end{proposition}
 
 \begin{proof}
-    To prove the above proposition, some equivalences are demonstrated here.
+    To prove the above proposition, ALL equivalences are demonstrated here.
     The missing cases work similar AND CAN BE FOUND IN THE APPENDIX.
     The proof works mainly on the basis of semantics.
     \begin{enumerate}
+        \item $\Circle_{p} \phi_{1} \equiv \Circle \Circle_{p-1} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Circle_{p} \phi_{1}) \\
+            \Leftrightarrow &i + p \leq n \text{ and }\mathfrak{I}, i+p \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i < n\text{ and }(i+1)+(p-1) \leq n \text{ and }\mathfrak{I}, (i+1)+(p-1) \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i < n\text{ and }\mathfrak{I}, i+1 \models \mathfrak{a}(\Circle_{p-1} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\Circle \Circle_{p-1} \phi_{1})
+        \end{align}
+        \item $\CIRCLE_{p} \phi_{1}$ is equivalent to $\CIRCLE \CIRCLE_{p-1} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE_{p} \phi_{1}) \\
+            \Leftrightarrow &i + p \leq n \text{ implies }\mathfrak{I}, i+p \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i < n\text{ implies }(i+1)+(p-1) \leq n \text{ implies }\mathfrak{I}, (i+1)+(p-1) \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i < n\text{ implies }\mathfrak{I}, i+1 \models \mathfrak{a}(\CIRCLE_{p-1} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE \CIRCLE_{p-1} \phi_{1})
+        \end{align}
+        \item $\Circle^{-}_{p} \phi_{1}$ is equivalent to $\Circle^{-} \Circle^{-}_{p-1} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Circle^{-}_{p} \phi_{1}) \\
+            \Leftrightarrow &i - p \geq 0 \text{ and }\mathfrak{I}, i-p \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i > 0\text{ and }(i-1)-(p-1) \geq 0 \text{ and }\mathfrak{I}, (i-1)-(p-1) \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i > 0\text{ and }\mathfrak{I}, i-1 \models \mathfrak{a}(\Circle^{-}_{p-1} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\Circle^{-} \Circle^{-}_{p-1} \phi_{1})
+        \end{align}
+        \item $\CIRCLE^{-}_{p} \phi_{1}$ is equivalent to $\CIRCLE^{-} \CIRCLE^{-}_{p-1} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE^{-}_{p} \phi_{1}) \\
+            \Leftrightarrow &i - p \geq 0 \text{ implies }\mathfrak{I}, i-p \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i > 0\text{ implies }(i-1)-(p-1) \geq 0 \text{ implies }\mathfrak{I}, (i-1)-(p-1) \models \mathfrak{a}(\phi_{1}) \\
+            \Leftrightarrow & i > 0\text{ implies }\mathfrak{I}, i-1 \models \mathfrak{a}(\CIRCLE^{-}_{p-1} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE^{-} \CIRCLE^{-}_{p-1} \phi_{1})
+        \end{align}
         \item $\Box_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1}) \label{eq:proofProp3.3.3.1.1} \\
@@ -156,6 +255,44 @@ and at the first time point
             There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
             Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
             and $i < n$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Box^{-}_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{p} \phi_{1}) \label{eq:proofProp3.3.3.2.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}(i-p,0) \leq k \leq i \label{eq:proofProp3.3.3.2.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{eq:proofProp3.3.3.2.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.2.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.2.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.2.3} is equivalent to \eqref{eq:proofProp3.3.3.2.2} because
+        \begin{itemize}
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
+            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "implies"-statement; and
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$,
+            and $i > 0$ is not true, thus the "implies"-statement has no effect on satisfaction.
+        \end{itemize}
+
+        \item $\Diamond_{p} \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{p} \phi_{1}) \label{eq:proofProp3.3.3.3.1} \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+p,n) \label{eq:proofProp3.3.3.3.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{eq:proofProp3.3.3.3.3} \\
+            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond_{p-1} \phi_{1})) \label{eq:proofProp3.3.3.3.4} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond_{p-1} \phi_{1}) \label{eq:proofProp3.3.3.3.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.3.3} is equivalent to \eqref{eq:proofProp3.3.3.3.2} because
+        \begin{itemize}
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any of the future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
+            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "and"-statement; and
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
+            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
+            and $i < n$ is not true, thus the "and"-statement has no effect on satisfaction.
         \end{itemize}
 
         \item $\Diamond^{-}_{p} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
@@ -198,6 +335,395 @@ and at the first time point
             Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $n \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
             and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, n \leq j < k$, and $i < n$ is not true, thus the "or"-statement has no effect on satisfaction.
         \end{itemize}
+
+        \item $\phi_{1} \mathsf{S}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))$
+        \begin{align}
+            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p} \phi_{2}) \label{eq:proofProp3.3.3.6.1} \\
+            \Leftrightarrow &\text{there is } k, \mathsf{max}(i-p,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{eq:proofProp3.3.3.6.2} \\
+            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{eq:proofProp3.3.3.6.3} \\
+            &\text{there is } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1\text{, with }  \nonumber \\
+            &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i-1)) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{eq:proofProp3.3.3.6.4} \\
+            &\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \nonumber \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \label{eq:proofProp3.3.3.6.5}
+        \end{align}
+        \eqref{eq:proofProp3.3.3.6.3} is equivalent to \eqref{eq:proofProp3.3.3.6.2} because
+        \begin{itemize}
+            \item in case $i > 0$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a past time point $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$,
+            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $k < j \leq i-1$, in order for the query to be satisfied.
+            \item in case $i = 0$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
+            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
+            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
+            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq 0$, and $i > 0$ is not true, thus the "or"-statement has no effect on satisfaction.
+        \end{itemize}
     \end{enumerate}
 \end{proof}
 
+The semantics of the operators with numerical predicates can now be used to extend the algorithm specified in \cite{borgwardt2015temporalizing}.
+
+The functions $\mathsf{eval}^{n}: \mathsf{AT}^{n}_{\phi} \rightarrow 2^{\Delta^{\mathsf{N}_\mathsf{V}}}, n \geq 0$ in \cite{borgwardt2015temporalizing} have then to be extended as follows:
+\begin{table}[H]
+    \centering
+    \begin{tabular*}{\textwidth}{@{}ll@{}}
+        \toprule
+        \alpha                                                          & $\mathsf{eval}^{n}(\alpha)$                                                   \\ \midrule
+        $x^{\Circle_{p} \psi_{1}}_{j}$ with $j < n$                     & $\mathsf{Ans}(\Circle_{p-1} \psi_{1}, \mathfrak{I}^{(n)}, j+1)$                             \\
+        $x^{\CIRCLE_{p} \psi_{1}}_{j}$ with $j < n$                     & $\mathsf{Ans}(\CIRCLE_{p-1} \psi_{1}, \mathfrak{I}^{(n)}, j+1)$                             \\
+        $x^{\Box_{p} \psi_{1}}_{j}$ with $j < n$                        & $\mathsf{Ans}(\Box_{p-1} \psi_{1}, \mathfrak{I}^{(n)}, j+1)$              \\
+        $x^{\Diamond_{p} \psi_{1}}_{j}$ with $j < n$                    & $\mathsf{Ans}(\Diamond_{p-1} \psi_{1}, \mathfrak{I}^{(n)}, j+1)$          \\
+        $x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{j}$ with $j < n$         & $\mathsf{Ans}(\psi_{1} \mathsf{U}_{p-1} \psi_{2}, \mathfrak{I}^{(n)}, j+1)$   \\
+        $x^{\Circle_{p} \psi_{1}}_{n}$                                  & $\emptyset$                                                                   \\
+        $x^{\CIRCLE_{p} \psi_{1}}_{n}$                                  & $\Delta^{\mathsf{N}_\mathsf{V}}$                                              \\
+        $x^{\Box_{p} \psi_{1}}_{n}$                                     & $\Delta^{\mathsf{N}_\mathsf{V}}$                                              \\
+        $x^{\Diamond_{p} \psi_{1}}_{n}$                                 & $\emptyset$                                                                   \\
+        $x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{n}$                      & $\emptyset$                                                                   \\ \bottomrule
+    \end{tabular*}
+    \caption{$\mathsf{eval}^{n}(\alpha)$ with numerical predicates}
+    \label{tab:evalnwnp}
+\end{table}
+
+The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\phi}$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
+\begin{table}[H]
+    \centering
+    \begin{tabular*}{\textwidth}{@{}ll@{}}
+        \toprule
+        \psi                                                & $\Phi_{0}(\psi)$                                                                              \\ \midrule
+        $\Circle_{p} \psi_{1}$ with $p > 0$                 & $x^{\Circle_{p} \psi_{1}}_{0}$                                                                \\
+        $\CIRCLE_{p} \psi_{1}$ with $p > 0$                 & $x^{\CIRCLE_{p} \psi_{1}}_{0}$                                                                \\
+        $\Circle^{-}_{p} \psi_{1}$ with $p > 0$             & $\emptyset$                                                                                   \\
+        $\CIRCLE^{-}_{p} \psi_{1}$ with $p > 0$             & $\Delta^{\mathsf{N}_\mathsf{V}}$                                                              \\
+        $\Box_{p} \psi_{1}$ with $p > 0$                    & $\Phi_{0}(\psi_{1}) \cap x^{\Box_{p} \psi_{1}}_{0}$                                         \\
+        $\Box^{-}_{p} \psi_{1}$ with $p > 0$                & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\Diamond_{p} \psi_{1}$ with $p > 0$                & $\Phi_{0}(\psi_{1}) \cup x^{\Diamond_{p} \psi_{1}}_{0}$                                     \\
+        $\Diamond^{-}_{p} \psi_{1}$ with $p > 0$            & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\psi_{1} \mathsf{U}_{p} \psi_{2}$ with $p > 0$     & $\Phi_{0}(\psi_{2}) \cup (\Phi_{0}(\psi_{1}) \cap x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{0})$    \\
+        $\psi_{1} \mathsf{S}_{p} \psi_{2}$                  & $\Phi_{0}(\psi_{2})$                                                                          \\
+        $\Circle_{0} \psi_{1}$                              & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\CIRCLE_{0} \psi_{1}$                              & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\Circle^{-}_{0} \psi_{1}$                          & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\CIRCLE^{-}_{0} \psi_{1}$                          & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\Box_{0} \psi_{1}$                                 & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\Box^{-}_{0} \psi_{1}$                             & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\Diamond_{0} \psi_{1}$                             & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\Diamond^{-}_{0} \psi_{1}$                         & $\Phi_{0}(\psi_{1})$                                                                          \\
+        $\psi_{1} \mathsf{U}_{0} \psi_{2}$                  & $\Phi_{0}(\psi_{2})$                                                                          \\\bottomrule
+    \end{tabular*}
+    \caption{$\Phi_{0}(\psi)$ with numerical predicates}
+    \label{tab:phizerownp}
+\end{table}
+
+The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}_{\phi},\ i>0$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
+\begin{table}[H]
+    \centering
+    \begin{tabular*}{\textwidth}{@{}ll@{}}
+        \toprule
+        \psi                                                & $\Phi^{0}_{i}(\psi)$                                                                                          \\ \midrule
+        $\Circle_{p} \psi_{1}$ with $p > 0$                 & $x^{\Circle_{p} \psi_{1}}_{i}$                                                                                \\
+        $\CIRCLE_{p} \psi_{1}$ with $p > 0$                 & $x^{\CIRCLE_{p} \psi_{1}}_{i}$                                                                                \\
+        $\Circle^{-}_{p} \psi_{1}$ with $p > 0$             & $\Phi_{i-1}(\Circle^{-}_{p-1})$                                                                                        \\
+        $\CIRCLE^{-}_{p} \psi_{1}$ with $p > 0$             & $\Phi_{i-1}(\CIRCLE^{-}_{p-1})$                                                                                        \\
+        $\Box_{p} \psi_{1}$ with $p > 0$                    & $\Phi^{0}_{i}(\psi_{1}) \cap x^{\Box_{p} \psi_{1}}_{i}$                                                     \\
+        $\Box^{-}_{p} \psi_{1}$ with $p > 0$                & $\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\Box^{-}_{p-1} \psi_{1})$                                             \\
+        $\Diamond_{p} \psi_{1}$ with $p > 0$                & $\Phi^{0}_{i}(\psi_{1}) \cup x^{\Diamond_{p} \psi_{1}}_{i}$                                                 \\
+        $\Diamond^{-}_{p} \psi_{1}$ with $p > 0$            & $\Phi^{0}_{i}(\psi_{1}) \cup \Phi_{i-1}(\Diamond^{-}_{p-1} \psi_{1})$                                         \\
+        $\psi_{1} \mathsf{U}_{p} \psi_{2}$ with $p > 0$     & $\Phi^{0}_{i}(\psi_{2}) \cup (\Phi^{0}_{i}(\psi_{1}) \cap x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{i})$        \\
+        $\psi_{1} \mathsf{S}_{p} \psi_{2}$ with $p > 0$     & $\Phi^{0}_{i}(\psi_{2}) \cup (\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\psi_{1} \mathsf{S}_{p-1} \psi_{2}))$    \\
+        $\Circle_{0} \psi_{1}$                              & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\CIRCLE_{0} \psi_{1}$                              & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\Circle^{-}_{0} \psi_{1}$                          & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\CIRCLE^{-}_{0} \psi_{1}$                          & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\Box_{0} \psi_{1}$                                 & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\Box^{-}_{0} \psi_{1}$                             & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\Diamond_{0} \psi_{1}$                             & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\Diamond^{-}_{0} \psi_{1}$                         & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+        $\psi_{1} \mathsf{U}_{0} \psi_{2}$                  & $\Phi^{0}_{i}(\psi_{2})$                                                                                      \\
+        $\psi_{1} \mathsf{S}_{0} \psi_{2}$                  & $\Phi^{0}_{i}(\psi_{2})$                                                                                      \\ \bottomrule
+    \end{tabular*}
+    \caption{$\Phi^{0}_{i}(\psi)$ with numerical predicates}
+    \label{tab:phiiwnp}
+\end{table}
+
+\begin{theorem}
+    \label{th:correctandbounded3}
+    Extending the bounded history encoding from \cite{borgwardt2015temporalizing} by numerical predicates, preserves correctness and boundedness.
+\end{theorem}
+
+\begin{proof}
+    To prove that the correctness and boundedness of the algorithm is preserved, the necessary cases are added to the
+    corresponding proofs from \cite{borgwardt2015temporalizing}.
+
+    \begin{lemma}[cf.\ Lemma 6.3 in \cite{borgwardt2015temporalizing}]
+        The function $\Phi_{0}$ is correct for 0.
+    \end{lemma}
+
+    \begin{proof}
+        It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi_{0}(\psi))$
+        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$ for all $n \geq 0$. \\
+        If $\psi = \Circle_{0} \psi_{1}$, $\psi = \CIRCLE_{0} \psi_{1}$, $\psi = \Circle^{-}_{0} \psi_{1}$, $\psi = \CIRCLE^{-}_{0} \psi_{1}$, $\psi = \Box_{0} \psi_{1}$, $\psi = \Box^{-}_{0} \psi_{1}$, $\psi = \Diamond_{0} \psi_{1}$ or $\psi = \Diamond^{-}_{0} \psi_{1}$, then
+        \[\(\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{eval}^{n}(\Phi_{0}(\psi_{1}))\).\]
+        This is by induction equal to $Ans(\psi_{1}, \mathfrak{I}^{(n)},0)$ which then is, as shown in PROPOSITION XY,
+        equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$.\\
+        If $\psi = \psi_{1} \mathsf{U}_{0} \psi_{2}$ or $\psi = \psi_{1} \mathsf{S}_{0} \psi_{2}$, then
+        \[\(\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{eval}^{n}(\Phi_{0}(\psi_{2}))\).\]
+        This is by induction equal to $Ans(\psi_{2}, \mathfrak{I}^{(n)},0)$ which then is, as shown in PROPOSITION XY,
+        equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$.\\
+        If $\psi = \Circle^{-}_{p} \psi_{1}$, $\psi = \CIRCLE^{-}_{p} \psi_{1}$, $\psi = \Box^{-}_{p} \psi_{1}$ or $\psi = \Diamond^{-}_{p} \psi_{1}$ and $p > 0$, then
+        \[\(\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{eval}^{n}(\Phi_{0}(\psi_{1}))\).\]
+        This is by induction equal to $\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0)$ which then is, as shown in PROPOSITION XY,
+        equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$.\\
+        If $\psi = \Circle_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(x^{\Circle_{p} \psi_{1}}_{0}) \\
+                &= \left\{\begin{array}{lr}
+                              \mathsf{Ans}(\Circle_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
+                              \emptyset      & \text{if } n = 0\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \CIRCLE_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(x^{\CIRCLE_{p} \psi_{1}}_{0}) \\
+                &= \left\{\begin{array}{lr}
+                              \mathsf{Ans}(\CIRCLE_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
+                              \Delta^{\mathsf{N}_\mathsf{V}}      & \text{if } n = 0\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Box_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\Box_{p} \psi_{1}}_{0}) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cap \left\{\begin{array}{lr}
+                                                                                \mathsf{Ans}(\Box_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
+                                                                                \Delta^{\mathsf{N}_\mathsf{V}}       & \text{if } n = 0\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Diamond_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\Diamond_{p} \psi_{1}}_{0}) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cup \left\{\begin{array}{lr}
+                                                                                \mathsf{Ans}(\Diamond_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
+                                                                                \emptyset            & \text{if } n = 0\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \psi_{1} \mathsf{U}_{p} \psi_{2}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{2})) \cup (\mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{0})) \\
+                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},0)\cup(\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cap \left\{\begin{array}{lr}
+                                                                                                                                 \mathsf{Ans}(\psi_{1} \mathsf{U}_{p-1} \psi_{2}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
+                                                                                                                                 \emptyset       & \text{if } n = 0\\
+                \end{array}\right\}) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \psi_{1} \mathsf{S}_{p} \psi_{2}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{2})) \\
+                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},0) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\)
+            \end{split}
+        \end{equation}
+
+    \end{proof}
+
+    \begin{lemma}[cf.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
+        If $\Phi_{i-1}$ is correct for i-1, then $\Phi^{0}_{i}$ is correct for i.
+    \end{lemma}
+
+    \begin{proof}
+        It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi))$
+        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)$ for all $n \geq i$. \\
+
+        If $\psi = \Circle_{0} \psi_{1}$, $\psi = \CIRCLE_{0} \psi_{1}$, $\psi = \Circle^{-}_{0} \psi_{1}$, $\psi = \CIRCLE^{-}_{0} \psi_{1}$, $\psi = \Box_{0} \psi_{1}$, $\psi = \Box^{-}_{0} \psi_{1}$, $\psi = \Diamond_{0} \psi_{1}$ or $\psi = \Diamond^{-}_{0} \psi_{1}$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \psi_{1} \mathsf{U}_{0} \psi_{2}$ or $\psi = \psi_{1} \mathsf{S}_{0} \psi_{2}$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{2})) \\
+                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},i) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Circle_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(x^{\Circle_{p} \psi_{1}}_{i}) \\
+                &= \left\{\begin{array}{lr}
+                              \mathsf{Ans}(\Circle_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
+                              \emptyset      & \text{if } n = i\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \CIRCLE_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(x^{\CIRCLE_{p} \psi_{1}}_{i}) \\
+                &= \left\{\begin{array}{lr}
+                              \mathsf{Ans}(\CIRCLE_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
+                              \Delta^{\mathsf{N}_\mathsf{V}}      & \text{if } n = i\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Circle^{-}_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi_{i-1}(\Circle^{-}_{p-1} \psi_{1})) \\
+                &= \left\{\begin{array}{lr}
+                              \mathsf{Ans}(\Circle^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) & \text{if } i > 0\\
+                              \emptyset      & \text{if } i = 0\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \CIRCLE^{-}_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi_{i-1}(\CIRCLE^{-}_{p-1} \psi_{1})) \\
+                &= \left\{\begin{array}{lr}
+                              \mathsf{Ans}(\CIRCLE^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) & \text{if } i > 0\\
+                              \Delta^{\mathsf{N}_\mathsf{V}}      & \text{if } i = 0\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Box_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\Box_{p} \psi_{1}}_{i}) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \left\{\begin{array}{lr}
+                                                                                \mathsf{Ans}(\Box_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
+                                                                                \Delta^{\mathsf{N}_\mathsf{V}}       & \text{if } n = i\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Box^{-}_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(\Phi_{i-1}(\Box^{-}_{p} \psi_{1})) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\Box^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Diamond_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\Diamond_{p-1} \psi_{1}}_{i}) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \left\{\begin{array}{lr}
+                                                                                \mathsf{Ans}(\Diamond_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
+                                                                                \emptyset            & \text{if } n = i\\
+                \end{array}\right\} \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \Diamond^{-}_{p} \psi_{1}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(\Phi_{i-1}(\Box^{-}_{p-1} \psi_{1})) \\
+                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \mathsf{Ans}(\Box^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \psi_{1} \mathsf{U}_{p} \psi_{2}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{2})) \cup (\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{i})) \\
+                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},i)\cup(\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \left\{\begin{array}{lr}
+                                                                                                                                 \mathsf{Ans}(\psi_{1} \mathsf{U}_{p-1} \psi_{2}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
+                                                                                                                                 \emptyset       & \text{if } n = i\\
+                \end{array}\right\}) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+        If $\psi = \psi_{1} \mathsf{S}_{p} \psi_{2}$ and $p > 0$, then
+        \begin{equation}
+            \notag
+            \begin{split}
+                \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{2})) \cup (\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \Phi_{i-1}(\psi_{1} \mathsf{S}_{p-1} \psi_{2})) \\
+                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},i)\cup(\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\psi_{1} \mathsf{S}_{p-1} \psi_{2}, \mathfrak{I}^{(n)},i-1)) \\
+                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\)
+            \end{split}
+        \end{equation}
+    \end{proof}
+
+    \begin{lemma}[cf.\ Lemma 6.5 in \cite{borgwardt2015temporalizing}]
+        If $\Phi_{i-1}$ is correct for i-1 and (i-1)-bounded, then we can construct a function $\Phi_{i}: \mathsf{Sub}(\phi)
+        \rightarrow \mathsf{AT}^{i}_{\phi}$ that is correct for i and i-bounded.
+    \end{lemma}
+
+    \begin{proof}
+        The in \cite{borgwardt2015temporalizing} introduced function $\mathsf{update}(x^{\psi^{j}}_{i-1})$ needs to be extended, before it then can be shown for all $n \geq i$ that
+        $\mathsf{eval}^{n}(x^{\psi^{j}}_{i-1})$ is still equal to $\mathsf{eval}^{n}(\mathsf{update}(x^{\psi^{j}}_{i-1}))$.
+        After considering the new operators, $\mathsf{update}(x^{\psi^{j}}_{i-1})$ looks like this:
+        \begin{equation}
+            \notag
+            \label{eq:equationLemma3.1.7.1}
+            \begin{split}
+                \(\mathsf{update}(x^{\psi^{j}}_{i-1}) := \left\{\begin{array}{lr}
+                                                                    \Phi^{j-1}_{i}(\psi_{1})  & \text{if } \psi^{j}=\Circle\psi_{1} \text{ or } \psi^{j}=\CIRCLE\psi_{1}\\
+                                                                    \Phi^{j-1}_{i}(\psi^{j})  & \text{if } \psi^{j}=\psi_{1}\mathsf{U}\psi_{2} \text{ or } \psi^{j}=\Box\psi_{1} \text{ or } \psi^{j}=\Diamond\psi_{1}\\
+                \end{array}\right\}\)
+            \end{split}
+        \end{equation}
+        For $\psi^{j}=\Box\psi_{1}$ and $\psi^{j}=\Diamond\psi_{1}$, by definition $\mathsf{eval}^{n}(x^{\psi^{j}}_{i-1}) = \mathsf{Ans}(\psi^{j}, \mathfrak{I}^{(n)},i)$.
+        Since $\Phi^{j-1}_{i}$ is correct for $i$, this is the same set as $\mathsf{eval}^{n}(\Phi^{j-1}_{i}(\psi^{j}))=\mathsf{eval}^{n}(\mathsf{update}(x^{\psi^{j}}_{i-1}))$.
+
+        It remains to show $i$-boundedness of $\Phi_{i}=\Phi^{k}_{i}$.
+        In \cite{borgwardt2015temporalizing} this is again proven by induction on $j$.
+        It therefore suffices to add the missing cases.
+        It is enough to show that $\mathsf{update}(x^{\psi^{j}}_{i-1})$ contains only variables from $\mathsf{Var}^{\psi^{j}}_{i}$.
+        If $\psi^{j}=\Box\psi_{1}$ or $\psi^{j}=\Diamond\psi_{1}$, then $\mathsf{update}(x^{\psi^{j}}_{i-1}) = \Phi^{j-1}_{i}(\psi^{j})$.
+        Since $\Phi^{j-1}_{i}$ differs from $\Phi^{0}_{i}$ only in the replacement of some variables with index $i-1$
+        \begin{align}
+            &\Phi^{j-1}_{i}(\psi^{j}) = \Phi^{j-1}_{i}(\psi_{1}) \cap x^{\psi^{j}}_{i} \nonumber \\
+            \text{or} \nonumber \\
+            &\Phi^{j-1}_{i}(\psi^{j}) = \Phi^{j-1}_{i}(\psi_{1}) \cup x^{\psi^{j}}_{i} \text{, respectively.} \nonumber
+        \end{align}
+
+        By the induction hypothesis $\Phi^{j-1}_{i}(\psi_{1})$ contains only variables from $\mathsf{Var}^{\psi_{1}}_{i} = \mathsf{Var}^{\psi^{j}}_{i} \setminus \{x^{\psi^{j}}_{i}\}$
+        and $\mathsf{Var}^{\psi_{1}}_{i-1} \cap \{x^{\psi^{j}}_{i-1},...,x^{\psi^{k}}_{i-1}\}$.
+        Since every variable $x^{\psi^{'}}_{i-1} \in \mathsf{Var}^{\psi_{1}}_{i-1}$ must satisfy $\psi^{'} \in \mathsf{FSub}(\psi_{1})$ the second set $\mathsf{Var}^{\psi_{1}}_{i-1} \cap \{x^{\psi^{j}}_{i-1},...,x^{\psi^{k}}_{i-1}\}$
+        is empty.
+        This follows from the total order $\psi^{1} < ... < \psi^{k}$ on the set $\mathsf{FSub}(\phi) = \{\psi^{1} , ... , \psi^{k}\}$ presented in \cite{borgwardt2015temporalizing},
+        i.e., $\psi^{'} \in \mathsf{FSub}(\psi^{j}) \setminus \{\psi^{j}\}$, and thus $\psi^{'} < \psi^{j}$.
+    \end{proof}
+
+    This concludes the proof of Theorem \ref{th:correctandbounded1}.
+\end{proof}

@@ -1,21 +1,20 @@
 \chapter{Expansion of the BHE ACHTUNG NICHT FERTIG}
-\label{ch:expansion}
 
 It became clear that both the language from \cite{borgwardt2015temporalizing} and consequently the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing}
-must be extended in order to provide relevant answers to the PTQs specified in CHAPTER 2.
+must be extended in order to provide relevant answers to the PTQs specified in CHAPTER REF CHAPTER 2.
 In this chapter, the extensions are considered one by one and examined for feasibility.
 
 
 \section{Operators from \cite{borgwardt2015temporalizing} not yet implemented}
-\label{sec:expansion/operatorsnotimplemented}
+
 First, the algorithm presented in \cite{borgwardt2015temporalizing} is extended by the operators
 $\Box \phi$ (always), $\Box^{-} \phi$ (always in the past), $\Diamond \phi$ (eventually), $\Diamond^{-} \phi$
 (some time in the past), which were already presented in the paper but not considered in the definition of the algorithm.
 Therefore, the definitions of $\mathsf{eval}^{n}(\alpha)$, $\Phi_{0}(\psi)$ and $\Phi_{i}(\psi)$ from \cite{borgwardt2015temporalizing} are modified,
 upon which the modifications are then proven to be correct.
 As a reminder, the semantics of these four TQs are defined as follows:
-\begin{definition}[semantics of temporal queries cf.\ Definition 3.3 in \cite{borgwardt2015temporalizing}]
-    \label{def:semanticsTQ}
+\begin{definition}[semantics of temporal queries ct.\ Definition 3.3 in \cite{borgwardt2015temporalizing}]
+
     Let $\phi$ be a TQ, $\mathfrak{I} = (I_{i})_{0 \leq i \leq n}$ a sequence of interpretations over a common domain,
     $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ a variable assignment, and $i$ be an integer with $0 \leq i \leq n$.
     The $satisfaction\ relation\ \mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
@@ -29,10 +28,10 @@ As a reminder, the semantics of these four TQs are defined as follows:
             \Diamond \phi_{1}       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k, i \leq k \leq n$\\
             \Diamond^{-} \phi_{1}   & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k, 0 \leq k \leq i$\\ \bottomrule
         \end{tabular*}
-        \caption{semantics of TQs}
-        \label{tab:tqsemantics}
+        \caption{semantics of TQs $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+
     \end{table}
-    \noindent $\mathsf{FVar}(\phi)$ denotes the set of $free\ variables$ of a TQ and is defined as the union of the sets $\mathsf{FVar}(\psi)$ of
+    $\mathsf{FVar}(\phi)$ denotes the set of $free\ variables$ of a TQ and is defined as the union of the sets $\mathsf{FVar}(\psi)$ of
     all queries $\psi$ occurring in $\phi$. $\mathsf{N}_{\mathsf{C}}$ denotes a set of $constants$.
     If $\mathfrak{I}, i \models \mathfrak{a}(\phi)$, then $\mathfrak{a}$ is called an $answer$ to $\phi$ w.r.t. $\mathfrak{I}$ at time point $i$.
     The set of all answers to $\phi$ w.r.t $\mathfrak{I}$ at time point $i$ is denoted by $\mathsf{Ans}(\phi, \mathfrak{I},i)$.
@@ -63,8 +62,8 @@ and at the first time point
     \item $\Diamond^{-} \phi_{1}$ is equivalent to $\phi_{1}$ because $\Circle^{-} \Diamond^{-} \phi_{1}$ does not have any answers
 \end{itemize}
 
-\begin{proposition}[similar\ to\ Proposition 3.4 in \cite{borgwardt2015temporalizing}]
-    \label{prop:3.1.2}
+\begin{proposition}[ct. Proposition 3.4 in \cite{borgwardt2015temporalizing}]
+
     For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ and $0 \leq i \leq n$,
     \begin{enumerate}
         \item $\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1})$ iff
@@ -91,20 +90,20 @@ and at the first time point
 \end{proposition}
 
 \begin{proof}
-    To prove the above proposition, two equivalences are demonstrated here.
-    The other two cases work similar AND CAN BE FOUND IN THE APPENDIX.
+    To prove the above proposition, TWO equivalences are demonstrated here.
+    The other two cases work similar AND CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
     The proof works mainly on the basis of semantics.
     \begin{enumerate}
         \item $\Box \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box \phi_{1}$
         \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1}) \label{proof1.1.1} \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq n \label{proof1.1.2} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{proof1.1.3} \\
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq n  \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq n) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box\phi_{1})) \label{proof1.1.4} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box \phi_{1}) \label{proof1.1.5}
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box\phi_{1})) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box \phi_{1})
         \end{align}
-        \eqref{proof1.1.3} is equivalent to \eqref{proof1.1.2} because
+        REF EQ 3 is equivalent to REF EQ 2 because
         \begin{itemize}
             \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at all future time points $k$, $i+1 \leq k \leq n$, in order to be satisfied.
             Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "implies"-statement; and
@@ -116,14 +115,14 @@ and at the first time point
 
         \item $\Box^{-} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1}$
         \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-} \phi_{1}) \label{proof1.2.1} \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i \label{proof1.2.2} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{proof1.2.3} \\
+            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i-1) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}\phi_{1})) \label{proof1.2.4} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1}) \label{proof1.2.5}
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}\phi_{1})) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1})
         \end{align}
-        \eqref{proof1.2.3} is equivalent to \eqref{proof1.2.2} because
+        REF EQ 3 is equivalent to REF EQ 2 because
         \begin{itemize}
             \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at all past time points $k$, $0 \leq k \leq i-1$, in order to be satisfied.
             Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "implies"-statement; and
@@ -135,14 +134,14 @@ and at the first time point
 
         \item $\Diamond \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond \phi_{1}$
         \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond \phi_{1}) \label{proof1.3.1} \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq n \label{proof1.3.2} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{proof1.3.3} \\
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq n \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq n) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond \phi_{1})) \label{proof1.3.4} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond \phi_{1}) \label{proof1.3.5}
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond \phi_{1})) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond \phi_{1})
         \end{align}
-        \eqref{proof1.3.3} is equivalent to \eqref{proof1.3.2} because
+        REF EQ 3 is equivalent to REF EQ 2 because
         \begin{itemize}
             \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any future time point $k$, $i+1 \leq k \leq n$, in order to be satisfied.
             Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the "and"-statement; and
@@ -154,14 +153,14 @@ and at the first time point
 
         \item $\Diamond^{-} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}$
         \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-} \phi_{1}) \label{proof1.4.1} \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i \label{proof1.4.2} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{proof1.4.3} \\
+            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-} \phi_{1}) \\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i-1) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-} \phi_{1})) \label{proof1.4.4} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}) \label{proof1.4.5}
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-} \phi_{1})) \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1})
         \end{align}
-        \eqref{proof1.4.3} is equivalent to \eqref{proof1.4.2} because
+        REF EQ 3 is equivalent to REF EQ 2 because
         \begin{itemize}
             \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any past time point $k$, $0 \leq k \leq i-1$, in order to be satisfied.
             Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the "and"-statement; and
@@ -178,7 +177,7 @@ For this the notation of $answer\ terms$ is needed.
 Using the same simplification as in \cite{borgwardt2015temporalizing}, the following assumes that $\mathsf{N}_{\mathsf{V}}$, the set of $variables$, is finite
 and that the answers are of the form $\mathfrak{a}:\mathsf{N}_{\mathsf{V}} \rightarrow \Delta$ instead of $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \Delta$.
 $\mathsf{Ans}(\phi, \mathfrak{I}^{(n)})$ refers to a set of mappings $\mathfrak{a}:\mathsf{N}_{\mathsf{V}} \rightarrow \Delta$, i.e, a subset of $\Delta^{\mathsf{N}_\mathsf{V}}$.
-\begin{definition}[answer\ term cf.\ Definition 6.1 in \cite{borgwardt2015temporalizing}]
+\begin{definition}[answer\ term ct.\ Definition 6.1 in \cite{borgwardt2015temporalizing}]
     Let $\mathsf{FSub}(\phi)$ denote the set of all subqueries of $\phi$ of the form $\Circle \psi_{1}, \CIRCLE \psi_{1}, \Box \psi_{1}, \Diamond \psi_{1}$
     or $\psi_{1} \mathsf{U} \psi_{2}$.
     For $j \geq 0$, we denote by $\mathsf{Var}^{\phi}_{j}$ the set of all variables of the form $x^{\psi}_{j}$ for $\psi \in \mathsf{FSub}(\phi)$.
@@ -201,8 +200,8 @@ The functions $\mathsf{eval}^{n}: \mathsf{AT}^{n}_{\phi} \rightarrow 2^{\Delta^{
         $x^{\Box \psi_{1}}_{n}$                     & $\Delta^{\mathsf{N}_\mathsf{V}}$                              \\
         $x^{\Diamond \psi_{1}}_{n}$                 & \emptyset                                                     \\ \bottomrule
     \end{tabular*}
-    \caption{$\mathsf{eval}^{n}(\alpha)$}
-    \label{tab:evaln}
+    \caption{$\mathsf{eval}^{n}(\alpha)$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+
 \end{table}
 
 The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\phi}$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
@@ -216,8 +215,8 @@ The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\p
         \Diamond \psi_{1}       & $\Phi_{0}(\psi_{1}) \cup x^{\Diamond \psi_{1}}_{0}$ \\
         \Diamond^{-} \psi_{1}   & $\Phi_{0}(\psi_{1})$                                \\ \bottomrule
     \end{tabular*}
-    \caption{$\Phi_{0}(\psi)$}
-    \label{tab:phizero}
+    \caption{$\Phi_{0}(\psi)$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+
 \end{table}
 
 The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}_{\phi},\ i>0$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
@@ -231,22 +230,22 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         \Diamond \psi_{1}       & $\Phi^{0}_{i}(\psi_{1}) \cup x^{\Diamond \psi_{1}}_{i}$         \\
         \Diamond^{-} \psi_{1}   & $\Phi^{0}_{i}(\psi_{1}) \cup \Phi_{i-1}(\Diamond^{-} \psi_{1})$ \\ \bottomrule
     \end{tabular*}
-    \caption{$\Phi^{0}_{i}(\psi)$}
-    \label{tab:phii}
+    \caption{$\Phi^{0}_{i}(\psi)$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+
 \end{table}
-\noindent $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries in $\phi$ (including $\phi$ itself).
+$\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries in $\phi$ (including $\phi$ itself).
 
 \begin{theorem}
-    \label{th:correctandbounded1}
-    The extension for the bounded history encoding from \cite{borgwardt2015temporalizing} presented here, preserves correctness and boundedness.
+
+    The extension of the bounded history encoding from \cite{borgwardt2015temporalizing} by $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$, preserves correctness and boundedness.
 \end{theorem}
 
 \begin{proof}
     To prove that the correctness and boundedness of the algorithm is preserved, the necessary cases are added to the
     corresponding proofs from \cite{borgwardt2015temporalizing}.
 
-    \begin{lemma}[cf.\ Lemma 6.3 in \cite{borgwardt2015temporalizing}]
-        The function $\Phi_{0}$ is correct for 0.
+    \begin{lemma}[ct.\ Lemma 6.3 in \cite{borgwardt2015temporalizing}]
+        The function $\Phi_{0}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for 0.
     \end{lemma}
 
     \begin{proof}
@@ -254,12 +253,12 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$ for all $n \geq 0$. \\
         If $\psi = \Box^{-}\psi_{1}$ or $\psi = \Diamond^{-}\psi_{1}$, then
         \[\(\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{eval}^{n}(\Phi_{0}(\psi_{1}))\).\]
-        This is by induction equal to $\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0)$ which then is, as shown in Proposition \ref{prop:3.1.2},
+        This is by induction equal to $\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0)$ which then is, as shown in Proposition REF PROPOSITION XY,
         equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$.\\
         If $\psi = \Box\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:proofLemma3.1.5.1}
+
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi}_{0}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cap \left\{\begin{array}{lr}
@@ -272,7 +271,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         If $\psi = \Diamond\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:proofLemma3.1.5.2}
+
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\psi}_{0}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cup \left\{\begin{array}{lr}
@@ -284,8 +283,8 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         \end{equation}
     \end{proof}
 
-    \begin{lemma}[cf.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
-        If $\Phi_{i-1}$ is correct for i-1, then $\Phi^{0}_{i}$ is correct for i.
+    \begin{lemma}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
+        If $\Phi_{i-1}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i-1, then $\Phi^{0}_{i}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i.
     \end{lemma}
 
     \begin{proof}
@@ -294,7 +293,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         If $\psi = \Box^{-}\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:equationLemma3.1.6.1}
+
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(\Phi_{i-1}(\psi)) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i-1) \\
@@ -304,7 +303,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         If $\psi = \Diamond^{-}\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:equationLemma3.1.6.2}
+
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(\Phi_{i-1}(\psi)) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i-1) \\
@@ -314,7 +313,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         If $\psi = \Box\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:equationLemma3.1.6.3}
+
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi}_{i}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \left\{\begin{array}{lr}
@@ -327,7 +326,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         If $\psi = \Diamond\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:equationLemma3.1.6.4}
+
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\psi}_{i}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \left\{\begin{array}{lr}
@@ -339,9 +338,9 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         \end{equation}
     \end{proof}
 
-    \begin{lemma}[cf.\ Lemma 6.5 in \cite{borgwardt2015temporalizing}]
-        If $\Phi_{i-1}$ is correct for i-1 and (i-1)-bounded, then we can construct a function $\Phi_{i}: \mathsf{Sub}(\phi)
-        \rightarrow \mathsf{AT}^{i}_{\phi}$ that is correct for i and i-bounded.
+    \begin{lemma}[ct.\ Lemma 6.5 in \cite{borgwardt2015temporalizing}]
+        If $\Phi_{i-1}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i-1 and (i-1)-bounded, then we can construct a function $\Phi_{i}: \mathsf{Sub}(\phi)
+        \rightarrow \mathsf{AT}^{i}_{\phi}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ that is correct for i and i-bounded.
     \end{lemma}
 
     \begin{proof}
@@ -350,7 +349,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         After considering the new operators, $\mathsf{update}(x^{\psi^{j}}_{i-1})$ looks like this:
         \begin{equation}
             \notag
-            \label{eq:equationLemma3.1.7.1}
+
             \begin{split}
                 \(\mathsf{update}(x^{\psi^{j}}_{i-1}) := \left\{\begin{array}{lr}
                                                                     \Phi^{j-1}_{i}(\psi_{1})  & \text{if } \psi^{j}=\Circle\psi_{1} \text{ or } \psi^{j}=\CIRCLE\psi_{1}\\
@@ -366,7 +365,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         It therefore suffices to add the missing cases.
         It is enough to show that $\mathsf{update}(x^{\psi^{j}}_{i-1})$ contains only variables from $\mathsf{Var}^{\psi^{j}}_{i}$.
         If $\psi^{j}=\Box\psi_{1}$ or $\psi^{j}=\Diamond\psi_{1}$, then $\mathsf{update}(x^{\psi^{j}}_{i-1}) = \Phi^{j-1}_{i}(\psi^{j})$.
-        Since $\Phi^{j-1}_{i}$ differs from $\Phi^{0}_{i}$ only in the replacement of some variables with index $i-1$
+        Since $\Phi^{j-1}_{i}$ differs from $\Phi^{0}_{i}$ only in the replacement of some variables with index $i-1$,
         \begin{align}
             &\Phi^{j-1}_{i}(\psi^{j}) = \Phi^{j-1}_{i}(\psi_{1}) \cap x^{\psi^{j}}_{i} \nonumber \\
             \text{or} \nonumber \\
@@ -374,23 +373,23 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         \end{align}
 
         By the induction hypothesis $\Phi^{j-1}_{i}(\psi_{1})$ contains only variables from $\mathsf{Var}^{\psi_{1}}_{i} = \mathsf{Var}^{\psi^{j}}_{i} \setminus \{x^{\psi^{j}}_{i}\}$
-        and $\mathsf{Var}^{\psi_{1}}_{i-1} \cap \{x^{\psi^{j}}_{i-1},...,x^{\psi^{k}}_{i-1}\}$.
+        and $\mathsf{Var}^{\psi_{1}}_{i-1} \cap \{x^{\psi^{j}}_{i-1},\dots,x^{\psi^{k}}_{i-1}\}$.
         Since every variable $x^{\psi^{'}}_{i-1} \in \mathsf{Var}^{\psi_{1}}_{i-1}$ must satisfy $\psi^{'} \in \mathsf{FSub}(\psi_{1})$ the second set $\mathsf{Var}^{\psi_{1}}_{i-1} \cap \{x^{\psi^{j}}_{i-1},...,x^{\psi^{k}}_{i-1}\}$
         is empty.
-        This follows from the total order $\psi^{1} < ... < \psi^{k}$ on the set $\mathsf{FSub}(\phi) = \{\psi^{1} , ... , \psi^{k}\}$ presented in \cite{borgwardt2015temporalizing},
-        i.e., $\psi^{'} \in \mathsf{FSub}(\psi^{j}) \setminus \{\psi^{j}\}$, and thus $\psi^{'} < \psi^{j}$.
+        This follows from the total order $\psi^{1} \prec \dots \prec \psi^{k}$ on the set $\mathsf{FSub}(\phi) = \{\psi^{1} , \dots , \psi^{k}\}$ presented in \cite{borgwardt2015temporalizing},
+        i.e. $\psi^{'} \in \mathsf{FSub}(\psi^{j}) \setminus \{\psi^{j}\}$, and thus $\psi^{'} \prec \psi^{j}$.
     \end{proof}
 
-    This concludes the proof of Theorem \ref{th:correctandbounded1}.
+    This concludes the proof of Theorem REF THEOREM XY.
 \end{proof}
 
 
 \section{Cross-referencing of query variables}
-\label{sec:expansion/referencingVariables}
+
 Second, it is checked whether arbitrary cross-referencing of query variables is supported.
 This was not considered in \cite{borgwardt2015temporalizing} and was therefore not considered in the implementation of
 the algorithm presented in \cite{borgwardt2015temporalizing}.
 
 \section{Numerical predicates}
-\label{sec:expansion/numericalpredicates}
+
 \input{NumericalPredicates.tex}

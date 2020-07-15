@@ -1,20 +1,21 @@
-\chapter{Expansion of the BHE ACHTUNG NICHT FERTIG}
-\label{ch:expansion}
+\chapter{Extension of the BHE ACHTUNG NICHT FERTIG}
+\label{ch:extension}
 It became clear that both the language from \cite{borgwardt2015temporalizing} and consequently the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing}
 must be extended in order to provide relevant answers to the PTQs specified in CHAPTER REF CHAPTER 2.
-In this chapter, the extensions are considered one by one and examined for feasibility.
+In this chapter, the extensions are introduced one by one and EXAMINED FOR FEASIBILITY.
 
+\section{Extensions}
+\label{sec:extension/extensions}
 
-\section{Operators from \cite{borgwardt2015temporalizing} not yet implemented}
-\label{sec:expansion/operatorsnotimplemented}
+\subsection{Operators from \cite{borgwardt2015temporalizing} not yet implemented}
+\label{subsec:extension/extensions/operatorsnotimplemented}
 First, the algorithm presented in \cite{borgwardt2015temporalizing} is extended by the operators
-$\Box \phi$ (always), $\Box^{-} \phi$ (always in the past), $\Diamond \phi$ (eventually), $\Diamond^{-} \phi$
-(some time in the past), which were already presented in the paper but not considered in the definition of the algorithm.
+$\Box \phi$ (always), $\Box^{-} \phi$ (always in the past), $\Diamond \phi$ (eventually), $\Diamond^{-} \phi$ (some time in the past).
 Therefore, the definitions of $\mathsf{eval}^{n}(\alpha)$, $\Phi_{0}(\psi)$ and $\Phi_{i}(\psi)$ from \cite{borgwardt2015temporalizing} are modified,
 upon which the modifications are then proven to be correct.
 As a reminder, the semantics of these four TQs are defined as follows:
 \begin{definition}[semantics of temporal queries ct.\ Definition 3.3 in \cite{borgwardt2015temporalizing}]
-    \label{def:expansion/operatorsnotimplemented/semantics}
+    \label{def:Extension/operatorsnotimplemented/semantics}
     Let $\phi$ be a TQ, $\mathfrak{I} = (I_{i})_{0 \leq i \leq n}$ a sequence of interpretations over a common domain,
     $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ a variable assignment, and $i$ be an integer with $0 \leq i \leq n$.
     The $satisfaction\ relation\ \mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
@@ -28,8 +29,8 @@ As a reminder, the semantics of these four TQs are defined as follows:
             \Diamond \phi_{1}       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k, i \leq k \leq n$\\
             \Diamond^{-} \phi_{1}   & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k, 0 \leq k \leq i$\\ \bottomrule
         \end{tabular*}
-        \caption{semantics of TQs $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
-        \label{tab:expansion/operatorsnotimplemented/satisfactionrelation}
+        \caption{satisfaction relation of TQs $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+        \label{tab:extension/operatorsnotimplemented/satisfactionrelation}
     \end{table}
     $\mathsf{FVar}(\phi)$ denotes the set of $free\ variables$ of a TQ and is defined as the union of the sets $\mathsf{FVar}(\psi)$ of
     all queries $\psi$ occurring in $\phi$. $\mathsf{N}_{\mathsf{C}}$ denotes a set of $constants$.
@@ -63,7 +64,7 @@ and at the first time point
 \end{itemize}
 
 \begin{proposition}[ct.\ Proposition 3.4 in \cite{borgwardt2015temporalizing}]
-    \label{prop:expansion/operatorsnotimplemented/prop2}
+    \label{prop:extension/operatorsnotimplemented/prop2}
     For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ and $0 \leq i \leq n$,
     \begin{enumerate}
         \item $\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1})$ iff
@@ -97,8 +98,8 @@ and at the first time point
         \item $\Box \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq n  \label{eq:expansion/operatorsnotimplemented/proofProp2/eq1.2} \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{eq:expansion/operatorsnotimplemented/proofProp2/eq1.3}\\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq n  \label{eq:extension/operatorsnotimplemented/proofProp2/eq1.2} \\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{eq:extension/operatorsnotimplemented/proofProp2/eq1.3}\\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq n) \nonumber \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box\phi_{1})) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box \phi_{1})
@@ -116,8 +117,8 @@ and at the first time point
         \item $\Box^{-} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i \label{eq:expansion/operatorsnotimplemented/proofProp2/eq2.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{eq:expansion/operatorsnotimplemented/proofProp2/eq2.3}\\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i \label{eq:extension/operatorsnotimplemented/proofProp2/eq2.2}\\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{eq:extension/operatorsnotimplemented/proofProp2/eq2.3}\\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i-1) \nonumber \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}\phi_{1})) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1})
@@ -135,8 +136,8 @@ and at the first time point
         \item $\Diamond \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Diamond \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq n \label{eq:expansion/operatorsnotimplemented/proofProp2/eq3.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{eq:expansion/operatorsnotimplemented/proofProp2/eq3.3}\\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq n \label{eq:extension/operatorsnotimplemented/proofProp2/eq3.2}\\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{eq:extension/operatorsnotimplemented/proofProp2/eq3.3}\\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq n) \nonumber \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond \phi_{1})) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond \phi_{1})
@@ -154,8 +155,8 @@ and at the first time point
         \item $\Diamond^{-} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i \label{eq:expansion/operatorsnotimplemented/proofProp2/eq4.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{eq:expansion/operatorsnotimplemented/proofProp2/eq4.3}\\
+            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i \label{eq:extension/operatorsnotimplemented/proofProp2/eq4.2}\\
+            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{eq:extension/operatorsnotimplemented/proofProp2/eq4.3}\\
             &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i-1) \nonumber \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-} \phi_{1})) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1})
@@ -178,7 +179,7 @@ Using the same simplification as in \cite{borgwardt2015temporalizing}, the follo
 and that the answers are of the form $\mathfrak{a}:\mathsf{N}_{\mathsf{V}} \rightarrow \Delta$ instead of $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \Delta$.
 $\mathsf{Ans}(\phi, \mathfrak{I}^{(n)})$ refers to a set of mappings $\mathfrak{a}:\mathsf{N}_{\mathsf{V}} \rightarrow \Delta$, i.e, a subset of $\Delta^{\mathsf{N}_\mathsf{V}}$.
 \begin{definition}[answer\ term ct.\ Definition 6.1 in \cite{borgwardt2015temporalizing}]
-    \label{def:expansion/operatorsnotimplemented/answerterm}
+    \label{def:extension/operatorsnotimplemented/answerterm}
     Let $\mathsf{FSub}(\phi)$ denote the set of all subqueries of $\phi$ of the form $\Circle \psi_{1}, \CIRCLE \psi_{1}, \Box \psi_{1}, \Diamond \psi_{1}$
     or $\psi_{1} \mathsf{U} \psi_{2}$.
     For $j \geq 0$, we denote by $\mathsf{Var}^{\phi}_{j}$ the set of all variables of the form $x^{\psi}_{j}$ for $\psi \in \mathsf{FSub}(\phi)$.
@@ -196,13 +197,14 @@ The functions $\mathsf{eval}^{n}: \mathsf{AT}^{n}_{\phi} \rightarrow 2^{\Delta^{
     \begin{tabular*}{\textwidth}{@{}ll@{}}
         \toprule
         \alpha                                      & $\mathsf{eval}^{n}(\alpha)$                                   \\ \midrule
+        [\ldots]                & [\ldots] \\
         $x^{\Box \psi_{1}}_{j}$ with $j < n$        & $\mathsf{Ans}(\Box \psi_{1}, \mathfrak{I}^{(n)}, j+1)$        \\
         $x^{\Diamond \psi_{1}}_{j}$ with $j < n$    & $\mathsf{Ans}(\Diamond \psi_{1}, \mathfrak{I}^{(n)}, j+1)$    \\
         $x^{\Box \psi_{1}}_{n}$                     & $\Delta^{\mathsf{N}_\mathsf{V}}$                              \\
         $x^{\Diamond \psi_{1}}_{n}$                 & \emptyset                                                     \\ \bottomrule
     \end{tabular*}
-    \caption{$\mathsf{eval}^{n}(\alpha)$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
-    \label{tab:expansion/operatorsnotimplemented/eval}
+    \caption{$\mathsf{eval}^{n}(\alpha)$ with $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+    \label{tab:extension/operatorsnotimplemented/eval}
 \end{table}
 
 The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\phi}$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
@@ -211,13 +213,14 @@ The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\p
     \begin{tabular*}{\textwidth}{@{}ll@{}}
         \toprule
         \psi                    & $\Phi_{0}(\psi)$                                    \\ \midrule
+        [\ldots]                & [\ldots] \\
         \Box \psi_{1}           & $\Phi_{0}(\psi_{1}) \cap x^{\Box \psi_{1}}_{0}$     \\
         \Box^{-} \psi_{1}       & $\Phi_{0}(\psi_{1})$                                \\
         \Diamond \psi_{1}       & $\Phi_{0}(\psi_{1}) \cup x^{\Diamond \psi_{1}}_{0}$ \\
         \Diamond^{-} \psi_{1}   & $\Phi_{0}(\psi_{1})$                                \\ \bottomrule
     \end{tabular*}
-    \caption{$\Phi_{0}(\psi)$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
-    \label{tab:expansion/operatorsnotimplemented/phi0}
+    \caption{$\Phi_{0}(\psi)$ with $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+    \label{tab:extension/operatorsnotimplemented/phi0}
 \end{table}
 
 The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}_{\phi},\ i>0$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
@@ -226,19 +229,20 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
     \begin{tabular*}{\textwidth}{@{}ll@{}}
         \toprule
         \psi                    & $\Phi^{0}_{i}(\psi)$                                            \\ \midrule
+        [\ldots]                & [\ldots] \\
         \Box \psi_{1}           & $\Phi^{0}_{i}(\psi_{1}) \cap x^{\Box \psi_{1}}_{i}$             \\
         \Box^{-} \psi_{1}       & $\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\Box^{-} \psi_{1})$     \\
         \Diamond \psi_{1}       & $\Phi^{0}_{i}(\psi_{1}) \cup x^{\Diamond \psi_{1}}_{i}$         \\
         \Diamond^{-} \psi_{1}   & $\Phi^{0}_{i}(\psi_{1}) \cup \Phi_{i-1}(\Diamond^{-} \psi_{1})$ \\ \bottomrule
     \end{tabular*}
-    \caption{$\Phi^{0}_{i}(\psi)$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
-    \label{tab:expansion/operatorsnotimplemented/phiI}
+    \caption{$\Phi^{0}_{i}(\psi)$ with $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+    \label{tab:extension/operatorsnotimplemented/phiI}
 \end{table}
 $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries in $\phi$ (including $\phi$ itself).
 
 \begin{theorem}
-    \label{th:expansion/operatorsnotimplemented/corretandbounded}
-    The extension of the bounded history encoding from \cite{borgwardt2015temporalizing} by $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$, preserves correctness and boundedness.
+    \label{th:extension/operatorsnotimplemented/corretandbounded}
+    The extension of the bounded history encoding from \cite{borgwardt2015temporalizing} by $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ preserves correctness and boundedness.
 \end{theorem}
 
 \begin{proof}
@@ -246,7 +250,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
     corresponding proofs from \cite{borgwardt2015temporalizing}.
 
     \begin{lemma}[ct.\ Lemma 6.3 in \cite{borgwardt2015temporalizing}]
-        \label{lem:expansion/operatorsnotimplemented/lemma5}
+        \label{lem:extension/operatorsnotimplemented/lemma5}
         The function $\Phi_{0}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for 0.
     \end{lemma}
 
@@ -260,7 +264,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         If $\psi = \Box\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma5/eq1}
+            \label{eq:extension/operatorsnotimplemented/proofLemma5/eq1}
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi}_{0}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cap \left\{\begin{array}{lr}
@@ -273,7 +277,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         If $\psi = \Diamond\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma5/eq2}
+            \label{eq:extension/operatorsnotimplemented/proofLemma5/eq2}
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\psi}_{0}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cup \left\{\begin{array}{lr}
@@ -286,7 +290,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
     \end{proof}
 
     \begin{lemma}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
-        \label{lem:expansion/operatorsnotimplemented/lemma6}
+        \label{lem:extension/operatorsnotimplemented/lemma6}
         If $\Phi_{i-1}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i-1, then $\Phi^{0}_{i}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i.
     \end{lemma}
 
@@ -296,7 +300,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         If $\psi = \Box^{-}\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma6/eq1}
+            \label{eq:extension/operatorsnotimplemented/proofLemma6/eq1}
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(\Phi_{i-1}(\psi)) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i-1) \\
@@ -306,7 +310,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         If $\psi = \Diamond^{-}\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma6/eq2}
+            \label{eq:extension/operatorsnotimplemented/proofLemma6/eq2}
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(\Phi_{i-1}(\psi)) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i-1) \\
@@ -316,7 +320,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         If $\psi = \Box\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma6/eq3}
+            \label{eq:extension/operatorsnotimplemented/proofLemma6/eq3}
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi}_{i}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \left\{\begin{array}{lr}
@@ -329,7 +333,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         If $\psi = \Diamond\psi_{1}$, then
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma6/eq4}
+            \label{eq:extension/operatorsnotimplemented/proofLemma6/eq4}
             \begin{split}
                 \(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\psi}_{i}) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \left\{\begin{array}{lr}
@@ -342,7 +346,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
     \end{proof}
 
     \begin{lemma}[ct.\ Lemma 6.5 in \cite{borgwardt2015temporalizing}]
-        \label{lem:expansion/operatorsnotimplemented/lemma7}
+        \label{lem:extension/operatorsnotimplemented/lemma7}
         If $\Phi_{i-1}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i-1 and (i-1)-bounded, then we can construct a function $\Phi_{i}: \mathsf{Sub}(\phi)
         \rightarrow \mathsf{AT}^{i}_{\phi}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ that is correct for i and i-bounded.
     \end{lemma}
@@ -353,7 +357,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         After considering the new operators, $\mathsf{update}(x^{\psi^{j}}_{i-1})$ looks like this:
         \begin{equation}
             \notag
-            \label{eq:expansion/operatorsnotimplemented/proofLemma7/eq1}
+            \label{eq:extension/operatorsnotimplemented/proofLemma7/eq1}
             \begin{split}
                 \(\mathsf{update}(x^{\psi^{j}}_{i-1}) := \left\{\begin{array}{lr}
                                                                     \Phi^{j-1}_{i}(\psi_{1})  & \text{if } \psi^{j}=\Circle\psi_{1} \text{ or } \psi^{j}=\CIRCLE\psi_{1}\\
@@ -388,10 +392,29 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
 \end{proof}
 
 
-\section{Filtering of query results}
-\label{sec:expansion/filtering}
+\subsection{Filtering of query results}
+\label{subsec:extension/extensions/filtering}
 \input{QueryFiltering.tex}
 
-\section{Metric Temporal Operators}
-\label{sec:expansion/metrictemporaloperators}
+\subsection{Metric Temporal Operators}
+\label{subsec:extension/extensions/metrictemporaloperators}
 \input{MetricTemporalOperators.tex}
+
+\section{Combining Extensions}
+\label{sec:extension/combiningExtensions}
+To decide whether extending the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing} is reasonable,
+the
+In the following, only the extensions of the bounded history encoding from \cite{borgwardt2015temporalizing} by a filter operator and metric temporal operators will be discussed,
+as $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ can be seen as special cases of metric temporal operators, where $p = n-i$ or $p = i$, respectively.
+
+From the proofs of Theorem REF THEOREM XY and Theorem REF THEOREM YZ it follows, that extending the bounded history encoding from \cite{borgwardt2015temporalizing} by a filter operator and metric temporal operators preserves correctness and boundedness.
+
+In terms of expressiveness, only the filter operator adds new expressiveness.
+This has already been hinted at in Chapter REF CHAPTER 2, when introducing the metric temporal operators and follows from Proposition REF PROPOSITION XY and Proposition REF PROPOSITION YZ.
+Since the filter operator is defined to be an SQL statement, the expressiveness added by introducing the filter operator is the same as an SQL statement on a single table.
+
+However, the metric temporal operators are still relevant, as they can reduce the size of queries significantly.
+A query without metric temporal operators that is equivalent to, e.g., $\Box$ with a time limit $t$, consists of at least $2*t$ operators, a $\wedge$ and a $\CIRCLE$ for each time point up to the limit.
+Whereas, the corresponding query with metric temporal operators consists of only one operator $\Box_{t}$ regardless of the size of $t$.
+
+Lastly, it is feasible to implement the extensions as the main modification needed are case-distinctions in the implementations of $\Phi_{0}(\psi)$ and $\Phi^{0}_{i}(\psi)$.

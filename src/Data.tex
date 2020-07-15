@@ -11,9 +11,11 @@ The brands and models must be narrowed down so that the data remains manageable 
 It is assumed that it is irrelevant which exact brands and models are collected.
 LATER ON IT CAN BE SHOWN WHETHER THIS IS TRUE .
 A COMPLETE LIST OF ALL MODELS CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
-To create a real discrete data stream, we collect the data weekly for SEVERAL weeks.
+To create a real discrete data stream, we collect the data weekly for ten weeks.
 This is the longest possible period for this thesis.
 TO CHECK IF THIS AFFECTS THE RESEARCH RESULT, THE RESULT FOR PARTIAL PERIODS WILL BE COMPARED WITH THE RESULTS FOR THE ENTIRE PERIOD .
+In order to check whether this affects the research result, the result of the bounded history encoding from \cite{borgwardt2015temporalizing}, applied to weekly collected data, is compared to the result of the bounded history encoding from \cite{borgwardt2015temporalizing}, applied to daily collected data.
+Collecting the data daily artificially increases the amount of time points.
 
 The data is collected by a scraper implemented in Python, similar to the one presented in \cite{scraperautoscout}.
 The scraper uses the modules Beautiful Soup 4 (BS4) \cite{richardson2007beautiful}, pandas \cite{jeff_reback_2020_3715232} and SQLalchemy \cite{sqlalchemy}.
@@ -21,7 +23,7 @@ The scraper uses the modules Beautiful Soup 4 (BS4) \cite{richardson2007beautifu
 First, it is specified which aspects of an individual car the scraper should cover.
 This is necessary because most of the data collected from a website does not contain any information about the car.
 AGAIN, IT IS ASSUMED THAT IT IS IRRELEVANT WHICH EXACT DATA IS COLLECTED ABOUT THE CAR.
-The most noteworthy attributes, since they are used in examples in this thesis, are "url", "price" and "DELETED".
+The most noteworthy attributes, since they are used in examples in this thesis, are "url", "price" and "deleted".
 A COMPLETE LIST OF ALL ASPECTS CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
 
 Second, the scraper searches AS24 for a specific brand and model and saves the link to each offer the search yields.

@@ -1,0 +1,31 @@
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+\label{ch:conclusion}
+In this thesis, the BHE from \cite{borgwardt2015temporalizing} was investigated to find out, how helpful it is in a practical application.
+Criteria for this are the usefulness of the answers, the time to answer one query per time point and the size of the encoding.
+The practical application in this thesis was an observation of an online automotive marketplace.
+The investigation was performed on the basis of PTQs and RTQs.
+
+The PTQs were defined to determine how the BHE performs for meaningful queries.
+To be able to evaluate the PTQs, the BHE \cite{borgwardt2015temporalizing} had to be extended.
+As the evaluation showed, the algorithm is able to provide relevant answers at each time point within a short time.
+The number of stored entries was always significantly lower than with the SVTT approach.
+From this, it follows that the algorithm is helpful to answer PTQs.
+
+However, the PTQs were not diverse enough to cover the whole language from \cite{borgwardt2015temporalizing}.
+As a result, RTQs were defined to investigate further how queries influence the time to answer one query per time point and the size of the encoding.
+The evaluation showed that the size of the queries, defined by the number of operators, had no direct influence on neither the time to answer on query per time point nor the size of the encoding.
+Further investigation of the algorithm showed that there is an upper bound for the size of the encoding, which can be used to estimate from which time point $t$ on
+the algorithm provides an encoding which is smaller than the SVTT approach.
+This was confirmed by the evaluation, since for all queries for which $t\leq10$, from $t$ on the encoding was smaller than the SVTT approach.
+The boundary found in this thesis is smaller than the one mentioned in \cite{borgwardt2015temporalizing}.
+
+\section*{Outlook}
+In future work, the BHE \cite{borgwardt2015temporalizing} can be evaluated over a longer period of time on a constant data stream.
+This should make the advantages of the algorithm even more obvious.
+
+Furthermore, MTOs could be adjusted so that $\mathsf{Sub}(\phi)$ corresponds to the intuitive meaning, i.e. $\mathsf{Sub}(\Diamond_{6}(\psi)) = \{\psi\}$.
+For this, a solution is needed, how to manage the 6 time points, which $\Diamond_{6}(\psi)$ needs, in one table.
+
+Finally, a comparison of the queries, executed on other approaches, would be insightful to better assess the time required by the BHE \cite{borgwardt2015temporalizing} to answer the queries.
+

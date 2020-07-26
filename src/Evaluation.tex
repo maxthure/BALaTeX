@@ -1,0 +1,165 @@
+\chapter{Evaluation}
+\label{ch:evaluation}
+After extending the implementation of the BHE \cite{borgwardt2015temporalizing}, the queries introduced in Chapter \ref{ch:queries} were evaluated at all 10 time points using this extended implementation.
+This chapter summarizes how well the queries can be answered with the help of a BHE, regarding the size of the encoding, the time to answer one query per time point and the usefulness of the answers.
+The size of the encoding is compared to the size of the established approach of \textit{system-versioned temporal tables} (SVTT) in SQL:2011 \cite{kulkarni2012temporal}, which save the complete history.
+
+\section{Evaluation of Practical Temporal Queries}
+\label{sec:evaluation/practical}
+The BHE provides meaningful answers for all specified PTQs.
+It answers the query and returns what was asked for.
+The average time to answer one PTQ per time point is just under 233 milliseconds.
+For all PTQs, the BHE stored fewer entries by the third time point at the latest.
+At the 10th time point on average only 16\% of the entries were stored, compared to the SVTT approach.
+For the examples from Chapter \ref{ch:queries} the size of the encodings compared to the complete history can be seen in Figure \ref{fig:encodingsizePTQ}.
+\begin{figure}[!ht]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+            width=\linewidth,
+            grid=major,
+            grid style={dashed,gray!30},
+            xlabel=Time Point,
+            ylabel=\# of Entries,
+            legend style={at={(0.5,-0.2)},anchor=north}
+            ]
+                \addplot
+                table[x=Zeitpunkt,y=EntriesSum,col sep=comma] {TableEncodingSizePTQ.csv};
+                \addplot
+                table[x=Zeitpunkt,y=Gesamt1,col sep=comma] {TableEncodingSizePTQ.csv};
+                \addplot
+                table[x=Zeitpunkt,y=Gesamt2,col sep=comma] {TableEncodingSizePTQ.csv};
+                \addplot
+                table[x=Zeitpunkt,y=Gesamt3,col sep=comma] {TableEncodingSizePTQ.csv};
+                \legend{SQL:2011, BHE Query \ref{qu:queries/investigationqueries/practical/qu1}, BHE Query \ref{qu:queries/investigationqueries/practical/qu2}, BHE Query \ref{qu:queries/investigationqueries/practical/qu3}}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Encoding size of PTQs compared to history size}
+        \label{fig:encodingsizePTQ}
+    \end{center}
+\end{figure}
+
+Since it was possible to express all PTQs by past operators only, the PTQs show that the BHE does provide meaningful answers to temporal queries, but they do not allow reliable conclusions to be drawn for the entire language of \cite{borgwardt2015temporalizing}.
+This is what the RTQs are intended for.
+
+\section{Evaluation of Random Temporal Queries}
+\label{sec:evaluation/random}
+Up to a size of four operators, the BHE behaves similarly for RTQs as for PTQs. For 90\% of the queries, the BHE stores fewer entries than the SVTT approach and takes on average 375 milliseconds per query per time point.
+Starting at a size of five, the number of queries for which the BHE stores fewer entries than the SVTT approach falls rapidly.
+For five and six operators it is 75\%, for seven and eight operators it is 45\% and for nine and 10 operators it is 35\%.
+
+However, the EVALUATION of the RTQs over the DAILY COLLECTED DATA, a larger number of time points, shows that for all sizes of RTQs the number of queries for which the BHE stores fewer entries than the SVTT approach increases.
+Thus, whether the BHE stores fewer entries than the SVTT approach does not directly depend on the size of the query, but rather on the number of time points.
+
+A deeper analysis of the implementation of the BHE \cite{borgwardt2015temporalizing} shows that only the answers to subqueries under past operators are stored.
+Let $\mathsf{PSub}(\phi)$ denote the subset of queries from $\mathsf{Sub}(\phi)$ that start with a past operator, analogously to $\mathsf{FSub}(\phi)$.
+With $\mathsf{PSub}(\phi)$ and the size boundary $|\mathsf{Sub}(\phi)|*2^{|\mathsf{FSub}(\phi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|$ from \cite{borgwardt2015temporalizing} an upper bound can be found for when the BHE will store fewer entries than the SVTT approach.
+
+\begin{theorem}
+    \label{th:evaluation/random/theorem1}
+    There is a time point $t$, such that
+    \[t * |\Delta^{\mathsf{N}_{\mathsf{V}}}| > \left(\sum_{\psi \in \mathsf{PSub}(\phi)}2^{|\mathsf{FSub}(\psi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|\right) + 1*|\Delta^{\mathsf{N}_{\mathsf{V}}}|.\]
+\end{theorem}
+\begin{proof}
+    To proof Theorem \ref{th:evaluation/random/theorem1}, it is first shown that the sum is an upper bound for the size of the encoding.
+    \begin{lemma}
+        The size of the encoding is bounded by \[\sum_{\psi \in \mathsf{PSub}(\phi)}2^{|\mathsf{FSub}(\psi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|.\]
+    \end{lemma}
+    \begin{proof}
+        From \cite{borgwardt2015temporalizing} it is known that the size of the encoding is bounded by \[|\mathsf{Sub}(\phi)|*2^{|\mathsf{FSub}(\phi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|.\]
+        As the analysis of the implementation of the BHE \cite{borgwardt2015temporalizing} showed, only answers to subqueries under past operators are stored.
+        Thus, $|\mathsf{Sub}(\phi)|$ can be substituted by $|\mathsf{PSub}(\phi)|$, resulting in a boundary of \[|\mathsf{PSub}(\phi)|*2^{|\mathsf{FSub}(\phi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|.\]
+        This can be rewritten as \[\sum_{\psi \in \mathsf{PSub}(\phi)} 2^{|\mathsf{FSub}(\phi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|.\]
+        $|\mathsf{FSub}(\phi)|$ can be replaced by $|\mathsf{FSub}(\psi)|$, as for each subquery under a past operator which answers are stored, at most all subsets of $\mathsf{Var}^{\psi}_{i}$ need to be considered.
+        This results in a boundary of \[\sum_{\psi \in \mathsf{PSub}(\phi)}2^{|\mathsf{FSub}(\psi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|.\]
+    \end{proof}
+    This size boundary for the encoding can be used now to find $t$.
+    The summand $1*|\Delta^{\mathsf{N}_{\mathsf{V}}}|$ indicates that additionally to the size of the encoding all entries of the current time point are stored.
+    For the SVTT appraoch, the size of the history for each time point $i$, $0 \leq i \leq n$ is \[\sum^{i}_{0}|\Delta^{\mathsf{N}_{\mathsf{V}}}| = i*|\Delta^{\mathsf{N}_{\mathsf{V}}}|,\] as at each time point all entries are stored from then on.
+    To find a time point $t$, from that the BHE will store fewer entries than the SVTT approach, find $i$, such that \[i * |\Delta^{\mathsf{N}_{\mathsf{V}}}| = \left(\sum_{\psi \in \mathsf{PSub}(\phi)}2^{|\mathsf{FSub}(\psi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|\right) + 1*|\Delta^{\mathsf{N}_{\mathsf{V}}}|\]
+    and then set $t=i+1$.
+\end{proof}
+
+Since $|\Delta^{\mathsf{N}_{\mathsf{V}}}|$ can be omitted the data has no influence on $t$, if assumed that the number of stored entries is the same at each time point.
+This proofs the assumption from Chapter \ref{ch:datastream}, that it is irrelevant which exact brands and models are collected.
+
+The size boundary presented here is smaller than or equal to the one from \cite{borgwardt2015temporalizing}, therefore allowing a more precise estimate of when the BHE will be advantageous.
+
+\begin{proposition}
+    \[\sum_{\psi \in \mathsf{PSub}(\phi)}2^{|\mathsf{FSub}(\psi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}| \leq |\mathsf{Sub}(\phi)|*2^{|\mathsf{FSub}(\phi)|}*|\Delta^{\mathsf{N}_{\mathsf{V}}}|\]
+\end{proposition}
+\begin{proof}
+    \[|\mathsf{FSub}(\psi)| \leq |\mathsf{FSub}(\phi)|\]
+    If $|\mathsf{FSub}(\psi)| = |\mathsf{FSub}(\phi)|$ for all $\psi \in \mathsf{PSub}(\phi)$ in order for the boundaries to be the same size, $|\mathsf{PSub}(\phi)| = |\mathsf{Sub}(\phi)|$ needs to hold and $|\mathsf{FSub}(\psi)| = |\mathsf{FSub}(\phi)| = 0$.
+    Thus, only in the case that $\phi$ contains no future operators, the boundaries are the same size, else the one presented here is smaller.
+\end{proof}
+
+For every $t\leq10$ and every query up to $t$ the BHE stores fewer entries than the SVTT approach.
+However, $t$ is an upper bound and therefore even for queries for which $t$ is extremely high the BHE can be advantageous in even a few time points.
+For 43\% of the RTQs with $t>10$, the BHE stores fewer entries than the SVTT approach.
+
+The average time to answer one query per time point also increases with $t$ as can be seen in Table \ref{tab:evaluation/random/time}.
+\begin{table}[H]
+    \centering
+    \begin{tabular*}{\textwidth}{@{}ll@{}}
+        \toprule
+        $t$                     & time in milliseconds  \\ \midrule
+        $t<=10$                 & 297                   \\
+        $10 < t <= 100$         & 3,379                 \\
+        $100 < t <= 1,000$      & 4,270                 \\
+        $1,000 < t <= 10,000$   & 10,727                \\
+        $t > 10,000$            & 47,002                \\ \bottomrule
+    \end{tabular*}
+    \caption{Average time to answer a query}
+    \label{tab:evaluation/random/time}
+\end{table}
+
+The size of the encodings for Query 41 ($t=8$), Query 36 ($t=15$) and Query 98 ($t=33,554,690$) compared to the complete history can be seen in Figure \ref{fig:encodingsizeRTQ1}.
+\begin{figure}[!ht]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+            width=\linewidth,
+            grid=major,
+            grid style={dashed,gray!30},
+            xlabel=Time Point,
+            ylabel=\# of Entries,
+            legend style={at={(0.5,-0.2)},anchor=north}
+            ]
+                \addplot
+                table[x=Zeitpunkt,y=EntriesSum,col sep=comma] {TableEncodingSizeRTQ.csv};
+                \addplot
+                table[x=Zeitpunkt,y=Gesamt1,col sep=comma] {TableEncodingSizeRTQ.csv};
+                \addplot
+                table[x=Zeitpunkt,y=Gesamt2,col sep=comma] {TableEncodingSizeRTQ.csv};
+                \addplot
+                table[x=Zeitpunkt,y=Gesamt3,col sep=comma] {TableEncodingSizeRTQ.csv};
+                \legend{SQL:2011, BHE RTQ 41 , BHE RTQ 36, BHE RTQ 98}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Encoding size of RTQs compared to history size}
+        \label{fig:encodingsizeRTQ1}
+    \end{center}
+\end{figure}
+
+The EVALUATION of the RTQs over a partial period and the DAILY COLLECTED DATA provides appropriate results.
+
+\section{Discussion}
+\label{sec:evaluation/discussion}
+As the evaluation has shown, a constant number of entries at any given time point is beneficial in order to estimate from which time point on
+the BHE is smaller than the SVTT approach.
+Thus, a constant data stream would give more accurate results than the variable data stream provided by the scraper.
+
+Additionally, the time available was very limited.
+An investigation over a longer period of time would be able to confirm the trends observed.
+Since the evaluation of the queries was done by hand, it was not possible to evaluate significantly more queries, which would possibly allow further conclusions.
+
+The evaluation also showed that the size of the queries, defined by the number of operators, has no direct influence on the results.
+Therefore, the size of the queries could be better defined using the number of subqueries.
+This would possibly emphasize the difference between the boundary found in this thesis and the one mentioned in \cite{borgwardt2015temporalizing}.
+
+To be able to express the PTQs in the language of \cite{borgwardt2015temporalizing}, the algorithm from \cite{borgwardt2015temporalizing} had to be extended.
+The extension by a filter operator could not be developed generically for all relational query languages.
+Thus, the PTQs can be answered on an SQL database, but for other database systems a different solution has to be found.
+
+

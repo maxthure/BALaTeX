@@ -1,26 +1,28 @@
-\chapter{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 \label{ch:introduction}
-This thesis deals with Bounded History Encodings \cite{chomicki1995efficient} and their experimental application on an online automotive marketplace.
+This thesis deals with a \textit{bounded history encoding} (BHE) \cite{chomicki1995efficient} and its experimental application on an online automotive marketplace.
 
 The theoretical framework for this thesis is set by \cite{borgwardt2015temporalizing}.
-In \cite{borgwardt2015temporalizing}, a temporal version of ontology-based data access (OBDA) is considered.
+In \cite{borgwardt2015temporalizing}, a temporal version of \textit{ontology-based data access} (OBDA) is considered.
 A generic temporal query language is presented.
 The reasoning task of the temporal OBDA is reduced to query answering over temporal databases,
-the so-called temporal database monitoring problem.
-Three approaches to solve this problem are presented, including an algorithm that guarantees a BHE.
+the so-called \textit{temporal database monitoring problem}.
+Three approaches to solve this problem are presented, including an algorithm that constitutes a BHE.
 This work builds upon the latter approach.
+The algorithm will be referred to as the BHE, since it is the only one considered.
 
 This thesis ties in with \cite{borgwardt2015temporalizing} and checks the applicability of the algorithm by means of a
 concrete application on publicly available data, collected from an online automotive marketplace.
 The investigation carried out is structured in four steps.
-REF Chapter 1 shows how the publicly accessible data is regularly extracted from an online portal into a database.
-In REF Chapter 2 an attempt is made to formulate practical and meaningful queries in the language of \cite{borgwardt2015temporalizing}.
-It is to be checked whether the query language should be extended by additional operators.
+Chapter \ref{ch:datastream} shows how the publicly accessible data is regularly extracted from an online portal into a database.
+In Chapter \ref{ch:queries} an attempt is made, to formulate practical and meaningful queries in the language of \cite{borgwardt2015temporalizing}.
+It is to be checked, whether the query language should be extended by additional operators.
 Supplementary to practical and meaningful queries, random queries are formulated based on the idea from \cite{schneider2019formally}.
-This procedure ensures that the results are valid for the entire language from \cite{borgwardt2015temporalizing}.
-The results of the second chapter are used in the third chapter to construct concrete extensions of the already existent query language.
-To analyze the algorithm, in the fourth chapter the extended language is applied to the extracted data from the online automotive markets.
-The goal of this chapter is to evaluate how well the queries can be answered with the help of a BHE.
-Criteria for this are the size of the encoding, the time to answer one query per time and the usefulness of the answers.
-On the basis of the above-mentioned investigations, the final REF chapter 5 summarizes the results in order to answer the research question,
-to which extent a BHE is helpful in a practical application.
+This ensures that the results are valid for the entire language from \cite{borgwardt2015temporalizing}.
+The results of the second chapter are used in the third chapter to construct concrete extensions of the already existent query language from \cite{borgwardt2015temporalizing}.
+To analyze the algorithm, in Chapter \ref{ch:evaluation} the extended language is applied to the extracted data from the online automotive marketplace.
+The goal of this chapter is to evaluate how well the queries can be answered with the help of the BHE \cite{borgwardt2015temporalizing}.
+Criteria for this are the size of the encoding, the time to answer one query per time point and the usefulness of the answers.
+On the basis of the above-mentioned investigations, the Conclusion summarizes the results in order to answer the research question,
+to which extent the BHE is helpful in a practical application.

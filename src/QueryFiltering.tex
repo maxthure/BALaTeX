@@ -1,31 +1,31 @@
 Second, the algorithm presented in \cite{borgwardt2015temporalizing} is extended by a filter operator.
 This filter operator $f[\phi]$ denotes that the filter query $f$ is applied onto the result of $\phi$.
 Since $\mathcal{Q}$-queries are not further specified, it is impossible to determine at which position in $f$ the result of $\phi$ should be inserted.
-However, it is known that the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing} is based on SQL.
-Therefore it can be defined that $f$ is an SQL statement and the result of $\phi$ is inserted at "SELECT * FROM $\phi$".
+However, it is known that the implementation of the BHE \cite{borgwardt2015temporalizing} is based on SQL.
+Therefore it can be defined that $f$ is an SQL statement and the result of $\phi$ is inserted at ``SELECT * FROM $\phi$''.
 
-The semantics of TQs from Definition REF DEFINITION TQ are extended as follows:
+The semantics of TQs from Definition \ref{def:Extension/operatorsnotimplemented/semantics} are extended as follows:
 \begin{definition}[semantics of temporal queries with a filter operator ct.\ Definition 3.3 in \cite{borgwardt2015temporalizing}]
     \label{def:extension/filtering/semantics}
     Let $\phi$ be a TQ, $\mathfrak{I} = (I_{i})_{0 \leq i \leq n}$ a sequence of interpretations over a common domain,
     $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ a variable assignment, $f$ be an SQL statement, and $i$ be an integer with $0 \leq i \leq n$.
-    The $satisfaction\ relation\ \mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
+    The \textit{satisfaction relation} $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
     \begin{table}[H]
         \centering
         \begin{tabular*}{\textwidth}{@{}ll@{}}
             \toprule
-            \phi                            & $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff  \\ \midrule
-            [\ldots]                & [\ldots] \\
-            $f$[\phi]                       & $I_{i} \models \mathfrak{a}(f)$ and $\mathfrak{I},i \models \mathfrak{a}(\phi)$            \\ \bottomrule
+            $\phi$                            & $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff  \\ \midrule
+            $[\ldots]$                & $[\ldots]$ \\
+            $f[\phi]$                       & $I_{i} \models \mathfrak{a}(f)$ and $\mathfrak{I},i \models \mathfrak{a}(\phi)$            \\ \bottomrule
         \end{tabular*}
         \caption{satisfaction relation of TQs with a filter operator}
         \label{tab:extension/filtering/satisfactionrelation}
     \end{table}
 \end{definition}
-Now the query REF QUERY2 from chapter REF CHAPTER 2 can be rewritten as follows:
+Now Query \ref{qu:queries/investigationqueries/practical/qu2} can be rewritten as follows:
 \begin{align}
-    &\text{"SELECT * FROM $(\Circle^{-}$(SELECT $marke$, AVG($price$) AS $price1$ FROM $autos$) $\wedge$}  \nonumber \\
-    &\text{SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$) WHERE $price1 < price2$"}.  \nonumber
+    &\text{``SELECT * FROM $(\Circle^{-}$(SELECT $marke$, AVG($price$) AS $price1$ FROM $autos$) $\wedge$}  \nonumber \\
+    &\text{SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$) WHERE $price1 < price2$''}.  \nonumber
 \end{align}
 
 The semantics of the filter operator can now be used to extend the algorithm specified in \cite{borgwardt2015temporalizing}.
@@ -36,8 +36,8 @@ The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\p
     \centering
     \begin{tabular*}{\textwidth}{@{}ll@{}}
         \toprule
-        \psi            & $\Phi_{0}(\psi)$                                      \\ \midrule
-        [\ldots]                & [\ldots] \\
+        $\psi$            & $\Phi_{0}(\psi)$                                      \\ \midrule
+        $[\ldots]$                & $[\ldots]$ \\
         $f[\psi_{1}]$      & $\mathsf{Ans}(f[\Phi_{0}(\psi_{1})], I_{0})$     \\\bottomrule
     \end{tabular*}
     \caption{$\Phi_{0}(\psi)$ with a filter operator}
@@ -49,8 +49,8 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
     \centering
     \begin{tabular*}{\textwidth}{@{}ll@{}}
         \toprule
-        \psi            & $\Phi_{0}(\psi)$                                      \\ \midrule
-        [\ldots]                & [\ldots] \\
+        $\psi$            & $\Phi_{0}(\psi)$                                      \\ \midrule
+        $[\ldots]$                & $[\ldots]$ \\
         $f[\psi_{1}]$      & $\mathsf{Ans}(f[\Phi^{0}_{i}(\psi_{1})], I_{i})$     \\\bottomrule
     \end{tabular*}
     \caption{$\Phi^{0}_{i}(\psi)$ with a filter operator}
@@ -59,7 +59,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
 
 \begin{theorem}
     \label{th:extension/filtering/corretandbounded}
-    Extending the bounded history encoding from \cite{borgwardt2015temporalizing} by a filter operator preserves correctness and boundedness.
+    Extending the algorithm from \cite{borgwardt2015temporalizing} by a filter operator preserves correctness and boundedness.
 \end{theorem}
 
 \begin{proof}
@@ -75,7 +75,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi_{0}(\psi))$
         is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$ for all $n \geq 0$. \\
         If $\psi = f[\psi_{1}]$, then
-        \[\(\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{Ans}(f[\Phi_{0}(\psi_{1})], I_{0}) = \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)\).\]
+        \[\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{Ans}(f[\Phi_{0}(\psi_{1})], I_{0}) = \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0).\]
     \end{proof}
 
     \begin{lemma}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
@@ -87,7 +87,7 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi))$
         is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)$ for all $n \geq i$. \\
         If $\psi = f[\psi_{1}]$, then
-        \[\(\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) = \mathsf{Ans}(f[\Phi^{0}_{i}(\psi_{1})], I_{i}) = \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)\).\]
+        \[\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) = \mathsf{Ans}(f[\Phi^{0}_{i}(\psi_{1})], I_{i}) = \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i).\]
     \end{proof}
 
     \begin{lemma}[ct.\ Lemma 6.5 in \cite{borgwardt2015temporalizing}]
@@ -100,5 +100,5 @@ The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}
         Since $f[\psi_{1}]$ introduces no new variables, this follows directly from Lemma 6.5 in \cite{borgwardt2015temporalizing}.
     \end{proof}
 
-    This concludes the proof of Theorem REF THEOREM XY.
+    This concludes the proof of Theorem \ref{th:extension/filtering/corretandbounded}.
 \end{proof}

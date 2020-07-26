@@ -1,43 +1,43 @@
-\chapter{The discrete data stream ACHTUNG NICHT FERTIG}
+\chapter{Discrete Data Stream}
 \label{ch:datastream}
 
-This chapter discusses in more detail the discrete data stream used as a basis for the investigation of the bounded history encoding from \cite{borgwardt2015temporalizing}.
+This chapter discusses in more detail the \textit{discrete data stream} used as a basis for the investigation of the algorithm from \cite{borgwardt2015temporalizing}.
 It explains where this data comes from, how it is retrieved and how it can be processed.
-Finally, it explains how the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing} can query the data.
+Finally, it explains how the already existent implementation of the BHE \cite{borgwardt2015temporalizing} can query the data.
 
-The publicly accessible data, which is used as a discrete data stream, comes from the online car market AutoScout24 (AS24) \cite{autoscout}.
+The publicly accessible data, which is used as a discrete data stream, comes from the online automotive marketplace \textit{AutoScout24} \cite{autoscout}.
 It provides data on many models of various brands.
 The brands and models must be narrowed down so that the data remains manageable but still delivers noticeable results.
 It is assumed that it is irrelevant which exact brands and models are collected.
-LATER ON IT CAN BE SHOWN WHETHER THIS IS TRUE .
-A COMPLETE LIST OF ALL MODELS CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
-To create a real discrete data stream, we collect the data weekly for ten weeks.
+Later on it can be shown whether this is true.
+A complete list of all models can be found in Appendix \ref{ch:appendixA}.
+To create a real discrete data stream, we collect the data weekly for 10 weeks.
 This is the longest possible period for this thesis.
 TO CHECK IF THIS AFFECTS THE RESEARCH RESULT, THE RESULT FOR PARTIAL PERIODS WILL BE COMPARED WITH THE RESULTS FOR THE ENTIRE PERIOD .
-In order to check whether this affects the research result, the result of the bounded history encoding from \cite{borgwardt2015temporalizing}, applied to weekly collected data, is compared to the result of the bounded history encoding from \cite{borgwardt2015temporalizing}, applied to daily collected data.
+In order to check whether this affects the research result, the result of the BHE \cite{borgwardt2015temporalizing}, applied to weekly collected data, is compared to the result of the BHE \cite{borgwardt2015temporalizing}, applied to daily collected data.
 Collecting the data daily artificially increases the amount of time points.
 
 The data is collected by a scraper implemented in Python, similar to the one presented in \cite{scraperautoscout}.
-The scraper uses the modules Beautiful Soup 4 (BS4) \cite{richardson2007beautiful}, pandas \cite{jeff_reback_2020_3715232} and SQLalchemy \cite{sqlalchemy}.
+The scraper uses the modules \textit{Beautiful Soup 4} \cite{richardson2007beautiful}, \textit{pandas} \cite{jeff_reback_2020_3715232} and \textit{SQLalchemy} \cite{sqlalchemy}.
 
 First, it is specified which aspects of an individual car the scraper should cover.
 This is necessary because most of the data collected from a website does not contain any information about the car.
-AGAIN, IT IS ASSUMED THAT IT IS IRRELEVANT WHICH EXACT DATA IS COLLECTED ABOUT THE CAR.
-The most noteworthy attributes, since they are used in examples in this thesis, are "url", "price" and "deleted".
-A COMPLETE LIST OF ALL ASPECTS CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
+Again, it is assumed that it is irrelevant which exact data is collected about the car.
+The most noteworthy attributes, since they are used in examples in this thesis, are $url$, $price$ and $deleted$.
+A complete list of all aspects can be found in Appendix \ref{ch:appendixA}.
 
-Second, the scraper searches AS24 for a specific brand and model and saves the link to each offer the search yields.
-This is performed with the BS4 Soupstrainer from \cite{richardson2007beautiful}.
+Second, the scraper searches AutoScout24 \cite{autoscout} for a specific brand and model and saves the link to each offer the search yields.
+This is performed with the Beautiful Soup 4 \textit{Soupstrainer} \cite{richardson2007beautiful}.
 To ensure a consistent order of the offers, they are sorted by age, starting with the newest.
 
-Third, once all links are saved, the scraper searches every offer individually and extracts all the previously determined aspects from the HTML, again using BS4 \cite{richardson2007beautiful}.
+Third, once all links are saved, the scraper searches every offer individually and extracts all the previously determined aspects from the HTML, again using Beautiful Soup 4 \cite{richardson2007beautiful}.
 
-Fourth, the collected data is stored in a pandas DataFrame \cite{jeff_reback_2020_3715232} to be loaded further into a SQLite database with SQLalchemy \cite{sqlalchemy}.
-The corresponding table is called "autos".
-This final step of storing the data in a SQLite database is required because the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing} also operates on a SQLite database.
+Fourth, the collected data is stored in a pandas \textit{DataFrame} \cite{jeff_reback_2020_3715232} to be loaded further into an \textit{SQLite} database with SQLalchemy \cite{sqlalchemy}.
+The corresponding table is called $autos$.
+This final step of storing the data in an SQLite database is required because the implementation of the BHE \cite{borgwardt2015temporalizing} operates on an SQLite database as well.
 This enables cross-language interaction between the scraper and the implementation.
 
-On AS24, the search results consist of a maximum of 20 pages, which then themselves contain a maximum of 20 offers.
+On AutoScout24 \cite{autoscout}, the search results consist of a maximum of 20 pages, which then themselves contain a maximum of 20 offers.
 This maximum of 400 offers per search should not have a major impact on our research outcome.
 The number of brands still creates a data set with over 20,000 offers per week, which is expected to be sufficiently large to deliver noticeable results.
 Thus, the maximum of 400 offers helps to keep the data manageable.
@@ -51,13 +51,13 @@ This provides more certainty than just assuming an offer has been deleted if the
 The latter could be a consequence of frequently added new offers.
 To simplify matters, it is assumed that every deleted offer has been sold.
 
-Although the implementation of the bounded history encoding only requires the data of the current point in time,
+Although the BHE \cite{borgwardt2015temporalizing} only requires the data of the current time point,
 instead of replacing the database, we create a new database each time.
-Storing all the data brings many advantages for later analysis:
+Storing all the data brings many advantages for later analysis, such as
 \begin{itemize}
-    \item By querying the data one query at a time, it is easier to analyze the impact of each query.
-    \item Each step can be repeated to check whether the results are reproducible.
-    \item It is possible to query any partial period.
+    \item by querying the data one query at a time, it is easier to analyze the impact of each query,
+    \item each step can be repeated to check whether the results are reproducible and
+    \item it is possible to query any partial period.
 \end{itemize}
-Furthermore, the storage of all data allows a comparison of the implementation of the bounded history encoding WITH OTHER
-ESTABLISHED APPROACHES.
+Furthermore, the storage of all data allows a comparison of the BHE \cite{borgwardt2015temporalizing} with other
+established approaches.

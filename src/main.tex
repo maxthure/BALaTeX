@@ -4,14 +4,24 @@
 % Preamble
 \documentclass[11pt]{report}
 
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{wasysym}
-%\usepackage{booktabs}
+\usepackage{booktabs}
 \usepackage{float}
 \usepackage{amsfonts}
 \usepackage[noend]{algorithmic}
 \usepackage{algorithm,caption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{abstract}
+
+
+\pgfplotsset{compat=newest}
 
 % Styles
 \newtheorem{theorem}{Theorem}[section]
@@ -26,16 +36,24 @@
 \author{Thure Nebendahl}
 
 % Document
-\begin{document}
+\begin{document}F
     \maketitle
+    \input{Abstract.tex}
     \tableofcontents
 
     \input{Introduction.tex}
     \input{Data.tex}
     \input{Queries.tex}
     \input{Operators.tex}
+    \input{Evaluation.tex}
+    \input{Conclusion.tex}
 
     \bibliography{main}
     \bibliographystyle{unsrt}
+
+    \appendix
+    \input{AppendixA.tex}
+    \input{AppendixB.tex}
+    \input{AppendixC.tex}
 
 \end{document}

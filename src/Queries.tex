@@ -1,11 +1,10 @@
-\chapter{Queries ACHTUNG NICHT FERTIG}
+\chapter{Queries}
 \label{ch:queries}
-
-After the last chapter covered in detail how the data stream is processed, this chapter takes a closer look at the queries
-used for the investigation of the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing}.
+The last chapter covered in detail how the data stream is processed so that queries can be executed on the data.
+This chapter now takes a closer look at the queries used for the investigation of the BHE \cite{borgwardt2015temporalizing}.
 It further discusses whether the queries specified here can be expressed in the language of \cite{borgwardt2015temporalizing}.
 
-The language of \cite{borgwardt2015temporalizing} consists of temporal queries (TQs).
+The language of \cite{borgwardt2015temporalizing} consists of \textit{temporal queries} (TQs).
 They can be based on any atemporal query language $\mathcal{Q}$.
 \begin{definition}[temporal query ct.\ Definition 3.2 in \cite{borgwardt2015temporalizing}]
     \label{def:queries/temporal}
@@ -22,41 +21,38 @@ They can be based on any atemporal query language $\mathcal{Q}$.
             \item $\phi_{1} \mathsf{U} \phi_{2}$ (until), and $\phi_{1} \mathsf{S} \phi_{2}$ (since).
         \end{itemize}
     \end{itemize}
+    The symbols $\Circle^{-}, \CIRCLE^{-}, \Box^{-}, \Diamond^{-}$ and $\mathsf{S}$ are called \textit{past operators}, the symbols $\Circle, \CIRCLE, \Box, \Diamond$ and $\mathsf{U}$ are \textit{future operators}.
 \end{definition}
 
-Since the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing} uses a SQLite database, the atemporal query language $\mathcal{Q}$ in this thesis is SQL.
-
-
-\section{Queries used for the investigation}
-\label{sec:queries/investigationqueries}
+Since the implementation of the BHE \cite{borgwardt2015temporalizing} uses a SQLite database, the atemporal query language $\mathcal{Q}$ in this thesis is SQL.
 
 In this thesis two different types of TQs are distinguished.
-First, practical and meaningful TQs (PTQs) and second, randomized TQs (RTQs) based on the idea presented in \cite{schneider2019formally}.
+First, \textit{practical and meaningful} TQs (PTQs) and second, \textit{randomized} TQs (RTQs) based on the idea presented in \cite{schneider2019formally}.
 
-\subsection{Practical TQs}
-\label{subsec:queries/investigationqueries/practical}
-PTQs show whether the bounded history encoding from \cite{borgwardt2015temporalizing} can provide relevant answers to queries.
-This is necessary to find out if it has practical relevance and can be used, e.g. for market observation as it is done in this thesis.
+\section{Practical Temporal Queries}
+\label{sec:queries/investigationqueries/practical}
+PTQs show whether the BHE \cite{borgwardt2015temporalizing} can give relevant answers to queries.
+This is necessary to find out if it has practical relevance and can be used, e.g.\ for market observation as it is done in this thesis.
 For reasons of readability, only the following selected queries are discussed as examples:
 \begin{align}
-    &\text{"Which cars cost less than 10,000 at the last point in time} \label{qu:queries/investigationqueries/practical/qu1} \\
-    &\text{and cost more than 10,000 at this point in time?"} \nonumber
+    &\text{``Which cars cost less than 10,000 at the last point in time} \label{qu:queries/investigationqueries/practical/qu1} \\
+    &\text{and cost more than 10,000 at this point in time?''} \nonumber
 \end{align}
 \begin{align}
-    &\text{"Which brands (or models) have an increased average price} \label{qu:queries/investigationqueries/practical/qu2} \\
-    &\text{compared to the last point in time?"} \nonumber
+    &\text{``Which brands (or models) have an increased average price} \label{qu:queries/investigationqueries/practical/qu2} \\
+    &\text{compared to the last point in time''} \nonumber
 \end{align}
 \begin{align}
-    &\text{"Which cars cost more than 1.000.000 some time in the last 6} \label{qu:queries/investigationqueries/practical/qu3}\\
-    &\text{points in time?"} \nonumber
+    &\text{``Which cars cost more than 1.000.000 some time in the last 6} \label{qu:queries/investigationqueries/practical/qu3}\\
+    &\text{points in time?''} \nonumber
 \end{align}
 
-A COMPLETE LIST OF PTQs CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
+A complete list of PTQs can be found in Appendix \ref{ch:appendixB}.
 
-\subsection{Randomized TQs}
-\label{subsec:queries/investigationqueries/random}
+\section{Randomized Temporal Queries}
+\label{sec:queries/investigationqueries/random}
 RTQs are used to verify the impact of the queries on the overall research outcome.
-They are necessary because the practical TQs might not be sufficiently diverse to provide reliable results.
+They are necessary because PTQs might not be sufficiently diverse to provide reliable results.
 RTQs can be constructed in any size.
 
 \begin{definition}[randomized temporal query ct. \cite{schneider2019formally}]
@@ -71,7 +67,7 @@ RTQs can be constructed in any size.
         \renewcommand{\algorithmiccomment}[1]{// #1}
         \begin{algorithmic}[1]
             \IF{$n = 0$}
-            \RETURN $\mathcal{Q}-\text{query } \psi$
+            \RETURN $\mathcal{Q}$-query $\psi$
             \ELSE
             \STATE select a random operator $op$
             \IF{$op$ is unary}
@@ -85,82 +81,76 @@ RTQs can be constructed in any size.
     \end{algorithm}
 \end{definition}
 
-A COMPLETE LIST OF GENERATED RTQs CAN BE FOUND IN THE APPENDIX REF APPENDIX XY.
+In this thesis 100 RTQs of sizes 1 to 10 are considered.
+The individual RTQs are referenced by numbers.
+A complete list of generated RTQs can be found in Appendix \ref{ch:appendixB}.
 
 
-\section{Are these queries expressible in the language from \cite{borgwardt2015temporalizing}?}
+\section{Expressibility}
 \label{sec:queries/expressibility}
+For RTQs, since only a predefined set of operators is used in the construction, it is obvious that any RTQ can be expressed in any desired language, i.e.\ the language of \cite{borgwardt2015temporalizing}, if $\mathsf{Ops}$ is exactly the set of operators available in this language.
+In the following $\mathcal{Q}$-query $\psi$ is defined as the SQL statement ``SELECT $url$ FROM $autos$ WHERE NOT $deleted$'' which returns every car that is not sold, just to be able to recognize the difference between a query result and the whole table.
 
-\subsection{Practical TQs}
-\label{subsec:queries/expressibility/practical}
-As mentioned in CHAPTER REF CHAPTER 1, "autos" is the table in which all offers are stored.
-The attribute "url" is distinct for each dataset and serves as an identifier for a car.
+The expressibility of PTQs is not as easy to assess.
+As mentioned in Chapter \ref{ch:datastream}, $autos$ is the table in which all offers are stored.
+The attribute $url$ is distinct for each dataset and serves as an identifier for a car.
 Hence, if the query asks for cars, it will actually return a set of urls.
-This said, query REF QUERY1 can be translated into the language of \cite{borgwardt2015temporalizing}
+This said, Query \ref{qu:queries/investigationqueries/practical/qu1} can be translated into the language of \cite{borgwardt2015temporalizing}
 as follows:
 \begin{itemize}
-    \item "[\dots] and [\dots]" indicates the "conjunction" operator from \cite{borgwardt2015temporalizing}
-    \item "[\dots] at the last point in time [\dots]" indicates either a "strong previous" or a "weak previous" operator from \cite{borgwardt2015temporalizing}
-    \item "Which cars cost less than 10,000 [\dots]" indicates the SQL statement "SELECT $url$ FROM $autos$ WHERE $price$ $<$ 10000"
-    \item "[\dots] more than 10,000 [\dots]" indicates the SQL statement "SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10000"
+    \item ``[\dots] and [\dots]'' indicates the conjunction operator from \cite{borgwardt2015temporalizing},
+    \item ``[\dots] at the last point in time [\dots]'' indicates either a strong previous or a weak previous operator from \cite{borgwardt2015temporalizing},
+    \item ``Which cars cost less than 10,000 [\dots]'' indicates the SQL statement ``SELECT $url$ FROM $autos$ WHERE $price$ $<$ 10000'' and
+    \item ``[\dots] more than 10,000 [\dots]'' indicates the SQL statement ``SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10000''.
 \end{itemize}
-Thus, a resulting query in the language from \cite{borgwardt2015temporalizing} is
+Thus, a resulting query in the language of \cite{borgwardt2015temporalizing} is
 \begin{align}
-    &\text{"$\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $<$ 10000) } \nonumber \\
-    &\text{$\wedge$ SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10000".} \nonumber
+    &\text{``$\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $<$ 10000) } \nonumber \\
+    &\text{$\wedge$ SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10000''.} \nonumber
 \end{align}
-Query REF QUERY2 can be rewritten as follows:
+Query \ref{qu:queries/investigationqueries/practical/qu2} can be rewritten as follows:
 \begin{itemize}
-    \item "[\dots] compared to the last point in time?" indicates the use of the "conjunction" operator from \cite{borgwardt2015temporalizing} with either a "strong previous" or a "weak previous" operator from \cite{borgwardt2015temporalizing} as one argument
-    \item Since the query needs to compare the value of one attribute at two different points in time it needs a restriction like "[\dots] WHERE $price1 < price2$" with $price1$ being the average price of the first point in time and $price2$ the average price of the second point in time.
+    \item ``[\dots] compared to the last point in time?'' indicates the use of the conjunction operator from \cite{borgwardt2015temporalizing} with either a strong previous or a weak previous operator from \cite{borgwardt2015temporalizing} as one argument and
+    \item since the query needs to compare the value of one attribute at two different points in time it needs a restriction like ``[\dots] WHERE $price1 < price2$'' with $price1$ being the average price of the first point in time and $price2$ the average price of the second point in time.
 \end{itemize}
 Thus, a resulting query might be
 \begin{align}
-    &\text{"$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $price1$ FROM $autos$)}  \nonumber \\
-    &\text{$\wedge$ SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$ WHERE $price1 < price2$".}  \nonumber
+    &\text{``$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $price1$ FROM $autos$)}  \nonumber \\
+    &\text{$\wedge$ SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$ WHERE $price1 < price2$''.}  \nonumber
 \end{align}
-Notice, that this kind of more sophisticated filtering is not considered in \cite{borgwardt2015temporalizing} and therefore is also not considered in the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing}.
-If expressed with the available operators in the language from \cite{borgwardt2015temporalizing} the implementation of the algorithm
-presented in \cite{borgwardt2015temporalizing} rewrites the query into the SQL statement
+Notice, that this kind of more sophisticated filtering is not considered in \cite{borgwardt2015temporalizing} and therefore is also not considered in the implementation of the BHE \cite{borgwardt2015temporalizing}.
+If expressed with the available operators in the language of \cite{borgwardt2015temporalizing}, the implementation of the BHE \cite{borgwardt2015temporalizing} rewrites the query into the SQL statement
 \begin{align}
-    &\text{"SELECT * FROM result\_table\_XY NATURAL JOIN} \nonumber \\
-    &\text{(SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$ WHERE $price1 < price2$)"} \nonumber
+    &\text{``SELECT * FROM $result\_table\_XY$ NATURAL JOIN} \nonumber \\
+    &\text{(SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$ WHERE $price1 < price2$)''} \nonumber
 \end{align}
 where $result\_table\_XY$ denotes the table that contains the answer to the subquery
 \begin{align}
-    &\text{"$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $price1$ FROM $autos$)".} \nonumber
+    &\text{``$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $price1$ FROM $autos$)''.} \nonumber
 \end{align}
 This statement is not a valid SQL statement, as there is no such column $price1$ in the second part of the statement.
 A corresponding valid SQL statement is
 \begin{align}
-    &\text{"SELECT * FROM (SELECT * FROM result\_table\_XY NATURAL JOIN} \nonumber \\
-    &\text{(SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$) WHERE $price1 < price2$)"} \nonumber
+    &\text{``SELECT * FROM (SELECT * FROM $result\_table\_XY$ NATURAL JOIN} \nonumber \\
+    &\text{(SELECT $marke$, AVG($price$) AS $price2$ FROM $autos$) WHERE $price1 < price2$)''} \nonumber
 \end{align}
 which shows, that more sophisticated filtering can be achieved by applying another SQL statement, that contains the wanted filter, to the result of the underlying query.
-Thus, to express this query in the language from \cite{borgwardt2015temporalizing}, it needs to be extended by a filter operator.
+Thus, to express this query in the language of \cite{borgwardt2015temporalizing}, the language needs to be extended by a \textit{filter operator}.
 
-Furthermore, the query REF QUERY3 can be rewritten as follows:
+Furthermore, the Query \ref{qu:queries/investigationqueries/practical/qu3} can be rewritten as follows:
 \begin{align}
-    &\text{"SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000} \nonumber \\
+    &\text{``SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000} \nonumber \\
     &\text{$\vee \Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)} \nonumber \\
     &\text{$\vee \Circle^{-}\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)} \nonumber \\
     &\text{$\vee \Circle^{-}\Circle^{-}\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)} \nonumber \\
     &\text{$\vee \Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)} \nonumber \\
-    &\text{$\vee \Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)"} \nonumber
+    &\text{$\vee \Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)''} \nonumber
 \end{align}
-This kind of query is highly complex when expressed in the language from \cite{borgwardt2015temporalizing}.
-To simplify matters, this query would need a time limit in the form of metric temporal operators.
+This kind of query is highly complex when expressed in the language of \cite{borgwardt2015temporalizing}.
+To simplify matters, this query would need a time limit in the form of \textit{metric temporal operators} (MTOs).
 
 Lastly, the operators
 $\Box \phi$ (always), $\Box^{-} \phi$ (always in the past), $\Diamond \phi$ (eventually), $\Diamond^{-} \phi$
 (some time in the past) were introduced in \cite{borgwardt2015temporalizing} but not considered when defining the algorithm.
 
-Consequently, it is necessary to extend the language from \cite{borgwardt2015temporalizing} by a filter operator and by metric temporal operators
-before then extending the implementation of the bounded history encoding from \cite{borgwardt2015temporalizing} by the missing operators.
-
-\subsection{Randomized TQs}
-\label{subsec:queries/expressibility/random}
-Since only a predefined set of operators is used in the construction of randomized TQs, it is obvious that any randomized
-TQ can be expressed in any desired language, i.e. the language from \cite{borgwardt2015temporalizing}, if $\mathsf{Ops}$ is exactly the set of operators available in this language.
-In the following $\mathcal{Q}-\text{query } \psi$ is defined as the SQL statement "SELECT url FROM autos WHERE NOT deleted" which returns every car that is not sold.
-
+Consequently, it is necessary to extend the language of \cite{borgwardt2015temporalizing} and the implementation of the BHE \cite{borgwardt2015temporalizing} by these missing operators, a filter operator and MTOs.

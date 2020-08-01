@@ -141,9 +141,7 @@
 	  \noindent Dresden, \@date\\[3cm]
 	  \@author
 	}{%
-	% Copyright-Kram
-	\@mkboth{\@copyrightlabel}{}
-	\copyrightinfo
+
 	\end{@altdoc}}
 
 

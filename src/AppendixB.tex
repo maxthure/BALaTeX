@@ -7,91 +7,91 @@ These queries are given in the language from \cite{borgwardt2015temporalizing} a
     \item Which cars price increased some time in the past?
     \begin{itemize}
         \item $\Diamond^{-}($SELECT * FROM (SELECT * FROM $\phi$) WHERE $p1$ $<$ $p2$ [$\Circle^{-}$(SELECT $url$, $price$ AS $p1$ FROM $autos$) $\cap$ SELECT $url$, $price$ AS $p2$ FROM $autos$])
-        \item Query query1 = new EventuallyPast( new Filter( ``SELECT * FROM phi WHERE p1 $<$ p2'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT url, price AS p1 FROM autos'' ) ), new AtemporalQuery( ``SELECT url, price AS p2 FROM autos'' ) ) ) );
+        \item Query query1 = new Even\-tually\-Past( new Filter ( ``SELECT * FROM phi WHERE p1 $<$ p2'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT url, price AS p1 FROM autos'' ) ), new AtemporalQuery ( ``SELECT url, price AS p2 FROM autos'' ) ) ) );
     \end{itemize}
 
     \item Which cars price decreased by more than 20\% some time in the past?
     \begin{itemize}
-        \item $\Diamond^{-}($SELECT * FROM (SELECT * FROM $\phi$) WHERE $0.8*p1$ $>$ $p2$ [$\Circle^{-}$(SELECT $url$, $price$ AS $p1$ FROM $autos$) $\cap$ SELECT $url$, $price$ AS $p2$ FROM $autos$])
-        \item Query query1 = new EventuallyPast( new Filter( ``SELECT * FROM phi WHERE 0.8*p1 $>$ p2'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT url, price AS p1\linebreak FROM autos'' ) ), new AtemporalQuery( ``SELECT url, price AS p2 FROM autos'' ) ) ) );
+        \item $\Diamond^{-}$( SELECT * FROM ( SELECT * FROM $\phi$ ) WHERE $0.8*p1$ $>$ $p2$[ $\Circle^{-}$(SELECT $url$, $price$ AS $p1$ FROM $autos$) $\cap$ SELECT $url$, $price$ AS $p2$ FROM $autos$])
+        \item Query query1 = new Even\-tually\-Past ( new Filter( ``SELECT * FROM phi WHERE 0.8*p1 $>$ p2'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT url, price AS p1 FROM autos'' ) ), new AtemporalQuery ( ``SELECT url, price AS p2 FROM autos'' ) ) ) );
     \end{itemize}
 
     \item For which cars did the attributes ``url'', ``price'' and ``kilometerstand'' never change?
     \begin{itemize}
         \item $\Box^{-}$($\CIRCLE^{-}$(SELECT $url$, $price$, $kilometerstand$ FROM $autos$) $\cap$ SELECT $url$, $price$, $kilometerstand$ FROM $autos$)
-        \item Query query1 = new AlwaysPast( new Conjunction( new Weak\-Previous( new AtemporalQuery( ``SELECT url, price, kilometerstand FROM autos'' ) ), new AtemporalQuery( ``SELECT url, price, kilometerstand FROM autos'' ) ) );
+        \item Query query1 = new Always\-Past( new Conjunction( new Weak\-Previous( new AtemporalQuery ( ``SELECT url, price, kilometerstand FROM autos'' ) ), new AtemporalQuery ( ``SELECT url, price, kilometerstand FROM autos'' ) ) );
     \end{itemize}
 
     \item Which cars price decreased by more than 20\% from one time point to the next some time in the past 4 time points?
     \begin{itemize}
-        \item $\Diamond^{-}_{4}$(SELECT * FROM (SELECT * FROM $\phi$) WHERE $0.8*p1$ $>$ $p2$ [$\Circle^{-}$(SELECT $url$, $price$ AS $p1$ FROM $autos$) $\cap$ SELECT $url$, $price$ AS $p2$ FROM $autos$])
-        \item Query query1 = new EventuallyPastPredicate( new Filter( ``SELECT * FROM phi WHERE 0.8*p1 $>$ p2'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT url, price AS p1 FROM autos'' ) ), new AtemporalQuery( ``SELECT url, price AS p2 FROM autos'' ) ) ), 4 );
+        \item $\Diamond^{-}_{4}$( SELECT * FROM ( SELECT * FROM $\phi$ ) WHERE $0.8*p1$ $>$ $p2$[ $\Circle^{-}$(SELECT $url$, $price$ AS $p1$ FROM $autos$) $\cap$ SELECT $url$, $price$ AS $p2$ FROM $autos$])
+        \item Query query1 = new Even\-tually\-Past\-Predicate( new Filter( ``SELECT * FROM phi WHERE 0.8*p1 $>$ p2'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT url, price AS p1 FROM autos'' ) ), new AtemporalQuery ( ``SELECT url, price AS p2 FROM autos'' ) ) ), 4 );
     \end{itemize}
 
     \item Which brands have an increased average price compared to the last point in time?
     \begin{itemize}
         \item SELECT $marke$ FROM (SELECT * FROM $\phi$) WHERE $p$ $<$ $q$[$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $marke$) $\cap$ SELECT $marke$, AVG($price$) AS $q$ FROM $autos$ GROUP BY $marke$]
-        \item Query query1 = new Filter ( ``SELECT marke FROM phi \linebreak WHERE p $<$ q'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT marke, AVG(price) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery( ``SELECT marke, AVG(price) AS q FROM autos GROUP BY marke'' ) ) );
+        \item Query query1 = new Filter ( ``SELECT marke FROM phi \linebreak WHERE p $<$ q'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT marke, AVG(price) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery ( ``SELECT marke, AVG(price) AS q FROM autos GROUP BY marke'' ) ) );
     \end{itemize}
 
     \item Which models have an increased average price compared to the last point in time?
     \begin{itemize}
         \item SELECT $modell$ FROM (SELECT * FROM $\phi$) WHERE $p$ $<$ $q$[$\Circle^{-}$(SELECT $modell$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $modell$) $\cap$ SELECT $modell$, AVG($price$) AS $q$ FROM $autos$ GROUP BY $modell$]
-        \item Query query1 = new Filter( ``SELECT modell FROM phi\linebreak WHERE p $<$ q'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT modell, AVG(price) AS p FROM autos GROUP BY modell'' ) ), new AtemporalQuery( ``SELECT modell, AVG(price) AS q FROM autos GROUP BY modell'' ) ) );
+        \item Query query1 = new Filter( ``SELECT modell FROM phi\linebreak WHERE p $<$ q'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT modell, AVG(price) AS p FROM autos GROUP BY modell'' ) ), new AtemporalQuery ( ``SELECT modell, AVG(price) AS q FROM autos GROUP BY modell'' ) ) );
     \end{itemize}
 
     \item For which brands did the average price never drop from one time point to the next in the last 5 time points?
     \begin{itemize}
-        \item $\Box^{-}_{5}$(SELECT $marke$ FROM (SELECT * FROM $\phi$) WHERE $p$ $<=$ $q$)[$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $marke$) $\cap$ SELECT $marke$, AVG($price$) AS $q$\linebreak FROM $autos$ GROUP BY $marke$]
-        \item Query query1 = new AlwaysPastPredicate(new Filter(``SELECT marke FROM phi WHERE p $<=$ q'', new Conjunction ( new StrongPrevious ( new AtemporalQuery ( ``SELECT marke ,\linebreak AVG(price) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery( ``SELECT marke, AVG(price) AS q FROM autos GROUP BY marke'' ) ) ), 5);
+        \item $\Box^{-}_{5}$(SELECT $marke$ FROM ( SELECT * FROM $\phi$ ) WHERE $p$ $<=$ $q$)[$\Circle^{-}$\allowbreak(SELECT $marke$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $marke$) $\cap$ SELECT $marke$, AVG($price$) AS $q$ FROM $autos$ GROUP BY $marke$]
+        \item Query query1 = new Always\-Past\-Predicate(new Filter(``SELECT marke FROM phi WHERE p $<=$ q'', new Conjunction ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT marke , AVG(price) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery ( ``SELECT marke, AVG(price) AS q FROM autos GROUP BY marke'' ) ) ), 5);
     \end{itemize}
 
     \item For which models did the average price never drop from one time point to the next in the last 5 time points?
     \begin{itemize}
-        \item $\Box^{-}_{5}$(SELECT $modell$ FROM (SELECT * FROM $\phi$) WHERE $p$ $<=$ $q$)[$\Circle^{-}$(SELECT $modell$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $modell$) $\cap$ SELECT $modell$, AVG($price$) AS $q$\linebreak FROM $autos$ GROUP BY $modell$]
-        \item Query query1 = new AlwaysPastPredicate( new Filter(``SELECT modell FROM phi WHERE p $<=$ q'', new Conjunction( new StrongPrevious ( new AtemporalQuery ( ``SELECT modell,\linebreak AVG(price) AS p FROM autos GROUP BY modell'' ) ), new AtemporalQuery( ``SELECT modell, AVG(price) AS q FROM autos GROUP BY modell'' ) ) ), 5);
+        \item $\Box^{-}_{5}$(SELECT $modell$ FROM ( SELECT * FROM $\phi$ ) WHERE $p$ $<=$ $q$)[ $\Circle^{-}$\allowbreak(SELECT $modell$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $modell$) $\cap$ SELECT $modell$, AVG($price$) AS $q$ FROM $autos$ GROUP BY $modell$]
+        \item Query query1 = new Always\-Past\-Predicate( new Filter(``SELECT modell FROM phi WHERE p $<=$ q'', new Conjunction( new Strong\-Previous ( new AtemporalQuery ( ``SELECT modell, AVG(price) AS p FROM autos GROUP BY modell'' ) ), new AtemporalQuery ( ``SELECT modell, AVG(price) AS q FROM autos GROUP BY modell'' ) ) ), 5);
     \end{itemize}
 
     \item For which brands did the amount of offers decrease?
     \begin{itemize}
         \item SELECT $marke$ FROM (SELECT * FROM $\phi$) WHERE $p$ $>$ $q$[$\Circle^{-}$(SELECT $marke$, COUNT($url$) AS $p$ FROM $autos$ GROUP BY $marke$) $\cap$ SELECT $marke$, COUNT($url$) AS $q$ FROM $autos$ GROUP BY $marke$]
-        \item Query query1 =new Filter(``SELECT marke FROM phi WHERE p $>$ q'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT marke, COUNT(url) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery( ``SELECT marke, COUNT(url) AS q FROM autos GROUP BY marke'' ) ) );
+        \item Query query1 =new Filter(``SELECT marke FROM phi WHERE p $>$ q'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT marke, COUNT(url) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery ( ``SELECT marke, COUNT(url) AS q FROM autos GROUP BY marke'' ) ) );
     \end{itemize}
 
     \item For which brands did the average price drop by more than 10\% some time in the past?
     \begin{itemize}
-        \item $\Diamond^{-}$(SELECT $marke$ FROM (SELECT * FROM $\phi$) WHERE $0.9*p$ $>$ $q$[$\Circle^{-}$(SELECT $marke$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $marke$) $\cap$ SELECT $marke$, AVG($price$) AS $q$\linebreak FROM $autos$ GROUP BY $marke$])
-        \item Query query1 = new EventuallyPast( new Filter( ``SELECT mar\-ke FROM phi WHERE 0.9*p $>$ q'',new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT marke, AVG(price) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery(``SELECT marke, AVG(price) AS q FROM autos GROUP BY marke'' ) ) ));
+        \item $\Diamond^{-}$(SELECT $marke$ FROM (SELECT * FROM $\phi$) WHERE $0.9*p$ $>$ $q$[$\Circle^{-}$\allowbreak(SELECT $marke$, AVG($price$) AS $p$ FROM $autos$ GROUP BY $marke$) $\cap$ SELECT $marke$, AVG($price$) AS $q$ FROM $autos$ GROUP BY $marke$])
+        \item Query query1 = new Even\-tually\-Past( new Filter( ``SELECT marke FROM phi WHERE 0.9*p $>$ q'',new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT marke, AVG(price) AS p FROM autos GROUP BY marke'' ) ), new AtemporalQuery (``SELECT marke, AVG(price) AS q FROM autos GROUP BY marke'' ) ) ));
     \end{itemize}
 
     \item Which cars were always present until the time point before they were sold?
     \begin{itemize}
-        \item $\Circle^{-}$($\Box^{-}$(SELECT $url$ FROM $autos$)) $\cap$ SELECT $url$ FROM $au\-tos$ WHERE $deleted$
-        \item Query query1 = new Conjunction( new StrongPrevious( new AlwaysPast( new AtemporalQuery( ``SELECT url FROM autos'' ) ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE deleted'' ) );
+        \item $\Circle^{-}$($\Box^{-}$(SELECT $url$ FROM $autos$)) $\cap$ SELECT $url$ FROM $autos$ WHERE $de\-leted$
+        \item Query query1 = new Conjunction( new Strong\-Previous( new Always\-Past( new AtemporalQuery ( ``SELECT url FROM autos'' ) ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE de\-leted'' ) );
     \end{itemize}
 
     \item Which cars cost less than 10,000 at the last point in time and cost more than 10,000 at this point in time?
     \begin{itemize}
         \item $\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $<$ 10.000) $\cap$ SELECT $url$ FROM $autos$ WHERE $price$ $>$ 10.000
-        \item Query query1 = new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT url FROM autos WHERE price $<$ 10.000'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE price $>$ 10.000'' ) );
+        \item Query query1 = new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT url FROM autos WHERE price $<$ 10.000'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE price $>$ 10.000'' ) );
     \end{itemize}
 
     \item Which cars cost more than 1.000.000 some time in the last 6 points in time?
     \begin{itemize}
         \item $\Diamond^{-}_{6}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)
-        \item Query query1 = new EventuallyPastPredicate( new AtemporalQuery( ``SELECT url FROM autos WHERE price $>$ 1000000'' ), 6);
+        \item Query query1 = new Even\-tually\-Past\-Predicate( new AtemporalQuery ( ``SELECT url FROM autos WHERE price $>$ 1000000'' ), 6);
     \end{itemize}
 
     \item Which cars had more than 100.00km at the last time point and were sold at this time point?
     \begin{itemize}
-        \item $\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $kilometerstand>$\linebreak 100000) $\cap$ SELECT $url$ FROM $autos$ WHERE $deleted$
-        \item Query query1 = new Conjunction( new StrongPrevious( new AtemporalQuery( ``SELECT url FROM autos WHERE kilometerstand $>$ 100000'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE deleted'' ) );
+        \item $\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $kilometerstand>$\linebreak 100000) $\cap$ SELECT $url$ FROM $autos$ WHERE $de\-leted$
+        \item Query query1 = new Conjunction( new Strong\-Previous( new AtemporalQuery ( ``SELECT url FROM autos WHERE kilometerstand $>$ 100000'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE de\-leted'' ) );
     \end{itemize}
 
     \item Which cars have cost more than 1.000.000 since it cost less than 1.000.000 until it was sold?
     \begin{itemize}
-        \item $\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000 $\mathsf{S}$ SELECT $url$ FROM $autos$ WHERE $price$ $<$ 1000000) $\cap$ SELECT $url$ FROM $autos$ WHERE $deleted$
-        \item Query query1 = new Conjunction ( new StrongPrevious ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE price $>$ 1000000'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE price $<$ 1000000'' ) ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE deleted'' ) );
+        \item $\Circle^{-}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000 $\mathsf{S}$ SELECT $url$ FROM $autos$ WHERE $price$ $<$ 1000000) $\cap$ SELECT $url$ FROM $autos$ WHERE $de\-leted$
+        \item Query query1 = new Conjunction ( new Strong\-Previous ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE price $>$ 1000000'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE price $<$ 1000000'' ) ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE de\-leted'' ) );
     \end{itemize}
 \end{enumerate}
 
@@ -118,205 +118,205 @@ These queries are given in the language from \cite{borgwardt2015temporalizing} a
 \label{sec:appendixB/RTQs}
 These queries are given in Java-Syntax as the algorithm to generate these queries returns queries in this syntax.
 \begin{enumerate}
-    \item new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 );
+    \item new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 );
 
-    \item new WeakNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new AlwaysPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 );
+    \item new Always\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 );
 
-    \item new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 );
+    \item new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 );
 
-    \item new Eventually ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Even\-tually ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new Until ( new AtemporalQuery( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ),new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Until ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT de\-leted'' ),new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 7 );
+    \item new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 7 );
 
-    \item new StrongNext ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) );
+    \item new Strong\-Next ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) );
 
-    \item new AlwaysPredicate ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 7 );
+    \item new Always\-Predicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 7 );
 
-    \item new Disjunction ( new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Disjunction ( new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new WeakPreviousPredicate ( new AlwaysPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 0 ), 6 );
+    \item new Weak\-Previous\-Predicate ( new Always\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 0 ), 6 );
 
-    \item new WeakPrevious ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) );
+    \item new Weak\-Previous ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) );
 
-    \item new WeakNextPredicate ( new StrongPrevious ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 5 );
+    \item new Weak\-Next\-Predicate ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 5 );
 
-    \item new Conjunction ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) );
+    \item new Conjunction ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) );
 
-    \item new StrongPreviousPredicate ( new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 0 );
+    \item new Strong\-Previous\-Predicate ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 0 );
 
-    \item new WeakPrevious ( new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 0 ) );
+    \item new Weak\-Previous ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 0 ) );
 
-    \item new EventuallyPastPredicate ( new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 0 );
+    \item new Even\-tually\-Past\-Predicate ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 0 );
 
-    \item new EventuallyPredicate ( new Eventually ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 2 ) ), 3 );
+    \item new Even\-tually\-Predicate ( new Even\-tually ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 2 ) ), 3 );
 
-    \item new StrongPrevious ( new EventuallyPredicate ( new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 0 ), 2 ) );
+    \item new Strong\-Previous ( new Even\-tually\-Predicate ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 0 ), 2 ) );
 
-    \item new Conjunction ( new AlwaysPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 1 ), new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 ) );
+    \item new Conjunction ( new Always\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 1 ), new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 ) );
 
-    \item new SincePredicate ( new AlwaysPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), new AlwaysPast ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ) ), 8 );
+    \item new Since\-Predicate ( new Always\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT de\-leted'' ) ), 8 );
 
-    \item new AlwaysPastPredicate ( new WeakNextPredicate ( new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 2 ), 7 );
+    \item new Always\-Past\-Predicate ( new Weak\-Next\-Predicate ( new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 2 ), 7 );
 
-    \item new WeakPreviousPredicate ( new WeakNext ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 3 );
+    \item new Weak\-Previous\-Predicate ( new Weak\-Next ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 3 );
 
-    \item new Eventually ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) );
+    \item new Even\-tually ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) );
 
-    \item new StrongPrevious ( new WeakNextPredicate ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 0 ) );
+    \item new Strong\-Previous ( new Weak\-Next\-Predicate ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 0 ) );
 
-    \item new StrongPrevious ( new StrongPreviousPredicate ( new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ), 9 ) );
+    \item new Strong\-Previous ( new Strong\-Previous\-Predicate ( new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ), 9 ) );
 
-    \item new SincePredicate ( new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ), 0 );
+    \item new Since\-Predicate ( new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ), 0 );
 
-    \item new AlwaysPast ( new Always ( new StrongPrevious ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ) );
+    \item new Always\-Past ( new Always ( new Strong\-Previous ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ) );
 
-    \item new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AlwaysPredicate ( new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 1 ) ) );
+    \item new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always\-Predicate ( new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 1 ) ) );
 
-    \item new StrongPrevious ( new AlwaysPastPredicate ( new WeakNextPredicate ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 9 ), 4 ) );
+    \item new Strong\-Previous ( new Always\-Past\-Predicate ( new Weak\-Next\-Predicate ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 9 ), 4 ) );
 
-    \item new Eventually ( new Until ( new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new Eventually ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) );
+    \item new Even\-tually ( new Until ( new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Even\-tually ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) );
 
-    \item new Conjunction ( new Conjunction ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new StrongNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ) );
+    \item new Conjunction ( new Conjunction ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Strong\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ) );
 
-    \item new EventuallyPredicate ( new UntilPredicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ), new SincePredicate ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ), 5 ), 9 );
+    \item new Even\-tually\-Predicate ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Since\-Predicate ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ), 5 ), 9 );
 
-    \item new Conjunction ( new Disjunction ( new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) );
+    \item new Conjunction ( new Disjunction ( new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) );
 
-    \item new AlwaysPast ( new Eventually ( new StrongNextPredicate ( new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ) ), 0 ) ) );
+    \item new Always\-Past ( new Even\-tually ( new Strong\-Next\-Predicate ( new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT de\-leted'' ) ), 0 ) ) );
 
-    \item new StrongNext ( new EventuallyPastPredicate ( new StrongNext\-Predicate ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 1 ), 2 ) );
+    \item new Strong\-Next ( new Even\-tually\-Past\-Predicate ( new Strong\-Next\-Predicate ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 1 ), 2 ) );
 
-    \item new StrongPrevious ( new StrongNext ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 7 ), 5 ) ) );
+    \item new Strong\-Previous ( new Strong\-Next ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 7 ), 5 ) ) );
 
-    \item new Disjunction ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) , new StrongNext\-Predicate ( new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 ), 2 ), 2 ), new Eventually ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) );
+    \item new Disjunction ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) , new Strong\-Next\-Predicate ( new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 ), 2 ), 2 ), new Even\-tually ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) );
 
-    \item new StrongNext ( new WeakPreviousPredicate ( new StrongNext ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 5 ) ), 9 ) );
+    \item new Strong\-Next ( new Weak\-Previous\-Predicate ( new Strong\-Next ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 5 ) ), 9 ) );
 
-    \item new StrongNext ( new WeakPrevious ( new WeakNextPredicate ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 4 ), 4 ) ) );
+    \item new Strong\-Next ( new Weak\-Previous ( new Weak\-Next\-Predicate ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 4 ), 4 ) ) );
 
-    \item new Disjunction ( new Always ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), new AlwaysPastPredicate ( new WeakNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 4 ) );
+    \item new Disjunction ( new Always ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), new Always\-Past\-Predicate ( new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 4 ) );
 
-    \item new StrongNext ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Always ( new StrongPrevious ( new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 ) ) ), 3 ) );
+    \item new Strong\-Next ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always ( new Strong\-Previous ( new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 ) ) ), 3 ) );
 
-    \item new SincePredicate ( new SincePredicate ( new StrongPrevious ( new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ) ), new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 2 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 );
+    \item new Since\-Predicate ( new Since\-Predicate ( new Strong\-Previous ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ) ), new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 2 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 );
 
-    \item new WeakPrevious ( new WeakNextPredicate ( new AlwaysPast ( new EventuallyPastPredicate ( new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 5 ) ), 4 ) );
+    \item new Weak\-Previous ( new Weak\-Next\-Predicate ( new Always\-Past ( new Even\-tually\-Past\-Predicate ( new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 5 ) ), 4 ) );
 
-    \item new WeakPreviousPredicate ( new WeakPrevious ( new StrongNext\-Predicate ( new Since ( new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 4 ) ), 3 );
+    \item new Weak\-Previous\-Predicate ( new Weak\-Previous ( new Strong\-Next\-Predicate ( new Since ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 4 ) ), 3 );
 
-    \item new WeakNext ( new EventuallyPast ( new AlwaysPastPredicate ( new Until ( new AtemporalQuery( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ), new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 2 ) ) );
+    \item new Weak\-Next ( new Even\-tually\-Past ( new Always\-Past\-Predicate ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT de\-leted'' ), new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 2 ) ) );
 
-    \item new StrongPrevious ( new StrongNextPredicate ( new StrongNext ( new StrongNextPredicate ( new EventuallyPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 9 ) ), 2 ) );
+    \item new Strong\-Previous ( new Strong\-Next\-Predicate ( new Strong\-Next ( new Strong\-Next\-Predicate ( new Even\-tually\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 9 ) ), 2 ) );
 
-    \item new UntilPredicate ( new EventuallyPastPredicate ( new AlwaysPredicate ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 7 ), 3 ), new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 1 );
+    \item new Until\-Predicate ( new Even\-tually\-Past\-Predicate ( new Always\-Predicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 7 ), 3 ), new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 1 );
 
-    \item new StrongPreviousPredicate ( new Conjunction ( new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 7 ), new EventuallyPredicate ( new Disjunction ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 7 ) ), 9 );
+    \item new Strong\-Previous\-Predicate ( new Conjunction ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 7 ), new Even\-tually\-Predicate ( new Disjunction ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 7 ) ), 9 );
 
-    \item new WeakPreviousPredicate ( new StrongNextPredicate ( new Always ( new SincePredicate ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ), new AlwaysPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ), 2 ) ), 5 ), 0 );
+    \item new Weak\-Previous\-Predicate ( new Strong\-Next\-Predicate ( new Always ( new Since\-Predicate ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ), new Always\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ), 2 ) ), 5 ), 0 );
 
-    \item new StrongNextPredicate ( new EventuallyPastPredicate ( new EventuallyPredicate ( new Since ( new WeakNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new Strong\-Next ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 4 ), 3 ), 5 );
+    \item new Strong\-Next\-Predicate ( new Even\-tually\-Past\-Predicate ( new Even\-tually\-Predicate ( new Since ( new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 4 ), 3 ), 5 );
 
-    \item new Disjunction ( new StrongNext ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ) ), new StrongNextPredicate ( new AlwaysPredicate ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 3 ), 7 ) );
+    \item new Disjunction ( new Strong\-Next ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ) ), new Strong\-Next\-Predicate ( new Always\-Predicate ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 3 ), 7 ) );
 
-    \item new StrongNextPredicate ( new WeakPrevious ( new StrongNextPredicate ( new Until ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 ), new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 3 ) ), 9 );
+    \item new Strong\-Next\-Predicate ( new Weak\-Previous ( new Strong\-Next\-Predicate ( new Until ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 ), new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 3 ) ), 9 );
 
-    \item new StrongPrevious ( new Eventually ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakPrevious ( new WeakNextPredicate ( new EventuallyPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 6 ) ) ) ) );
+    \item new Strong\-Previous ( new Even\-tually ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Previous ( new Weak\-Next\-Predicate ( new Even\-tually\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 6 ) ) ) ) );
 
-    \item new WeakPreviousPredicate ( new StrongPrevious ( new Until ( new StrongPreviousPredicate ( new AtemporalQuery ( ``SELECT url\linebreak FROM autos WHERE NOT deleted'' ), 1 ), new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Eventually ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ) ), 1 );
+    \item new Weak\-Previous\-Predicate ( new Strong\-Previous ( new Until ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url\linebreak FROM autos WHERE NOT de\-leted'' ), 1 ), new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Even\-tually ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ) ), 1 );
 
-    \item new StrongPreviousPredicate ( new Conjunction ( new EventuallyPastPredicate ( new AlwaysPredicate ( new WeakPrevious ( new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ) ), 5 ), 7 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 6 );
+    \item new Strong\-Previous\-Predicate ( new Conjunction ( new Even\-tually\-Past\-Predicate ( new Always\-Predicate ( new Weak\-Previous ( new Even\-tually\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ) ), 5 ), 7 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 6 );
 
-    \item new WeakPreviousPredicate ( new AlwaysPastPredicate ( new Strong\-NextPredicate ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakPreviousPredicate ( new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 4 ) ), 4 ), 0 ), 4 );
+    \item new Weak\-Previous\-Predicate ( new Always\-Past\-Predicate ( new Strong\-Next\-Predicate ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Previous\-Predicate ( new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 4 ) ), 4 ), 0 ), 4 );
 
-    \item new UntilPredicate ( new AlwaysPastPredicate ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Eventually ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 4 ), new Eventually ( new StrongPrevious ( new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ), 3 );
+    \item new Until\-Predicate ( new Always\-Past\-Predicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Even\-tually ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 4 ), new Even\-tually ( new Strong\-Previous ( new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ), 3 );
 
-    \item new Conjunction ( new AlwaysPastPredicate ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 6 ), new AlwaysPredicate ( new StrongPreviousPredicate ( new StrongPrevious ( new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 9 ), 5 ) );
+    \item new Conjunction ( new Always\-Past\-Predicate ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 6 ), new Always\-Predicate ( new Strong\-Previous\-Predicate ( new Strong\-Previous ( new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 9 ), 5 ) );
 
-    \item new EventuallyPredicate ( new StrongNextPredicate ( new WeakPrevious ( new EventuallyPredicate ( new StrongPrevious ( new Eventually ( new StrongNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ) ) ), 4 ) ), 4 ), 2 );
+    \item new Even\-tually\-Predicate ( new Strong\-Next\-Predicate ( new Weak\-Previous ( new Even\-tually\-Predicate ( new Strong\-Previous ( new Even\-tually ( new Strong\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ) ) ), 4 ) ), 4 ), 2 );
 
-    \item new SincePredicate ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new EventuallyPredicate ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ), 0 ), 6 ), new AlwaysPast ( new StrongNext\-Predicate ( new AlwaysPastPredicate ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ), 4 ), 4 ) ), 8 );
+    \item new Since\-Predicate ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT de\-leted'' ), 0 ), 6 ), new Always\-Past ( new Strong\-Next\-Predicate ( new Always\-Past\-Predicate ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ), 4 ), 4 ) ), 8 );
 
-    \item new StrongPrevious ( new StrongNextPredicate ( new AlwaysPast ( new EventuallyPastPredicate ( new EventuallyPredicate ( new SincePredicate ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ), new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 8 ), 1 ), 7 ) ), 1 ) );
+    \item new Strong\-Previous ( new Strong\-Next\-Predicate ( new Always\-Past ( new Even\-tually\-Past\-Predicate ( new Even\-tually\-Predicate ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT de\-leted'' ), new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 8 ), 1 ), 7 ) ), 1 ) );
 
-    \item new Until ( new AlwaysPredicate ( new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 6 ), new EventuallyPredicate ( new StrongPrevious ( new WeakNext ( new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ), 5 ) );
+    \item new Until ( new Always\-Predicate ( new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 6 ), new Even\-tually\-Predicate ( new Strong\-Previous ( new Weak\-Next ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ), 5 ) );
 
-    \item new StrongNext ( new AlwaysPast ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AlwaysPast ( new AlwaysPastPredicate ( new WeakPreviousPredicate ( new WeakPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 9 ), 2 ) ) ) ) );
+    \item new Strong\-Next ( new Always\-Past ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always\-Past ( new Always\-Past\-Predicate ( new Weak\-Previous\-Predicate ( new Weak\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 9 ), 2 ) ) ) ) );
 
-    \item new AlwaysPastPredicate ( new AlwaysPredicate ( new WeakNext\-Predicate ( new StrongPrevious ( new WeakPrevious ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ) ), 2 ), 7 ), 8 );
+    \item new Always\-Past\-Predicate ( new Always\-Predicate ( new Weak\-Next\-Predicate ( new Strong\-Previous ( new Weak\-Previous ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ) ), 2 ), 7 ), 8 );
 
-    \item new Conjunction ( new WeakNextPredicate ( new WeakNextPredicate ( new StrongNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ), 2 ), 8 ), new StrongNext ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 2 ) ) ) );
+    \item new Conjunction ( new Weak\-Next\-Predicate ( new Weak\-Next\-Predicate ( new Strong\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ), 2 ), 8 ), new Strong\-Next ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 2 ) ) ) );
 
-    \item new AlwaysPredicate ( new UntilPredicate ( new Eventually ( new EventuallyPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), new StrongPrevious ( new Eventually ( new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ) ) ), 0 ), 7 );
+    \item new Always\-Predicate ( new Until\-Predicate ( new Even\-tually ( new Even\-tually\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), new Strong\-Previous ( new Even\-tually ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ) ) ), 0 ), 7 );
 
-    \item new AlwaysPast ( new Until ( new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), new StrongNext ( new EventuallyPredicate ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakNext ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ), 2 ) ) ) );
+    \item new Always\-Past ( new Until ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), new Strong\-Next ( new Even\-tually\-Predicate ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Next ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ), 2 ) ) ) );
 
-    \item new StrongPrevious ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ), new Until ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ), new Disjunction ( new StrongPrevious ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ) ), new EventuallyPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) );
+    \item new Strong\-Previous ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Until ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Disjunction ( new Strong\-Previous ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ) ), new Even\-tually\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) );
 
-    \item new StrongPrevious ( new EventuallyPastPredicate ( new WeakPrevious ( new WeakNext ( new AlwaysPastPredicate ( new AlwaysPredicate ( new Always ( new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 1 ), 3 ) ) ), 8 ) );
+    \item new Strong\-Previous ( new Even\-tually\-Past\-Predicate ( new Weak\-Previous ( new Weak\-Next ( new Always\-Past\-Predicate ( new Always\-Predicate ( new Always ( new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 1 ), 3 ) ) ), 8 ) );
 
-    \item new AlwaysPast ( new EventuallyPastPredicate ( new WeakNextPredicate ( new AlwaysPastPredicate ( new Always ( new AlwaysPredicate ( new StrongPreviousPredicate ( new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 6 ), 8 ) ), 8 ), 7 ), 0 ) );
+    \item new Always\-Past ( new Even\-tually\-Past\-Predicate ( new Weak\-Next\-Predicate ( new Always\-Past\-Predicate ( new Always ( new Always\-Predicate ( new Strong\-Previous\-Predicate ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 6 ), 8 ) ), 8 ), 7 ), 0 ) );
 
-    \item new StrongPrevious ( new Until ( new StrongNext ( new EventuallyPast ( new StrongNextPredicate ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 4 ) ) ), new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 ) ) );
+    \item new Strong\-Previous ( new Until ( new Strong\-Next ( new Even\-tually\-Past ( new Strong\-Next\-Predicate ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 4 ) ) ), new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ) ) );
 
-    \item new StrongNextPredicate ( new SincePredicate ( new Disjunction ( new WeakPrevious ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), new StrongNext ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 2 ) ) ), new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 ), 4 ), 6 );
+    \item new Strong\-Next\-Predicate ( new Since\-Predicate ( new Disjunction ( new Weak\-Previous ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), new Strong\-Next ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 2 ) ) ), new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ), 4 ), 6 );
 
-    \item new EventuallyPastPredicate ( new Conjunction ( new StrongNext\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ), 5 ), new Eventually ( new Eventually ( new SincePredicate ( new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 1 ) ) ) ), 5 );
+    \item new Even\-tually\-Past\-Predicate ( new Conjunction ( new Strong\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ), new Even\-tually ( new Even\-tually ( new Since\-Predicate ( new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 1 ) ) ) ), 5 );
 
-    \item new WeakNextPredicate ( new Always ( new AlwaysPredicate ( new WeakNextPredicate ( new UntilPredicate ( new AlwaysPast ( new AlwaysPast ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ) ) ), new WeakNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 6 ), 3 ), 5 ) ), 3 );
+    \item new Weak\-Next\-Predicate ( new Always ( new Always\-Predicate ( new Weak\-Next\-Predicate ( new Until\-Predicate ( new Always\-Past ( new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 6 ), 3 ), 5 ) ), 3 );
 
-    \item new UntilPredicate ( new EventuallyPastPredicate ( new SincePredicate ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ), 5 ), new Until ( new AlwaysPredicate ( new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ), 7 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 5 );
+    \item new Strong\-Previous ( new Eventually\-Predicate ( new Weak\-Previous ( new Strong\-Previous ( new Weak\-Previous ( new Disjunction ( new Until ( new Weak\-Previous ( new AtemporalQuery( "SELECT url FROM autos WHERE NOT deleted" ) ), new AtemporalQuery( "SELECT url FROM autos WHERE NOT deleted" ) ), new AtemporalQuery( "SELECT url FROM autos WHERE NOT deleted" ) ) ) ) ), 2 ) );
 
-    \item new WeakPreviousPredicate ( new Since ( new SincePredicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ), new WeakNextPredicate ( new EventuallyPastPredicate ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 7 ), 5 ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ), new WeakPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 3 );
+    \item new Weak\-Previous\-Predicate ( new Since ( new Since\-Predicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Next\-Predicate ( new Even\-tually\-Past\-Predicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 7 ), 5 ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ), new Weak\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 3 );
 
-    \item new WeakNext ( new Conjunction ( new StrongPrevious ( new StrongPreviousPredicate ( new Conjunction ( new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 4 ) ), new Since ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 2 ), new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 0 ) ) ) );
+    \item new Weak\-Next ( new Conjunction ( new Strong\-Previous ( new Strong\-Previous\-Predicate ( new Conjunction ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 4 ) ), new Since ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 2 ), new Even\-tually\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 0 ) ) ) );
 
-    \item new AlwaysPredicate ( new AlwaysPast ( new Eventually ( new AlwaysPastPredicate ( new Eventually ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Always ( new Eventually ( new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ), 3 ) ), 6 ) ) ), 9 );
+    \item new Always\-Predicate ( new Always\-Past ( new Even\-tually ( new Always\-Past\-Predicate ( new Even\-tually ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always ( new Even\-tually ( new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ), 3 ) ), 6 ) ) ), 9 );
 
-    \item new Always ( new Always ( new Since ( new Always ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new StrongPreviousPredicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 ), 9 ) ), new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Always ( new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ) ), 7 ) ) ) );
+    \item new Always ( new Always ( new Since ( new Always ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ), 9 ) ), new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ) ), 7 ) ) ) );
 
-    \item new AlwaysPastPredicate ( new Eventually ( new WeakNextPredicate ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new EventuallyPredicate ( new WeakPreviousPredicate ( new SincePredicate ( new EventuallyPredicate ( new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ), 5 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 6 ), 5 ), 3 ), 7 ), 4 ) ), 8 );
+    \item new Always\-Past\-Predicate ( new Even\-tually ( new Weak\-Next\-Predicate ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Even\-tually\-Predicate ( new Weak\-Previous\-Predicate ( new Since\-Predicate ( new Even\-tually\-Predicate ( new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ), 5 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 6 ), 5 ), 3 ), 7 ), 4 ) ), 8 );
 
-    \item new AlwaysPastPredicate ( new EventuallyPast ( new WeakNextPredicate ( new UntilPredicate ( new Conjunction ( new WeakNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 2 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new StrongPreviousPredicate ( new AlwaysPastPredicate ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 2 ), 1 ), 8 ), 5 ) ), 5 );
+    \item new Always\-Past\-Predicate ( new Even\-tually\-Past ( new Weak\-Next\-Predicate ( new Until\-Predicate ( new Conjunction ( new Weak\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 2 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Strong\-Previous\-Predicate ( new Always\-Past\-Predicate ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 2 ), 1 ), 8 ), 5 ) ), 5 );
 
-    \item new Eventually ( new AlwaysPastPredicate ( new UntilPredicate ( new StrongNextPredicate ( new EventuallyPastPredicate ( new Strong\-NextPredicate ( new WeakPreviousPredicate ( new Eventually ( new WeakPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 0 ), 8 ), 8 ), 7 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ), 1 ) );
+    \item new Even\-tually ( new Always\-Past\-Predicate ( new Until\-Predicate ( new Strong\-Next\-Predicate ( new Even\-tually\-Past\-Predicate ( new Strong\-Next\-Predicate ( new Weak\-Previous\-Predicate ( new Even\-tually ( new Weak\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 0 ), 8 ), 8 ), 7 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ), 1 ) );
 
-    \item new Conjunction ( new WeakPreviousPredicate ( new StrongPrevious ( new StrongPreviousPredicate ( new Eventually ( new WeakPreviousPredicate ( new WeakNextPredicate ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 4 ), 7 ) ), 1 ) ), 1 ), new StrongPrevious ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) );
+    \item new Conjunction ( new Weak\-Previous\-Predicate ( new Strong\-Previous ( new Strong\-Previous\-Predicate ( new Even\-tually ( new Weak\-Previous\-Predicate ( new Weak\-Next\-Predicate ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 4 ), 7 ) ), 1 ) ), 1 ), new Strong\-Previous ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) );
 
-    \item new StrongNextPredicate ( new StrongPreviousPredicate ( new Since ( new SincePredicate ( new Until ( new AlwaysPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 1 ), new WeakNextPredicate ( new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 7 ), 6 ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), new SincePredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ) ), 4 ), 2 );
+    \item new Strong\-Next\-Predicate ( new Strong\-Previous\-Predicate ( new Since ( new Since\-Predicate ( new Until ( new Always\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 1 ), new Weak\-Next\-Predicate ( new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 7 ), 6 ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), new Since\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ) ), 4 ), 2 );
 
-    \item new EventuallyPredicate ( new StrongNext ( new Conjunction ( new EventuallyPastPredicate ( new WeakNextPredicate ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AlwaysPastPredicate ( new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), 8 ) ), 4 ), 4 ), new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ), 5 );
+    \item new Even\-tually\-Predicate ( new Strong\-Next ( new Conjunction ( new Even\-tually\-Past\-Predicate ( new Weak\-Next\-Predicate ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always\-Past\-Predicate ( new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), 8 ) ), 4 ), 4 ), new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ), 5 );
 
-    \item new Disjunction ( new WeakNextPredicate ( new Eventually ( new Disjunction ( new Until ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new WeakPreviousPredicate ( new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 1 ), 3 ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 1 ), new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ) );
+    \item new Disjunction ( new Weak\-Next\-Predicate ( new Even\-tually ( new Disjunction ( new Until ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Weak\-Previous\-Predicate ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 1 ), 3 ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 1 ), new Even\-tually\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ) );
 
-    \item new AlwaysPredicate ( new Since ( new Always ( new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ) ), new StrongPreviousPredicate ( new AlwaysPast ( new AlwaysPredicate ( new AlwaysPredicate ( new WeakPreviousPredicate ( new AlwaysPast ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 1 ), 8 ), 0 ) ), 1 ) ), 2 );
+    \item new Always\-Predicate ( new Since ( new Always ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ) ), new Strong\-Previous\-Predicate ( new Always\-Past ( new Always\-Predicate ( new Always\-Predicate ( new Weak\-Previous\-Predicate ( new Always\-Past ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 1 ), 8 ), 0 ) ), 1 ) ), 2 );
 
-    \item new AlwaysPast ( new UntilPredicate ( new SincePredicate ( new WeakNext ( new AtemporalQuery ( ``SELECT url FROM autos\linebreak WHERE NOT deleted'' ) ), new AlwaysPastPredicate ( new StrongPreviousPredicate ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 ), 1 ), 3 ), 2 ), 5 ), new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new WeakPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), 3 ), 6 ) );
+    \item new Always\-Past ( new Until\-Predicate ( new Since\-Predicate ( new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new Always\-Past\-Predicate ( new Strong\-Previous\-Predicate ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Even\-tually\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ), 1 ), 3 ), 2 ), 5 ), new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Weak\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), 3 ), 6 ) );
 
-    \item new Conjunction ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 ), new StrongPreviousPredicate ( new WeakPrevious ( new AlwaysPredicate ( new Always ( new StrongNext ( new StrongPrevious ( new Until ( new Disjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ) ), 5 ) ), 1 ) );
+    \item new Conjunction ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ), new Strong\-Previous\-Predicate ( new Weak\-Previous ( new Always\-Predicate ( new Always ( new Strong\-Next ( new Strong\-Previous ( new Until ( new Disjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ) ), 5 ) ), 1 ) );
 
-    \item new StrongNext ( new WeakPreviousPredicate ( new WeakNextPredicate ( new StrongPrevious ( new StrongPreviousPredicate ( new\linebreak StrongPreviousPredicate ( new StrongPrevious ( new StrongNext ( new EventuallyPastPredicate ( new Until ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 3 ) ) ), 7 ), 1 ) ), 8 ), 7 ) );
+    \item new Strong\-Next ( new Weak\-Previous\-Predicate ( new Weak\-Next\-Predicate ( new Strong\-Previous ( new Strong\-Previous\-Predicate ( new Strong\-Previous\-Predicate ( new Strong\-Previous ( new Strong\-Next ( new Even\-tually\-Past\-Predicate ( new Until ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 3 ) ) ), 7 ), 1 ) ), 8 ), 7 ) );
 
-    \item new WeakNext ( new StrongPrevious ( new EventuallyPastPredicate ( new EventuallyPast ( new EventuallyPredicate ( new Disjunction ( new EventuallyPredicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT deleted'' ), 0 ), new EventuallyPastPredicate ( new Always ( new Conjunction ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), 3 ) ), 2 ) ), 6 ) ) );
+    \item new Weak\-Next ( new Strong\-Previous ( new Even\-tually\-Past\-Predicate ( new Even\-tually\-Past ( new Even\-tually\-Predicate ( new Disjunction ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 0 ), new Even\-tually\-Past\-Predicate ( new Always ( new Conjunction ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), 3 ) ), 2 ) ), 6 ) ) );
 
-    \item new Until ( new Eventually ( new Since ( new StrongNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ), new SincePredicate ( new WeakPrevious ( new Weak\-Next ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 5 ), 7 ) ) ), new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 3 ) );
+    \item new Until ( new Even\-tually ( new Since ( new Strong\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ), new Since\-Predicate ( new Weak\-Previous ( new Weak\-Next ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Even\-tually\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 5 ), 7 ) ) ), new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 3 ) );
 
-    \item new EventuallyPastPredicate ( new Conjunction ( new EventuallyPastPredicate ( new WeakNext ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 1 ), new AlwaysPredicate ( new AlwaysPast ( new AlwaysPast ( new SincePredicate ( new AlwaysPastPredicate ( new UntilPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ), 0 ), new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 1 ) ) ), 1 ) ), 1 );
+    \item new Even\-tually\-Past\-Predicate ( new Conjunction ( new Even\-tually\-Past\-Predicate ( new Weak\-Next ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 1 ), new Always\-Predicate ( new Always\-Past ( new Always\-Past ( new Since\-Predicate ( new Always\-Past\-Predicate ( new Until\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ), 0 ), new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 1 ) ) ), 1 ) ), 1 );
 
-    \item new StrongPreviousPredicate ( new WeakPrevious ( new UntilPredicate ( new UntilPredicate ( new Disjunction ( new EventuallyPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 4 ), new StrongNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 3 ) ), new EventuallyPastPredicate ( new StrongNextPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 7 ), 2 ), 6 ), new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ), 7 ) ), 0 );
+    \item new Strong\-Previous\-Predicate ( new Weak\-Previous ( new Until\-Predicate ( new Until\-Predicate ( new Disjunction ( new Even\-tually\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 4 ), new Strong\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 3 ) ), new Even\-tually\-Past\-Predicate ( new Strong\-Next\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 7 ), 2 ), 6 ), new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ), 7 ) ), 0 );
 
-    \item new AlwaysPast ( new StrongNext ( new StrongNext ( new Conjunction ( new Always ( new Since ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), new Always ( new WeakNext ( new AlwaysPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ) ) ) ) ), new Always ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ) ) ) ) ) );
+    \item new Always\-Past ( new Strong\-Next ( new Strong\-Next ( new Conjunction ( new Always ( new Since ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), new Always ( new Weak\-Next ( new Always\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ) ) ) ) ), new Always ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ) ) ) ) ) );
 
-    \item new WeakNext ( new Disjunction ( new AlwaysPast ( new Eventually ( new WeakNext ( new EventuallyPastPredicate ( new EventuallyPastPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 8 ), 7 ) ) ) ), new Eventually ( new EventuallyPredicate ( new StrongPreviousPredicate ( new AtemporalQuery( ``SELECT url FROM autos WHERE NOT deleted'' ), 9 ), 3 ) ) ) );
+    \item new Weak\-Next ( new Disjunction ( new Always\-Past ( new Even\-tually ( new Weak\-Next ( new Even\-tually\-Past\-Predicate ( new Even\-tually\-Past\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 8 ), 7 ) ) ) ), new Even\-tually ( new Even\-tually\-Predicate ( new Strong\-Previous\-Predicate ( new AtemporalQuery ( ``SELECT url FROM autos WHERE NOT de\-leted'' ), 9 ), 3 ) ) ) );
 \end{enumerate}
 
 \begin{table}
@@ -330,7 +330,9 @@ These queries are given in Java-Syntax as the algorithm to generate these querie
         column name=$i$,
         column type/.add={}{|}},
         display columns/2/.style={
-        column name=$|BHE|/|History|$ 10 time points},
+        column name=$|BHE|/|History|$ weekly},
+        display columns/3/.style={
+        column name=$|BHE|/|History|$ daily},
         every head row/.style={
         before row={\toprule},
         after row={\midrule}},
@@ -349,7 +351,9 @@ These queries are given in Java-Syntax as the algorithm to generate these querie
         column name=$i$,
         column type/.add={}{|}},
         display columns/2/.style={
-        column name=$|BHE|/|History|$ 10 time points},
+        column name=$|BHE|/|History|$ weekly},
+        display columns/3/.style={
+        column name=$|BHE|/|History|$ daily},
         every head row/.style={
         before row={\toprule},
         after row={\midrule}},
@@ -368,7 +372,9 @@ These queries are given in Java-Syntax as the algorithm to generate these querie
         column name=$i$,
         column type/.add={}{|}},
         display columns/2/.style={
-        column name=$|BHE|/|History|$ 10 time points},
+        column name=$|BHE|/|History|$ weekly},
+        display columns/3/.style={
+        column name=$|BHE|/|History|$ daily},
         every head row/.style={
         before row={\toprule},
         after row={\midrule}},
@@ -387,7 +393,9 @@ These queries are given in Java-Syntax as the algorithm to generate these querie
         column name=$i$,
         column type/.add={}{|}},
         display columns/2/.style={
-        column name=$|BHE|/|History|$ 10 time points},
+        column name=$|BHE|/|History|$ weekly},
+        display columns/3/.style={
+        column name=$|BHE|/|History|$ daily},
         every head row/.style={
         before row={\toprule},
         after row={\midrule}},

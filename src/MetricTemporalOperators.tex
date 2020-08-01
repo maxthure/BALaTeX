@@ -8,29 +8,33 @@ The semantics of TQs from Definition \ref{def:Extension/operatorsnotimplemented/
     \label{def:extension/metrictemporaloperators/semantics}
     Let $\phi$ be a TQ, $\mathfrak{I} = (I_{i})_{0 \leq i \leq n}$ a sequence of interpretations over a common domain,
     $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ a variable assignment, $i$ be an integer with $0 \leq i \leq n$, and $p$ be an integer with $p \geq 0$.
-    The \textit{satisfaction relation} $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
-    \begin{table}[H]
-        \centering
-        \begin{tabular*}{\textwidth}{@{}ll@{}}
-            \toprule
-            $\phi$                            & $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff                                                 \\ \midrule
-            $[\ldots]$                      & $[\ldots]$ \\
-            $\Circle_{p} \phi_{1}$            & $i+p \leq n$ and $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                              \\
-            $\CIRCLE_{p} \phi_{1}$            & $i+p \leq n$ implies $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                          \\
-            $\Circle^{-}_{p} \phi_{1}$        & $i-p \geq 0$ and $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                              \\
-            $\CIRCLE^{-}_{p} \phi_{1}$        & $i-p \geq 0$ implies $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                          \\
-            $\Box_{p} \phi_{1}$               & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                  \\
-            $\Box^{-}_{p} \phi_{1}$           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                  \\
-            $\Diamond_{p} \phi_{1}$           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                 \\
-            $\Diamond^{-}_{p} \phi_{1}$       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                 \\
-            $\phi_{1} \mathsf{U}_{p} \phi_{2}$& there is $k$, $i \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
-                                            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, i \leq j < k$          \\
-            $\phi_{1} \mathsf{S}_{p} \phi_{2}$& there is $k$, $\mathsf{max}(i-p,0) \leq k \leq i$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
-                                            & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq i$          \\ \bottomrule
-        \end{tabular*}
-        \caption{satisfaction relation of TQs with MTOs}
-        \label{tab:extension/metrictemporaloperators/satisfactionrelation}
-    \end{table}
+    \begin{minipage}[H]{\textwidth}
+        The \textit{satisfaction relation} $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ is defined by induction on the structure of $\phi$ as follows:
+        \begin{table}[H]
+            \centering
+            \begin{tabular*}{\textwidth}{@{}ll@{}}
+                \toprule
+                $\phi$                            & $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff                                                 \\ \midrule
+                $[\ldots]$                      & $[\ldots]$ \\
+                $\Circle_{p} \phi_{1}$            & $i+p \leq n$ and $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                              \\
+                $\CIRCLE_{p} \phi_{1}$            & $i+p \leq n$ implies $\mathfrak{I},i+p \models \mathfrak{a}(\phi_{1})$                          \\
+                $\Circle^{-}_{p} \phi_{1}$        & $i-p \geq 0$ and $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                              \\
+                $\CIRCLE^{-}_{p} \phi_{1}$        & $i-p \geq 0$ implies $\mathfrak{I},i-p \models \mathfrak{a}(\phi_{1})$                          \\
+                $\Box_{p} \phi_{1}$               & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                  \\
+                $\Box^{-}_{p} \phi_{1}$           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                  \\
+                $\Diamond_{p} \phi_{1}$           & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $i \leq k \leq \mathsf{min}(i+p,n)$                 \\
+                $\Diamond^{-}_{p} \phi_{1}$       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq i$                 \\
+                $\phi_{1} \mathsf{U}_{p} \phi_{2}$& there is $k$, $i \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
+                & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, i \leq j < k$          \\
+                $\phi_{1} \mathsf{S}_{p} \phi_{2}$& there is $k$, $\mathsf{max}(i-p,0) \leq k \leq i$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$   \\
+                & and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq i$          \\ \bottomrule
+            \end{tabular*}
+            \caption{Satisfaction relation of temporal queries with metric temporal operators}
+            \label{tab:extension/metrictemporaloperators/satisfactionrelation}
+        \end{table}
+    \end{minipage}
+    \\
+
     $\mathfrak{a}_{\phi_{1}}$ denotes the restriction of a variable assignment $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ to $\mathsf{FVar}(\phi_{1})$
     for a subquery $\phi_{1}$ of $\phi$.
 \end{definition}
@@ -39,49 +43,21 @@ Now Query \ref{qu:queries/investigationqueries/practical/qu3} can be rewritten a
     &\text{``$\Diamond^{-}_{6}$(SELECT $url$ FROM $autos$ WHERE $price$ $>$ 1000000)''} \nonumber
 \end{align}
 
-\begin{proposition}
+\begin{restatable}[ct.\ Proposition 3.4 in \cite{borgwardt2015temporalizing}]{proposition}{propMTOsPzero}
     \label{prop:extension/metrictemporaloperators/prop2}
     For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$, $0 \leq i \leq n$ and $p = 0$,
     $\mathfrak{I}, i \models \mathfrak{a}(\phi)$ iff $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ or $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$, respectively.
-\end{proposition}
+\end{restatable}
 
 \begin{proof}
-    To prove the above proposition, ALL equivalences are demonstrated here.
-    The missing cases work similar AND CAN BE FOUND IN THE APPENDIX \ref{ch:appendixC}.
-    The proof works mainly on the basis of semantics.
-    \begin{enumerate}
+    To prove the above proposition, three equivalences are demonstrated here.
+    The missing cases work similarly and can be found in Appendix \ref{ch:appendixC}.
+    The proof works mainly based on semantics.
+    \begin{itemize}
         \item $\Circle_{0} \phi_{1} \equiv \phi_{1}$
         \begin{align}
             &\mathfrak{I},i \models \mathfrak{a}(\Circle_{0} \phi_{1}) \\
             \Leftrightarrow &i+0 \leq n\text{ and }\mathfrak{I},i+0 \models \mathfrak{a}(\phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
-        \end{align}
-
-        \item $\CIRCLE_{0} \phi_{1} \equiv \phi_{1}$
-        \begin{align}
-            &\mathfrak{I},i \models \mathfrak{a}(\CIRCLE_{0} \phi_{1}) \\
-            \Leftrightarrow &i+0 \leq n\text{ implies }\mathfrak{I},i+0 \models \mathfrak{a}(\phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
-        \end{align}
-
-        \item $\Circle^{-}_{0} \phi_{1} \equiv \phi_{1}$
-        \begin{align}
-            &\mathfrak{I},i \models \mathfrak{a}(\Circle^{-}_{0} \phi_{1}) \\
-            \Leftrightarrow &i-0 \geq 0\text{ and }\mathfrak{I},i-0 \models \mathfrak{a}(\phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
-        \end{align}
-
-        \item $\CIRCLE^{-}_{0} \phi_{1} \equiv \phi_{1}$
-        \begin{align}
-            &\mathfrak{I},i \models \mathfrak{a}(\CIRCLE^{-}_{0} \phi_{1}) \\
-            \Leftrightarrow &i-0 \geq 0\text{ implies }\mathfrak{I},i-0 \models \mathfrak{a}(\phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
-        \end{align}
-
-        \item $\Box_{0} \phi_{1} \equiv \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Box_{0} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+0,n) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
         \end{align}
 
@@ -92,20 +68,6 @@ Now Query \ref{qu:queries/investigationqueries/practical/qu3} can be rewritten a
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
         \end{align}
 
-        \item $\Diamond_{0} \phi_{1} \equiv \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{0} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+0,n) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
-        \end{align}
-
-        \item $\Diamond^{-}_{0} \phi_{1} \equiv \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{0} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-0,0) \leq k \leq i \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})
-        \end{align}
-
         \item $\phi_{1} \mathsf{U}_{0} \phi_{2} \equiv \phi_{2}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{0} \phi_{2}) \\
@@ -113,15 +75,7 @@ Now Query \ref{qu:queries/investigationqueries/practical/qu3} can be rewritten a
             &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, i \leq j < k \nonumber \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
         \end{align}
-
-        \item $\phi_{1} \mathsf{S}_{0} \phi_{2} \equiv \phi_{2}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{0} \phi_{2}) \\
-            \Leftrightarrow &\text{there is } k, \mathsf{max}(i-0,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \\
-            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})
-        \end{align}
-    \end{enumerate}
+    \end{itemize}
 \end{proof}
 
 There are again equivalences similar to Proposition \ref{prop:extension/operatorsnotimplemented/prop2}.
@@ -154,25 +108,25 @@ and at the first time point
     \item $\phi_{1} \mathsf{S}_{p} \phi_{2}$ is equivalent to $\phi_{2}$ because $\Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2})$ does not have any answers.
 \end{itemize}
 
-\begin{proposition}
+\begin{restatable}[ct.\ Proposition 3.4 in \cite{borgwardt2015temporalizing}]{proposition}{propMTOs}
     \label{prop:extension/metrictemporaloperators/prop3}
     For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$, $0 \leq i \leq n$ and $p > 0$,
     \begin{enumerate}
-        \item $\mathfrak{I}, i \models \mathfrak{a}(\Circle_{p} \phi_{1})$ iff
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\emph{\Circle}_{p} \phi_{1})$ iff
         \begin{itemize}
-            \item $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\Circle_{p-1} \phi_{1})$
+            \item $i < n$ and $\mathfrak{I}, i+1 \models \mathfrak{a}(\emph{\Circle}_{p-1} \phi_{1})$
         \end{itemize}
-        \item $\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE_{p} \phi_{1})$ iff
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\emph{\CIRCLE}_{p} \phi_{1})$ iff
         \begin{itemize}
-            \item $i < n$ implies $\mathfrak{I}, i+1 \models \mathfrak{a}(\CIRCLE_{p-1} \phi_{1})$
+            \item $i < n$ implies $\mathfrak{I}, i+1 \models \mathfrak{a}(\emph{\CIRCLE}_{p-1} \phi_{1})$
         \end{itemize}
-        \item $\mathfrak{I}, i \models \mathfrak{a}(\Circle^{-}_{p} \phi_{1})$ iff
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\emph{\Circle}^{-}_{p} \phi_{1})$ iff
         \begin{itemize}
-            \item $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\Circle^{-}_{p-1} \phi_{1})$
+            \item $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\emph{\Circle}^{-}_{p-1} \phi_{1})$
         \end{itemize}
-        \item $\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE^{-}_{p} \phi_{1})$ iff
+        \item $\mathfrak{I}, i \models \mathfrak{a}(\emph{\CIRCLE}^{-}_{p} \phi_{1})$ iff
         \begin{itemize}
-            \item $i > 0$ implies $\mathfrak{I}, i-1 \models \mathfrak{a}(\CIRCLE^{-}_{p-1} \phi_{1})$
+            \item $i > 0$ implies $\mathfrak{I}, i-1 \models \mathfrak{a}(\emph{\CIRCLE}^{-}_{p-1} \phi_{1})$
         \end{itemize}
         \item $\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1})$ iff
         \begin{itemize}
@@ -205,14 +159,14 @@ and at the first time point
             \item $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ and $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2})$
         \end{itemize}
     \end{enumerate}
-\end{proposition}
+\end{restatable}
 
 \begin{proof}
-    To prove the above proposition, ALL equivalences are demonstrated here.
-    The missing cases work similar AND CAN BE FOUND IN THE APPENDIX \ref{ch:appendixC}.
-    The proof works mainly on the basis of semantics.
-    \begin{enumerate}
-        \item $\Circle_{p} \phi_{1} \equiv \Circle \Circle_{p-1} \phi_{1}$
+    To prove the above proposition, three equivalences are demonstrated here.
+    The missing cases work similarly and can be found in Appendix \ref{ch:appendixC}.
+    The proof works mainly based on semantics.
+    \begin{itemize}
+        \item[1.] $\Circle_{p} \phi_{1} \equiv \Circle \Circle_{p-1} \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Circle_{p} \phi_{1}) \\
             \Leftrightarrow &i + p \leq n \text{ and }\mathfrak{I}, i+p \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq1.2}\\
@@ -220,50 +174,8 @@ and at the first time point
             \Leftrightarrow & i < n\text{ and }\mathfrak{I}, i+1 \models \mathfrak{a}(\Circle_{p-1} \phi_{1}) \\
             \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\Circle \Circle_{p-1} \phi_{1})
         \end{align}
-        \item $\CIRCLE_{p} \phi_{1}$ is equivalent to $\CIRCLE \CIRCLE_{p-1} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE_{p} \phi_{1}) \\
-            \Leftrightarrow &i + p \leq n \text{ implies }\mathfrak{I}, i+p \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq2.2}\\
-            \Leftrightarrow & i < n\text{ implies }(i+1)+(p-1) \leq n \text{ implies }\mathfrak{I}, (i+1)+(p-1) \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq2.3}\\
-            \Leftrightarrow & i < n\text{ implies }\mathfrak{I}, i+1 \models \mathfrak{a}(\CIRCLE_{p-1} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE \CIRCLE_{p-1} \phi_{1})
-        \end{align}
-        \item $\Circle^{-}_{p} \phi_{1}$ is equivalent to $\Circle^{-} \Circle^{-}_{p-1} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Circle^{-}_{p} \phi_{1}) \\
-            \Leftrightarrow &i - p \geq 0 \text{ and }\mathfrak{I}, i-p \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq3.2}\\
-            \Leftrightarrow & i > 0\text{ and }(i-1)-(p-1) \geq 0 \text{ and }\mathfrak{I}, (i-1)-(p-1) \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq3.3}\\
-            \Leftrightarrow & i > 0\text{ and }\mathfrak{I}, i-1 \models \mathfrak{a}(\Circle^{-}_{p-1} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\Circle^{-} \Circle^{-}_{p-1} \phi_{1})
-        \end{align}
-        \item $\CIRCLE^{-}_{p} \phi_{1}$ is equivalent to $\CIRCLE^{-} \CIRCLE^{-}_{p-1} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE^{-}_{p} \phi_{1}) \\
-            \Leftrightarrow &i - p \geq 0 \text{ implies }\mathfrak{I}, i-p \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq4.2}\\
-            \Leftrightarrow & i > 0\text{ implies }(i-1)-(p-1) \geq 0 \text{ implies }\mathfrak{I}, (i-1)-(p-1) \models \mathfrak{a}(\phi_{1}) \label{eq:extension/metrictemporaloperators/proofProp3/eq4.3}\\
-            \Leftrightarrow & i > 0\text{ implies }\mathfrak{I}, i-1 \models \mathfrak{a}(\CIRCLE^{-}_{p-1} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\CIRCLE^{-} \CIRCLE^{-}_{p-1} \phi_{1})
-        \end{align}
-        \item $\Box_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Box_{p} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq \mathsf{min}(i+p,n) \label{eq:extension/metrictemporaloperators/proofProp3/eq5.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \label{eq:extension/metrictemporaloperators/proofProp3/eq5.3}\\
-            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i < n \text{ implies } \mathfrak{I}, i+1 \models \mathfrak{a}(\Box_{p-1} \phi_{1})) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE \Box_{p-1} \phi_{1})
-        \end{align}
-        \eqref{eq:extension/metrictemporaloperators/proofProp3/eq5.3} is equivalent to \eqref{eq:extension/metrictemporaloperators/proofProp3/eq5.2} because
-        \begin{itemize}
-            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
-            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the ``implies''-statement; and
-            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
-            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
-            and $i < n$ is not true, thus the ``implies''-statement has no effect on satisfaction.
-        \end{itemize}
 
-        \item $\Box^{-}_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
+        \item[6.] $\Box^{-}_{p} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-}_{p} \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-}_{p} \phi_{1}) \\
             \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, \mathsf{max}(i-p,0) \leq k \leq i \label{eq:extension/metrictemporaloperators/proofProp3/eq6.2}\\
@@ -274,53 +186,15 @@ and at the first time point
         \end{align}
         \eqref{eq:extension/metrictemporaloperators/proofProp3/eq6.3} is equivalent to \eqref{eq:extension/metrictemporaloperators/proofProp3/eq6.2} because
         \begin{itemize}
-            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, to be satisfied.
             Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the ``implies''-statement; and
-            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, to be satisfied.
             There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
             Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$,
-            and $i > 0$ is not true, thus the ``implies''-statement has no effect on satisfaction.
+            and $i > 0$ is not true, thus the ``implies''-statement does not affect satisfaction.
         \end{itemize}
 
-        \item $\Diamond_{p} \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond_{p} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond_{p} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq \mathsf{min}(i+p,n) \label{eq:extension/metrictemporaloperators/proofProp3/eq7.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{eq:extension/metrictemporaloperators/proofProp3/eq7.3}\\
-            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond_{p-1} \phi_{1})) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond_{p-1} \phi_{1})
-        \end{align}
-        \eqref{eq:extension/metrictemporaloperators/proofProp3/eq7.3} is equivalent to \eqref{eq:extension/metrictemporaloperators/proofProp3/eq7.2} because
-        \begin{itemize}
-            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any of the future time points $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$, in order to be satisfied.
-            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the ``and''-statement; and
-            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-            There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
-            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $n \leq k \leq \mathsf{min}(i+p,n)$,
-            and $i < n$ is not true, thus the ``and''-statement has no effect on satisfaction.
-        \end{itemize}
-
-        \item $\Diamond^{-}_{p} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-}_{p} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-}_{p} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}(i-p,0) \leq k \leq i \label{eq:extension/metrictemporaloperators/proofProp3/eq8.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \label{eq:extension/metrictemporaloperators/proofProp3/eq8.3}\\
-            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i > 0 \text{ and } \mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-}_{p-1} \phi_{1})) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle^{-} \Diamond^{-}_{p-1} \phi_{1})
-        \end{align}
-        \eqref{eq:extension/metrictemporaloperators/proofProp3/eq8.3} is equivalent to \eqref{eq:extension/metrictemporaloperators/proofProp3/eq8.2} because
-        \begin{itemize}
-            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any of the past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$, in order to be satisfied.
-            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the ``and''-statement; and
-            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
-            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$,
-            and $i > 0$ is not true, thus the ``and''-statement has no effect on satisfaction.
-        \end{itemize}
-
-        \item $\phi_{1} \mathsf{U}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
+        \item[9.] $\phi_{1} \mathsf{U}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle (\phi_{1} \mathsf{U}_{p-1} \phi_{2}))$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{U}_{p} \phi_{2}) \\
             \Leftrightarrow &\text{there is } k, i \leq k \leq \mathsf{min}(i+p,n)\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{eq:extension/metrictemporaloperators/proofProp3/eq9.2}\\
@@ -335,35 +209,13 @@ and at the first time point
         \eqref{eq:extension/metrictemporaloperators/proofProp3/eq9.3} is equivalent to \eqref{eq:extension/metrictemporaloperators/proofProp3/eq9.2} because
         \begin{itemize}
             \item in case $i < n$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a future time point $k$, $i+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$,
-            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $i+1 \leq j < k$, in order for the query to be satisfied.
-            \item in case $i = n$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
+            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $i+1 \leq j < k$, for the query to be satisfied.
+            \item in case $i = n$, $\phi_{2}$ needs to be satisfied now, at time point $i$, for the query to be satisfied.
             There are no future time points $k$, $n+1 \leq k \leq \mathsf{min}((i+1)+(p-1),n)$.
             Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $n \leq k \leq \mathsf{min}(i+p,n)$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
-            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, n \leq j < k$, and $i < n$ is not true, thus the ``or''-statement has no effect on satisfaction.
+            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, n \leq j < k$, and $i < n$ is not true, thus the ``or''-statement does not affect satisfaction.
         \end{itemize}
-
-        \item $\phi_{1} \mathsf{S}_{p} \phi_{2} \equiv \phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2}))$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p} \phi_{2}) \\
-            \Leftrightarrow &\text{there is } k, \mathsf{max}(i-p,0) \leq k \leq i\text{, with } \mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and } \label{eq:extension/metrictemporaloperators/proofProp3/eq10.2}\\
-            &\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \label{eq:extension/metrictemporaloperators/proofProp3/eq10.3}\\
-            &\text{there is } k, \mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1\text{, with }  \nonumber \\
-            &\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2}) \text{ and }\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ for all }j, k < j \leq i-1)) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})\text{ or }(\mathfrak{I}, i \models \mathfrak{a}_{\phi_{1}}(\phi_{1})\text{ and }(i > 0\text{ and } \\
-            &\mathfrak{I}, i-1 \models \mathfrak{a}(\phi_{1} \mathsf{S}_{p-1} \phi_{2}))) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{2} \vee (\phi_{1} \wedge \Circle^{-} (\phi_{1} \mathsf{S}_{p-1} \phi_{2})))
-        \end{align}
-        \eqref{eq:extension/metrictemporaloperators/proofProp3/eq10.3} is equivalent to \eqref{eq:extension/metrictemporaloperators/proofProp3/eq10.2} because
-        \begin{itemize}
-            \item in case $i > 0$, either $\phi_{2}$ needs to be satisfied now, at time point $i$, or $\phi_{1}$ needs to be satisfied now, at time point $i$, and there needs to be a past time point $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq i-1$,
-            where $\phi_{2}$ is satisfied and $\phi_{1}$ is satisfied for all time points $j$, $k < j \leq i-1$, in order for the query to be satisfied.
-            \item in case $i = 0$, $\phi_{2}$ needs to be satisfied now, at time point $i$, in order for the query to be satisfied.
-            There are no past time points $k$, $\mathsf{max}((i-1)-(p-1),0) \leq k \leq 0-1$.
-            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$ is equivalent to there is $k$, $\mathsf{max}(i-p,0) \leq k \leq 0$, with $\mathfrak{I}, k \models \mathfrak{a}_{\phi_{2}}(\phi_{2})$
-            and $\mathfrak{I}, j \models \mathfrak{a}_{\phi_{1}}(\phi_{1})$ for all $j, k < j \leq 0$, and $i > 0$ is not true, thus the ``or''-statement has no effect on satisfaction.
-        \end{itemize}
-    \end{enumerate}
+    \end{itemize}
 \end{proof}
 
 The semantics of the MTOs can now be used to extend the algorithm specified in \cite{borgwardt2015temporalizing}.
@@ -386,79 +238,85 @@ The functions $\mathsf{eval}^{n}: \mathsf{AT}^{n}_{\phi} \rightarrow 2^{\Delta^{
         $x^{\Diamond_{p} \psi_{1}}_{n}$                                 & $\emptyset$                                                                   \\
         $x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{n}$                      & $\emptyset$                                                                   \\ \bottomrule
     \end{tabular*}
-    \caption{$\mathsf{eval}^{n}(\alpha)$ with MTOs}
+    \caption{$\mathsf{eval}^{n}(\alpha)$ with metric temporal operators}
     \label{tab:extension/metrictemporaloperators/eval}
 \end{table}
 
-The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\phi}$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
-\begin{table}[H]
-    \centering
-    \begin{tabular*}{\textwidth}{@{}ll@{}}
-        \toprule
-        $\psi$                                                & $\Phi_{0}(\psi)$                                                                              \\ \midrule
-        $[\ldots]$                & $[\ldots]$ \\
-        $\Circle_{p} \psi_{1}$ with $p > 0$                 & $x^{\Circle_{p} \psi_{1}}_{0}$                                                                \\
-        $\CIRCLE_{p} \psi_{1}$ with $p > 0$                 & $x^{\CIRCLE_{p} \psi_{1}}_{0}$                                                                \\
-        $\Circle^{-}_{p} \psi_{1}$ with $p > 0$             & $\emptyset$                                                                                   \\
-        $\CIRCLE^{-}_{p} \psi_{1}$ with $p > 0$             & $\Delta^{\mathsf{N}_\mathsf{V}}$                                                              \\
-        $\Box_{p} \psi_{1}$ with $p > 0$                    & $\Phi_{0}(\psi_{1}) \cap x^{\Box_{p} \psi_{1}}_{0}$                                         \\
-        $\Box^{-}_{p} \psi_{1}$                             & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\Diamond_{p} \psi_{1}$ with $p > 0$                & $\Phi_{0}(\psi_{1}) \cup x^{\Diamond_{p} \psi_{1}}_{0}$                                     \\
-        $\Diamond^{-}_{p} \psi_{1}$                         & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\psi_{1} \mathsf{U}_{p} \psi_{2}$ with $p > 0$     & $\Phi_{0}(\psi_{2}) \cup (\Phi_{0}(\psi_{1}) \cap x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{0})$    \\
-        $\psi_{1} \mathsf{S}_{p} \psi_{2}$                  & $\Phi_{0}(\psi_{2})$                                                                          \\
-        $\Circle_{0} \psi_{1}$                              & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\CIRCLE_{0} \psi_{1}$                              & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\Circle^{-}_{0} \psi_{1}$                          & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\CIRCLE^{-}_{0} \psi_{1}$                          & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\Box_{0} \psi_{1}$                                 & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\Diamond_{0} \psi_{1}$                             & $\Phi_{0}(\psi_{1})$                                                                          \\
-        $\psi_{1} \mathsf{U}_{0} \psi_{2}$                  & $\Phi_{0}(\psi_{2})$                                                                          \\\bottomrule
-    \end{tabular*}
-    \caption{$\Phi_{0}(\psi)$ with MTOs}
-    \label{tab:extension/metrictemporaloperators/phi0}
-\end{table}
+\begin{minipage}[H]{\textwidth}
+    The function $\Phi_{0}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{0}_{\phi}$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
+    \begin{table}[H]
+        \centering
+        \begin{tabular*}{\textwidth}{@{}ll@{}}
+            \toprule
+            $\psi$                                                & $\Phi_{0}(\psi)$                                                                              \\ \midrule
+            $[\ldots]$                & $[\ldots]$ \\
+            $\Circle_{p} \psi_{1}$ with $p > 0$                 & $x^{\Circle_{p} \psi_{1}}_{0}$                                                                \\
+            $\CIRCLE_{p} \psi_{1}$ with $p > 0$                 & $x^{\CIRCLE_{p} \psi_{1}}_{0}$                                                                \\
+            $\Circle^{-}_{p} \psi_{1}$ with $p > 0$             & $\emptyset$                                                                                   \\
+            $\CIRCLE^{-}_{p} \psi_{1}$ with $p > 0$             & $\Delta^{\mathsf{N}_\mathsf{V}}$                                                              \\
+            $\Box_{p} \psi_{1}$ with $p > 0$                    & $\Phi_{0}(\psi_{1}) \cap x^{\Box_{p} \psi_{1}}_{0}$                                         \\
+            $\Box^{-}_{p} \psi_{1}$                             & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\Diamond_{p} \psi_{1}$ with $p > 0$                & $\Phi_{0}(\psi_{1}) \cup x^{\Diamond_{p} \psi_{1}}_{0}$                                     \\
+            $\Diamond^{-}_{p} \psi_{1}$                         & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\psi_{1} \mathsf{U}_{p} \psi_{2}$ with $p > 0$     & $\Phi_{0}(\psi_{2}) \cup (\Phi_{0}(\psi_{1}) \cap x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{0})$    \\
+            $\psi_{1} \mathsf{S}_{p} \psi_{2}$                  & $\Phi_{0}(\psi_{2})$                                                                          \\
+            $\Circle_{0} \psi_{1}$                              & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\CIRCLE_{0} \psi_{1}$                              & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\Circle^{-}_{0} \psi_{1}$                          & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\CIRCLE^{-}_{0} \psi_{1}$                          & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\Box_{0} \psi_{1}$                                 & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\Diamond_{0} \psi_{1}$                             & $\Phi_{0}(\psi_{1})$                                                                          \\
+            $\psi_{1} \mathsf{U}_{0} \psi_{2}$                  & $\Phi_{0}(\psi_{2})$                                                                          \\\bottomrule
+        \end{tabular*}
+        \caption{$\Phi_{0}(\psi)$ with metric temporal operators}
+        \label{tab:extension/metrictemporaloperators/phi0}
+    \end{table}
+\end{minipage}
 
-The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}_{\phi},\ i>0$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
-\begin{table}[H]
-    \centering
-    \begin{tabular*}{\textwidth}{@{}ll@{}}
-        \toprule
-        $\psi$                                                & $\Phi^{0}_{i}(\psi)$                                                                                          \\ \midrule
-        $[\ldots]$                & $[\ldots]$ \\
-        $\Circle_{p} \psi_{1}$ with $p > 0$                 & $x^{\Circle_{p} \psi_{1}}_{i}$                                                                                \\
-        $\CIRCLE_{p} \psi_{1}$ with $p > 0$                 & $x^{\CIRCLE_{p} \psi_{1}}_{i}$                                                                                \\
-        $\Circle^{-}_{p} \psi_{1}$ with $p > 0$             & $\Phi_{i-1}(\Circle^{-}_{p-1} \psi_{1})$                                                                                        \\
-        $\CIRCLE^{-}_{p} \psi_{1}$ with $p > 0$             & $\Phi_{i-1}(\CIRCLE^{-}_{p-1} \psi_{1})$                                                                                        \\
-        $\Box_{p} \psi_{1}$ with $p > 0$                    & $\Phi^{0}_{i}(\psi_{1}) \cap x^{\Box_{p} \psi_{1}}_{i}$                                                     \\
-        $\Box^{-}_{p} \psi_{1}$ with $p > 0$                & $\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\Box^{-}_{p-1} \psi_{1})$                                             \\
-        $\Diamond_{p} \psi_{1}$ with $p > 0$                & $\Phi^{0}_{i}(\psi_{1}) \cup x^{\Diamond_{p} \psi_{1}}_{i}$                                                 \\
-        $\Diamond^{-}_{p} \psi_{1}$ with $p > 0$            & $\Phi^{0}_{i}(\psi_{1}) \cup \Phi_{i-1}(\Diamond^{-}_{p-1} \psi_{1})$                                         \\
-        $\psi_{1} \mathsf{U}_{p} \psi_{2}$ with $p > 0$     & $\Phi^{0}_{i}(\psi_{2}) \cup (\Phi^{0}_{i}(\psi_{1}) \cap x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{i})$        \\
-        $\psi_{1} \mathsf{S}_{p} \psi_{2}$ with $p > 0$     & $\Phi^{0}_{i}(\psi_{2}) \cup (\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\psi_{1} \mathsf{S}_{p-1} \psi_{2}))$    \\
-        $\Circle_{0} \psi_{1}$                              & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\CIRCLE_{0} \psi_{1}$                              & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\Circle^{-}_{0} \psi_{1}$                          & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\CIRCLE^{-}_{0} \psi_{1}$                          & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\Box_{0} \psi_{1}$                                 & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\Box^{-}_{0} \psi_{1}$                             & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\Diamond_{0} \psi_{1}$                             & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\Diamond^{-}_{0} \psi_{1}$                         & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
-        $\psi_{1} \mathsf{U}_{0} \psi_{2}$                  & $\Phi^{0}_{i}(\psi_{2})$                                                                                      \\
-        $\psi_{1} \mathsf{S}_{0} \psi_{2}$                  & $\Phi^{0}_{i}(\psi_{2})$                                                                                      \\ \bottomrule
-    \end{tabular*}
-    \caption{$\Phi^{0}_{i}(\psi)$ with MTOs}
-    \label{tab:extension/metrictemporaloperators/phiI}
-\end{table}
+\begin{minipage}[H]{\textwidth}
+    The function $\Phi^{0}_{i}(\psi): \mathsf{Sub}(\phi) \rightarrow \mathsf{AT}^{i}_{\phi},\ i>0$ in \cite{borgwardt2015temporalizing} has to be extended as follows:
+    \begin{table}[H]
+        \centering
+        \begin{tabular*}{\textwidth}{@{}ll@{}}
+            \toprule
+            $\psi$                                                & $\Phi^{0}_{i}(\psi)$                                                                                          \\ \midrule
+            $[\ldots]$                & $[\ldots]$ \\
+            $\Circle_{p} \psi_{1}$ with $p > 0$                 & $x^{\Circle_{p} \psi_{1}}_{i}$                                                                                \\
+            $\CIRCLE_{p} \psi_{1}$ with $p > 0$                 & $x^{\CIRCLE_{p} \psi_{1}}_{i}$                                                                                \\
+            $\Circle^{-}_{p} \psi_{1}$ with $p > 0$             & $\Phi_{i-1}(\Circle^{-}_{p-1} \psi_{1})$                                                                                        \\
+            $\CIRCLE^{-}_{p} \psi_{1}$ with $p > 0$             & $\Phi_{i-1}(\CIRCLE^{-}_{p-1} \psi_{1})$                                                                                        \\
+            $\Box_{p} \psi_{1}$ with $p > 0$                    & $\Phi^{0}_{i}(\psi_{1}) \cap x^{\Box_{p} \psi_{1}}_{i}$                                                     \\
+            $\Box^{-}_{p} \psi_{1}$ with $p > 0$                & $\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\Box^{-}_{p-1} \psi_{1})$                                             \\
+            $\Diamond_{p} \psi_{1}$ with $p > 0$                & $\Phi^{0}_{i}(\psi_{1}) \cup x^{\Diamond_{p} \psi_{1}}_{i}$                                                 \\
+            $\Diamond^{-}_{p} \psi_{1}$ with $p > 0$            & $\Phi^{0}_{i}(\psi_{1}) \cup \Phi_{i-1}(\Diamond^{-}_{p-1} \psi_{1})$                                         \\
+            $\psi_{1} \mathsf{U}_{p} \psi_{2}$ with $p > 0$     & $\Phi^{0}_{i}(\psi_{2}) \cup (\Phi^{0}_{i}(\psi_{1}) \cap x^{\psi_{1} \mathsf{U}_{p} \psi_{2}}_{i})$        \\
+            $\psi_{1} \mathsf{S}_{p} \psi_{2}$ with $p > 0$     & $\Phi^{0}_{i}(\psi_{2}) \cup (\Phi^{0}_{i}(\psi_{1}) \cap \Phi_{i-1}(\psi_{1} \mathsf{S}_{p-1} \psi_{2}))$    \\
+            $\Circle_{0} \psi_{1}$                              & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\CIRCLE_{0} \psi_{1}$                              & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\Circle^{-}_{0} \psi_{1}$                          & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\CIRCLE^{-}_{0} \psi_{1}$                          & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\Box_{0} \psi_{1}$                                 & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\Box^{-}_{0} \psi_{1}$                             & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\Diamond_{0} \psi_{1}$                             & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\Diamond^{-}_{0} \psi_{1}$                         & $\Phi^{0}_{i}(\psi_{1})$                                                                                      \\
+            $\psi_{1} \mathsf{U}_{0} \psi_{2}$                  & $\Phi^{0}_{i}(\psi_{2})$                                                                                      \\
+            $\psi_{1} \mathsf{S}_{0} \psi_{2}$                  & $\Phi^{0}_{i}(\psi_{2})$                                                                                      \\ \bottomrule
+        \end{tabular*}
+        \caption{$\Phi^{0}_{i}(\psi)$ with metric temporal operators}
+        \label{tab:extension/metrictemporaloperators/phiI}
+    \end{table}
+\end{minipage}
+\\
+
 $\mathsf{Sub}(\phi)$ now includes all queries $\Circle_{m} \psi_{1}$, $\CIRCLE_{m} \psi_{1}$, $\Circle^{-}_{m} \psi_{1}$, $\CIRCLE^{-}_{m} \psi_{1}$,
 $\Box_{m} \psi_{1}$, $\Box^{-}_{m} \psi_{1}$, $\Diamond_{m} \psi_{1}$, $\Diamond^{-}_{m} \psi_{1}$, $\psi_{1} \mathsf{U}_{m} \psi_{2}$ and $\psi_{1} \mathsf{S}_{m} \psi_{2}$
 with $m$, $0 \leq m \leq p$.
 $\mathsf{FSub}(\phi)$, the subset of queries from $\mathsf{Sub}(\phi)$ that start with a future operator, is extended accordingly.
 It is noteworthy, that even though the sets denoted by $\mathsf{Sub}(\phi)$ and $\mathsf{FSub}(\phi)$ for $\phi$ with MTOs
 are different from the sets for $\phi$ without MTOs, they are the same size, e.g.\ for Query \ref{qu:queries/investigationqueries/practical/qu3}
-without MTOs $\mathsf{Sub}(\phi) = \{\phi, \Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-} \psi,
-\Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-} \psi, \Circle^{-}\Circle^{-}\Circle^{-} \psi, \Circle^{-}\Circle^{-} \psi, \Circle^{-} \psi, \psi\}$
-and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_{4} \psi, \Diamond^{-}_{3} \psi, \Diamond^{-}_{2} \psi, \Diamond^{-}_{1} \psi, \Diamond^{-}_{0} \psi\}$.
+without MTOs $\mathsf{Sub}(\phi) = \{\phi,\allowbreak \Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-} \psi,\allowbreak
+\Circle^{-}\Circle^{-}\Circle^{-}\Circle^{-} \psi,\allowbreak \Circle^{-}\Circle^{-}\Circle^{-} \psi,\allowbreak \Circle^{-}\Circle^{-} \psi,\allowbreak \Circle^{-} \psi, \psi\}$
+and with MTOs $\mathsf{Sub}(\phi) = \{\phi,\allowbreak \Diamond^{-}_{5} \psi,\allowbreak \Diamond^{-}_{4} \psi,\allowbreak \Diamond^{-}_{3} \psi,\allowbreak \Diamond^{-}_{2} \psi,\allowbreak \Diamond^{-}_{1} \psi,\allowbreak \Diamond^{-}_{0} \psi\}$.
 
 \begin{theorem}
     \label{th:extension/metrictemporaloperators/corretandbounded}
@@ -469,14 +327,15 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
     To prove that the correctness and boundedness of the algorithm is preserved, the necessary cases are added to the
     corresponding proofs from \cite{borgwardt2015temporalizing}.
 
-    \begin{lemma}[ct.\ Lemma 6.3 in \cite{borgwardt2015temporalizing}]
+    \begin{restatable}[ct.\ Lemma 6.3 in \cite{borgwardt2015temporalizing}]{lemma}{lemmaMTOsPhiZero}
         \label{lem:extension/metrictemporaloperators/lemma5}
         The function $\Phi_{0}$ with metric temporal operators is correct for 0.
-    \end{lemma}
+    \end{restatable}
 
     \begin{proof}
         It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi_{0}(\psi))$
-        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$ for all $n \geq 0$. \\
+        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)$ for all $n \geq 0$.
+        The missing cases can be found in Appendix \ref{ch:appendixC}.\\
         If $\psi = \Circle_{0} \psi_{1}$, $\psi = \CIRCLE_{0} \psi_{1}$, $\psi = \Circle^{-}_{0} \psi_{1}$, $\psi = \CIRCLE^{-}_{0} \psi_{1}$, $\psi = \Box_{0} \psi_{1}$, $\psi = \Box^{-}_{0} \psi_{1}$, $\psi = \Diamond_{0} \psi_{1}$ or $\psi = \Diamond^{-}_{0} \psi_{1}$, then
         \[\mathsf{eval}^{n}(\Phi_{0}(\psi)) = \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})).\]
         This is by induction equal to $Ans(\psi_{1}, \mathfrak{I}^{(n)},0)$ which then is, as shown in Proposition \ref{prop:extension/metrictemporaloperators/prop2},
@@ -502,19 +361,6 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)
             \end{split}
         \end{equation}
-        If $\psi = \CIRCLE_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma5/eq2}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(x^{\CIRCLE_{p} \psi_{1}}_{0}) \\
-                &= \left\{\begin{array}{lr}
-                              \mathsf{Ans}(\CIRCLE_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
-                              \Delta^{\mathsf{N}_\mathsf{V}}      & \text{if } n = 0\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)
-            \end{split}
-        \end{equation}
         If $\psi = \Box_{p} \psi_{1}$ and $p > 0$, then
         \begin{equation}
             \notag
@@ -524,19 +370,6 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cap \left\{\begin{array}{lr}
                                                                                 \mathsf{Ans}(\Box_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
                                                                                 \Delta^{\mathsf{N}_\mathsf{V}}       & \text{if } n = 0\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)
-            \end{split}
-        \end{equation}
-        If $\psi = \Diamond_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma5/eq4}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\Diamond_{p} \psi_{1}}_{0}) \\
-                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},0) \cup \left\{\begin{array}{lr}
-                                                                                \mathsf{Ans}(\Diamond_{p-1} \psi_{1}, \mathfrak{I}^{(n)},1) & \text{if } n > 0\\
-                                                                                \emptyset            & \text{if } n = 0\\
                 \end{array}\right\} \\
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)
             \end{split}
@@ -554,26 +387,17 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)
             \end{split}
         \end{equation}
-        If $\psi = \psi_{1} \mathsf{S}_{p} \psi_{2}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma5/eq6}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi_{0}(\psi)) &= \mathsf{eval}^{n}(\Phi_{0}(\psi_{2})) \\
-                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},0) \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},0)
-            \end{split}
-        \end{equation}
     \end{proof}
 
-    \begin{lemma}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
+    \begin{restatable}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]{lemma}{lemmaMTOsPhiiminus}
         \label{lem:extension/metrictemporaloperators/lemma6}
         If $\Phi_{i-1}$ with metric temporal operators is correct for i-1, then $\Phi^{0}_{i}$ with metric temporal operators is correct for i.
-    \end{lemma}
+    \end{restatable}
 
     \begin{proof}
         It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi))$
-        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)$ for all $n \geq i$. \\
+        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)$ for all $n \geq i$.
+        The missing cases can be found in Appendix \ref{ch:appendixC}.\\
 
         If $\psi = \Circle_{0} \psi_{1}$, $\psi = \CIRCLE_{0} \psi_{1}$, $\psi = \Circle^{-}_{0} \psi_{1}$, $\psi = \CIRCLE^{-}_{0} \psi_{1}$, $\psi = \Box_{0} \psi_{1}$, $\psi = \Box^{-}_{0} \psi_{1}$, $\psi = \Diamond_{0} \psi_{1}$ or $\psi = \Diamond^{-}_{0} \psi_{1}$, then
         \begin{equation}
@@ -608,58 +432,6 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
             \end{split}
         \end{equation}
-        If $\psi = \CIRCLE_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq4}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(x^{\CIRCLE_{p} \psi_{1}}_{i}) \\
-                &= \left\{\begin{array}{lr}
-                              \mathsf{Ans}(\CIRCLE_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
-                              \Delta^{\mathsf{N}_\mathsf{V}}      & \text{if } n = i\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \Circle^{-}_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq5}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi_{i-1}(\Circle^{-}_{p-1} \psi_{1})) \\
-                &= \left\{\begin{array}{lr}
-                              \mathsf{Ans}(\Circle^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) & \text{if } i > 0\\
-                              \emptyset      & \text{if } i = 0\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \CIRCLE^{-}_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq6}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi_{i-1}(\CIRCLE^{-}_{p-1} \psi_{1})) \\
-                &= \left\{\begin{array}{lr}
-                              \mathsf{Ans}(\CIRCLE^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) & \text{if } i > 0\\
-                              \Delta^{\mathsf{N}_\mathsf{V}}      & \text{if } i = 0\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \Box_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq7}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\Box_{p} \psi_{1}}_{i}) \\
-                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \left\{\begin{array}{lr}
-                                                                                \mathsf{Ans}(\Box_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
-                                                                                \Delta^{\mathsf{N}_\mathsf{V}}       & \text{if } n = i\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
         If $\psi = \Box^{-}_{p} \psi_{1}$ and $p > 0$, then
         \begin{equation}
             \notag
@@ -667,29 +439,6 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
             \begin{split}
                 \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(\Phi_{i-1}(\Box^{-}_{p} \psi_{1})) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\Box^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \Diamond_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq9}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(x^{\Diamond_{p-1} \psi_{1}}_{i}) \\
-                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \left\{\begin{array}{lr}
-                                                                                \mathsf{Ans}(\Diamond_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
-                                                                                \emptyset            & \text{if } n = i\\
-                \end{array}\right\} \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \Diamond^{-}_{p} \psi_{1}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq10}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(\Phi_{i-1}(\Box^{-}_{p-1} \psi_{1})) \\
-                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \mathsf{Ans}(\Box^{-}_{p-1} \psi_{1}, \mathfrak{I}^{(n)},i-1) \\
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
             \end{split}
         \end{equation}
@@ -703,16 +452,6 @@ and with MTOs $\mathsf{Sub}(\phi) = \{\phi, \Diamond^{-}_{5} \psi, \Diamond^{-}_
                                                                                                                                  \mathsf{Ans}(\psi_{1} \mathsf{U}_{p-1} \psi_{2}, \mathfrak{I}^{(n)},i+1) & \text{if } n > i\\
                                                                                                                                  \emptyset       & \text{if } n = i\\
                 \end{array}\right\}) \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \psi_{1} \mathsf{S}_{p} \psi_{2}$ and $p > 0$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/metrictemporaloperators/proofLemma6/eq12}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{2})) \cup (\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \Phi_{i-1}(\psi_{1} \mathsf{S}_{p-1} \psi_{2})) \\
-                &= \mathsf{Ans}(\psi_{2}, \mathfrak{I}^{(n)},i)\cup(\mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\psi_{1} \mathsf{S}_{p-1} \psi_{2}, \mathfrak{I}^{(n)},i-1)) \\
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
             \end{split}
         \end{equation}

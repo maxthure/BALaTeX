@@ -2,23 +2,27 @@
 %! Date = 09.05.20
 
 % Preamble
-\documentclass[11pt]{report}
+\documentclass[bachinf]{zihpub}
 
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{wasysym}
 \usepackage{booktabs}
 \usepackage{float}
-\usepackage{amsfonts}
 \usepackage[noend]{algorithmic}
 \usepackage{algorithm,caption}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \usepackage{abstract}
+\usepackage{thmtools,thm-restate}
+\usepackage{acronym}
+\usepackage{chapterHeads}
+\usepackage{placeins}
 
 
 \pgfplotsset{compat=newest}
@@ -34,12 +38,20 @@
 % Info
 \title{Experimental Evaluation of a Bounded History Encoding}
 \author{Thure Nebendahl}
+\birthday{September 12, 1999}
+\placeofbirth{Bonn}
+\matno{4684126}
 
 % Document
-\begin{document}F
-    \maketitle
+\begin{document}
     \input{Abstract.tex}
     \tableofcontents
+    \listoftables
+    \begingroup
+    \let\clearpage\relax
+    \listoffigures
+    \endgroup
+    \input{Acronyms.tex}
 
     \input{Introduction.tex}
     \input{Data.tex}

@@ -1,7 +1,7 @@
 \chapter{Extensions}
 \label{ch:extension}
-It became clear that both the language from \cite{borgwardt2015temporalizing} and consequently the implementation of the BHE \cite{borgwardt2015temporalizing}
-must be extended in order to provide relevant answers to the PTQs specified in Chapter \ref{ch:queries}.
+It became clear that both the language from \cite{borgwardt2015temporalizing} and consequently the implementation of the BHE \cite{boundedhistoryencodingalgorithm}
+must be extended to provide relevant answers to the PTQs specified in Chapter \ref{ch:queries}.
 In this chapter, the extensions are introduced one by one and examined for feasibility.
 The definitions of $\mathsf{eval}^{n}(\alpha)$, $\Phi_{0}(\psi)$ and $\Phi_{i}(\psi)$ from \cite{borgwardt2015temporalizing} are modified,
 upon which the modifications are proven to be correct.
@@ -9,7 +9,7 @@ upon which the modifications are proven to be correct.
 \section{Operators $\Box$, $\Box^{-}$, $\Diamond$, $\Diamond^{-}$}
 \label{sec:extension/extensions/operatorsnotimplemented}
 First, the algorithm presented in \cite{borgwardt2015temporalizing} is extended by the operators
-$\Box \phi$ (always), $\Box^{-} \phi$ (always in the past), $\Diamond \phi$ (eventually), $\Diamond^{-} \phi$ (some time in the past).
+$\Box \phi$ (always), $\Box^{-} \phi$ (always in the past), $\Diamond \phi$ (eventually), $\Diamond^{-} \phi$ (sometime in the past).
 As a reminder, the semantics of these four TQs are defined as follows:
 \begin{definition}[semantics of temporal queries ct.\ Definition 3.3 in \cite{borgwardt2015temporalizing}]
     \label{def:Extension/operatorsnotimplemented/semantics}
@@ -26,7 +26,7 @@ As a reminder, the semantics of these four TQs are defined as follows:
             $\Diamond \phi_{1}$       & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k, i \leq k \leq n$\\
             $\Diamond^{-} \phi_{1}$   & $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k, 0 \leq k \leq i$\\ \bottomrule
         \end{tabular*}
-        \caption{satisfaction relation of TQs $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
+        \caption{Satisfaction relation of temporal queries $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$}
         \label{tab:extension/operatorsnotimplemented/satisfactionrelation}
     \end{table}
     $\mathsf{FVar}(\phi)$ denotes the set of \textit{free variables} of a TQ and is defined as the union of the sets $\mathsf{FVar}(\psi)$ of
@@ -60,7 +60,7 @@ and at the first time point
     \item $\Diamond^{-} \phi_{1}$ is equivalent to $\phi_{1}$ because $\Circle^{-} \Diamond^{-} \phi_{1}$ does not have any answers.
 \end{itemize}
 
-\begin{proposition}[ct.\ Proposition 3.4 in \cite{borgwardt2015temporalizing}]
+\begin{restatable}[ct.\ Proposition 3.4 in \cite{borgwardt2015temporalizing}]{proposition}{propOperators}
     \label{prop:extension/operatorsnotimplemented/prop2}
     For $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \mathsf{N}_{\mathsf{C}}$ and $0 \leq i \leq n$,
     \begin{enumerate}
@@ -85,14 +85,14 @@ and at the first time point
             \item $i > 0$ and $\mathfrak{I}, i-1 \models \mathfrak{a}(\Diamond^{-} \phi_{1})$
         \end{itemize}
     \end{enumerate}
-\end{proposition}
+\end{restatable}
 
 \begin{proof}
-    To prove the above proposition, TWO equivalences are demonstrated here.
-    The other two cases work similar AND CAN BE FOUND IN THE APPENDIX \ref{ch:appendixC}.
-    The proof works mainly on the basis of semantics.
-    \begin{enumerate}
-        \item $\Box \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box \phi_{1}$
+    To prove the above proposition, two equivalences are demonstrated here.
+    The other two cases work similarly and can be found in Appendix \ref{ch:appendixC}.
+    The proof works mainly based on semantics.
+    \begin{itemize}
+        \item[1.] $\Box \phi_{1} \equiv \phi_{1} \wedge \CIRCLE \Box \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Box \phi_{1}) \\
             \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, i \leq k \leq n  \label{eq:extension/operatorsnotimplemented/proofProp2/eq1.2} \\
@@ -103,53 +103,15 @@ and at the first time point
         \end{align}
         \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq1.3} is equivalent to \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq1.2} because
         \begin{itemize}
-            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at all future time points $k$, $i+1 \leq k \leq n$, in order to be satisfied.
+            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, and at all future time points $k$, $i+1 \leq k \leq n$, to be satisfied.
             Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the  ``implies''-statement; and
-            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, to be satisfied.
             There are no future time points $k$, $n+1 \leq k \leq n$.
             Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $n \leq k \leq n$,
-            and $i < n$ is not true, thus the  ``implies''-statement has no effect on satisfaction.
+            and $i < n$ is not true, thus the  ``implies''-statement does not affect satisfaction.
         \end{itemize}
 
-        \item $\Box^{-} \phi_{1} \equiv \phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Box^{-} \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i \label{eq:extension/operatorsnotimplemented/proofProp2/eq2.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \label{eq:extension/operatorsnotimplemented/proofProp2/eq2.3}\\
-            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for all } k, 0 \leq k \leq i-1) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ and } (i > 0 \text{ implies } \mathfrak{I}, i-1 \models \mathfrak{a}(\Box^{-}\phi_{1})) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \wedge \CIRCLE^{-} \Box^{-} \phi_{1})
-        \end{align}
-        \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq2.3} is equivalent to \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq2.2} because
-        \begin{itemize}
-            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, and at all past time points $k$, $0 \leq k \leq i-1$, in order to be satisfied.
-            Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the  ``implies''-statement; and
-            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-            There are no past time points $k$, $0 \leq k \leq 0-1$.
-            Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for all $k$, $0 \leq k \leq 0$,
-            and $i > 0$ is not true, thus the  ``implies''-statement has no effect on satisfaction.
-        \end{itemize}
-
-        \item $\Diamond \phi_{1} \equiv \phi_{1} \vee \Circle \Diamond \phi_{1}$
-        \begin{align}
-            &\mathfrak{I}, i \models \mathfrak{a}(\Diamond \phi_{1}) \\
-            \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i \leq k \leq n \label{eq:extension/operatorsnotimplemented/proofProp2/eq3.2}\\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \label{eq:extension/operatorsnotimplemented/proofProp2/eq3.3}\\
-            &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, i+1 \leq k \leq n) \nonumber \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1}) \text{ or } (i < n \text{ and } \mathfrak{I}, i+1 \models \mathfrak{a}(\Diamond \phi_{1})) \\
-            \Leftrightarrow &\mathfrak{I}, i \models \mathfrak{a}(\phi_{1} \vee \Circle \Diamond \phi_{1})
-        \end{align}
-        \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq3.3} is equivalent to \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq3.2} because
-        \begin{itemize}
-            \item in case $i < n$, the query needs to be satisfied now, at time point $i$, or at any future time point $k$, $i+1 \leq k \leq n$, in order to be satisfied.
-            Since $i < n$ is true, the satisfaction of future time points depends solely on the second part of the  ``and''-statement; and
-            \item in case $i = n$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
-            There are no future time points $k$, $n+1 \leq k \leq n$.
-            Since $i = n$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $n \leq k \leq n$,
-            and $i > 0$ is not true, thus the  ``and''-statement has no effect on satisfaction.
-        \end{itemize}
-
-        \item $\Diamond^{-} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}$
+        \item[4.] $\Diamond^{-} \phi_{1} \equiv \phi_{1} \vee \Circle^{-} \Diamond^{-} \phi_{1}$
         \begin{align}
             &\mathfrak{I}, i \models \mathfrak{a}(\Diamond^{-} \phi_{1}) \\
             \Leftrightarrow &\mathfrak{I}, k \models \mathfrak{a}(\phi_{1}) \text{ for some } k, 0 \leq k \leq i \label{eq:extension/operatorsnotimplemented/proofProp2/eq4.2}\\
@@ -160,18 +122,18 @@ and at the first time point
         \end{align}
         \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq4.3} is equivalent to \eqref{eq:extension/operatorsnotimplemented/proofProp2/eq4.2} because
         \begin{itemize}
-            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any past time point $k$, $0 \leq k \leq i-1$, in order to be satisfied.
+            \item in case $i > 0$, the query needs to be satisfied now, at time point $i$, or at any past time point $k$, $0 \leq k \leq i-1$, to be satisfied.
             Since $i > 0$ is true, the satisfaction of past time points depends solely on the second part of the  ``and''-statement; and
-            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, in order to be satisfied.
+            \item in case $i = 0$, the query needs to be satisfied now, at time point $i$, to be satisfied.
             There are no past time points $k$, $0 \leq k \leq 0-1$.
             Since $i = 0$ is true, $\mathfrak{I}, i \models \mathfrak{a}(\phi_{1})$ is equivalent to $\mathfrak{I}, k \models \mathfrak{a}(\phi_{1})$ for some $k$, $0 \leq k \leq 0$,
-            and $i > 0$ is not true, thus the  ``and''-statement has no effect on satisfaction.
+            and $i > 0$ is not true, thus the  ``and''-statement does not affect satisfaction.
         \end{itemize}
-    \end{enumerate}
+    \end{itemize}
 \end{proof}
 
 The semantics of the four operators can now be used to extend the algorithm specified in \cite{borgwardt2015temporalizing}.
-For this the notation of \textit{answer terms} is needed.
+For this, the notation of \textit{answer terms} is needed.
 Using the same simplification as in \cite{borgwardt2015temporalizing}, the following assumes that $\mathsf{N}_{\mathsf{V}}$, the set of \textit{variables}, is finite
 and that the answers are of the form $\mathfrak{a}:\mathsf{N}_{\mathsf{V}} \rightarrow \Delta$ instead of $\mathfrak{a}:\mathsf{FVar}(\phi) \rightarrow \Delta$.
 $\mathsf{Ans}(\phi, \mathfrak{I}^{(n)})$ refers to a set of mappings $\mathfrak{a}:\mathsf{N}_{\mathsf{V}} \rightarrow \Delta$, i.e, a subset of $\Delta^{\mathsf{N}_\mathsf{V}}$.
@@ -286,44 +248,24 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         \end{equation}
     \end{proof}
 
-    \begin{lemma}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]
+    \begin{restatable}[ct.\ Lemma 6.4 in \cite{borgwardt2015temporalizing}]{lemma}{lemmaOperators}
         \label{lem:extension/operatorsnotimplemented/lemma6}
         If $\Phi_{i-1}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i-1, then $\Phi^{0}_{i}$ for $\Box, \Box^{-}, \Diamond$ and $\Diamond^{-}$ is correct for i.
-    \end{lemma}
+    \end{restatable}
 
     \begin{proof}
         It is shown by induction on the structure of the subqueries $\psi \in \mathsf{Sub}(\phi)$ that $\mathsf{eval}^{n}(\Phi^{0}_{i}(\psi))$
-        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)$ for all $n \geq i$. \\
-        If $\psi = \Box^{-}\psi_{1}$, then
+        is equal to $\mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)$ for all $n \geq i$.
+        This is shown for two cases here.
+        The other cases can be found in Appendix \ref{ch:appendixC}.
+
+        \noindent If $\psi = \Box^{-}\psi_{1}$, then
         \begin{equation}
             \notag
             \label{eq:extension/operatorsnotimplemented/proofLemma6/eq1}
             \begin{split}
                 \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(\Phi_{i-1}(\psi)) \\
                 &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i-1) \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \Diamond^{-}\psi_{1}$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/operatorsnotimplemented/proofLemma6/eq2}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cup \mathsf{eval}^{n}(\Phi_{i-1}(\psi)) \\
-                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cup \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i-1) \\
-                &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
-            \end{split}
-        \end{equation}
-        If $\psi = \Box\psi_{1}$, then
-        \begin{equation}
-            \notag
-            \label{eq:extension/operatorsnotimplemented/proofLemma6/eq3}
-            \begin{split}
-                \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi)) &= \mathsf{eval}^{n}(\Phi^{0}_{i}(\psi_{1})) \cap \mathsf{eval}^{n}(x^{\psi}_{i}) \\
-                &= \mathsf{Ans}(\psi_{1}, \mathfrak{I}^{(n)},i) \cap \left\{\begin{array}{lr}
-                                                                                \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i+1)  & \text{if } n > i\\
-                                                                                \Delta^{\mathsf{N}_\mathsf{V}}          & \text{if } n = i\\
-                \end{array}\right\} \\
                 &= \mathsf{Ans}(\psi, \mathfrak{I}^{(n)},i)
             \end{split}
         \end{equation}
@@ -369,6 +311,7 @@ $\mathsf{Sub}(\phi)$ denotes the set of all TQs occurring as temporal subqueries
         In \cite{borgwardt2015temporalizing} this is again proven by induction on $j$.
         It therefore suffices to add the missing cases.
         It is enough to show that $\mathsf{update}(x^{\psi^{j}}_{i-1})$ contains only variables from $\mathsf{Var}^{\psi^{j}}_{i}$.
+
         If $\psi^{j}=\Box\psi_{1}$ or $\psi^{j}=\Diamond\psi_{1}$, then $\mathsf{update}(x^{\psi^{j}}_{i-1}) = \Phi^{j-1}_{i}(\psi^{j})$.
         Since $\Phi^{j-1}_{i}$ differs from $\Phi^{0}_{i}$ only in the replacement of some variables with index $i-1$,
         \begin{align}
@@ -412,4 +355,4 @@ However, the MTOs are still relevant, as they can reduce the size of queries sig
 A query without MTOs that is equivalent to, e.g. $\Box$ with a time limit $t$, consists of at least $2*t$ operators, a $\wedge$ and a $\CIRCLE$ for each time point up to the limit.
 Whereas, the corresponding query with MTOs consists of only one operator $\Box_{t}$ regardless of the size of $t$.
 
-Lastly, it is feasible to implement the extensions as the main modification needed are case-distinctions in the implementations of $\Phi_{0}(\psi)$ and $\Phi^{0}_{i}(\psi)$.
+Lastly, it is feasible to implement the extensions as the main modification needed are case-distinctions in the implementations of $\Phi_{0}(\psi)$ and $\Phi^{0}_{i}(\psi)$ \cite{boundedhistoryencodingalgorithm}.

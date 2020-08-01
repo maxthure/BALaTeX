@@ -1,3 +1,13 @@
 \begin{abstract}
-    Dies wird der Abstract.
+    The reasoning task of a temporal version of \textit{ontology-based data access} can be solved with the help of a \textit{bounded history encoding} (BHE).
+    By rewriting temporal queries, the reasoning task can be reduced to query answering over temporal databases.
+    The BHE under consideration in this work is one approach to solve this task \cite{borgwardt2015temporalizing}.
+
+    In this thesis, an implementation of this BHE is evaluated, to investigate its helpfulness in a practical application.
+    Criteria to assess the degree of helpfulness are the size of the encoding, the time it takes to answer one query per time point, and the usefulness of the answers.
+    The BHE is applied to observe an online automotive marketplace and then to answer a set of specified queries at each time point.
+    The queries were explicitly chosen to help evaluate the BHE's degree of helpfulness.
+    To provide useful answers, the BHE had to be extended by appropriate operators.
+    The evaluation of the extended BHE shows that it can provide useful answers in a reasonable time.
+    An upper bound was found for the size of the encoding, which determines from what number of time points on the BHE is superior.
 \end{abstract}

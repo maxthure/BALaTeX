@@ -7,3 +7,5 @@
 /src/*.pdf
 /src/*.synctex.gz
 /src/*.toc
+/src/*.lof
+/src/*.lot

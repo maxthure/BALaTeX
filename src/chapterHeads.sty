@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapterHeads}[2020/07/27 thure's Package]
+\makeatletter
+\def\@makechapterhead#1{%
+\vspace*{20\p@}
+{\parindent \z@ \raggedright \normalfont
+\ifnum \c@secnumdepth >\m@ne
+\huge\bfseries \@chapapp\space \thechapter
+\par\nobreak
+\vskip 20\p@
+\fi
+\interlinepenalty\@M
+\Huge \bfseries #1\par\nobreak
+\vskip 40\p@
+}}
+\def\@makeschapterhead#1{%
+\vspace*{20\p@}
+{\parindent \z@ \raggedright
+\normalfont
+\interlinepenalty\@M
+\Huge \bfseries  #1\par\nobreak
+\vskip 40\p@
+}}
+\makeatother
